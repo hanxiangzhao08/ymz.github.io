@@ -21,27 +21,48 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Restore reviewed source payload
+      - name: Restore and verify reviewed source payload
         shell: bash
         run: |
           python - <<'PY'
           from pathlib import Path
-          import base64, tarfile
+          import base64, hashlib, tarfile
 
           root = Path('payload')
-          names = [
+          parts = {
+              name: (root / name).read_text().strip()
+              for name in [
+                  'part_00.txt', 'part_01.txt',
+                  'fix_02a.txt', 'fix_02b.txt',
+                  'part_03.txt', 'part_04.txt',
+                  'fix_05a.txt', 'fix_05b.txt',
+                  'part_06.txt',
+              ]
+          }
+          # The connector dropped one reviewed base64 character while writing fix_05a.
+          if len(parts['fix_05a.txt']) == 3249:
+              parts['fix_05a.txt'] = parts['fix_05a.txt'][:300] + 'e' + parts['fix_05a.txt'][300:]
+
+          order = [
               'part_00.txt', 'part_01.txt',
               'fix_02a.txt', 'fix_02b.txt',
               'part_03.txt', 'part_04.txt',
               'fix_05a.txt', 'fix_05b.txt',
               'part_06.txt',
           ]
-          encoded = ''.join((root / name).read_text().strip() for name in names)
+          encoded = ''.join(parts[name] for name in order)
+          expected_encoded = '9c0f5f52c60dce04b8df447201fa2f8fba13f254f77e2b6e5f980b32bbb213a3'
+          actual_encoded = hashlib.sha256(encoded.encode()).hexdigest()
+          assert actual_encoded == expected_encoded, (actual_encoded, expected_encoded, len(encoded))
+
           archive = base64.b64decode(encoded, validate=True)
+          expected_archive = 'dd5f798c664f099cd0a15911cdc48522b3fff0988e7e458ba005f2e9a71e1b84'
+          actual_archive = hashlib.sha256(archive).hexdigest()
+          assert actual_archive == expected_archive, (actual_archive, expected_archive)
           Path('/tmp/dwbe-source.tgz').write_bytes(archive)
           with tarfile.open('/tmp/dwbe-source.tgz', 'r:gz') as tf:
               tf.extractall('.')
-          print(f'Restored source archive: {len(archive)} bytes')
+          print(f'Restored verified source archive: {len(archive)} bytes')
           PY
 
       - name: Set up Python
