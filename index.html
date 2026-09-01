@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>毒危爆商品标题风险识别工具</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+</head>
+<body>
+<header><div class="head"><div class="brand"><div class="logo">规</div><div><h1>毒危爆商品标题风险识别工具</h1><p>纯规则标题筛查 · V2.3.0 · AI未启用</p></div></div><div class="badges"><span class="badge">支持10,000+条</span><span class="badge">浏览器本地处理</span><span class="badge">规则可追溯</span></div></div></header>
+<main>
+<div class="notice info"><div>ℹ</div><div><strong>判断口径</strong>“毒”指易制毒，“危”指危险化学品，“爆”指易制爆危险化学品。商品标题只用于风险召回；标题命中时应暂不放行并补充CAS号、SDS、浓度、物态或组分，不能把标题候选直接视为最终法定认定。</div></div>
+<div id="loadNotice" class="notice warn"><div>⏳</div><div><strong>正在加载规则库</strong>完成2,833条危化、47项易制毒和74项易制爆规则校验后，才允许执行识别。</div></div>
+<section class="grid rules">
+<div class="rule-card"><div class="rule-top"><h3>危险化学品</h3><span id="hazPill" class="pill">加载中</span></div><div id="hazCount" class="count">—</div><p id="hazVersion">等待规则库</p></div>
+<div class="rule-card"><div class="rule-top"><h3>易制毒化学品</h3><span id="prePill" class="pill">加载中</span></div><div id="preCount" class="count">—</div><p id="preVersion">等待规则库</p></div>
+<div class="rule-card"><div class="rule-top"><h3>易制爆危险化学品</h3><span id="expPill" class="pill">加载中</span></div><div id="expCount" class="count">—</div><p id="expVersion">等待规则库</p></div>
+</section>
+<section class="card"><div class="card-head"><h2>单条标题测试</h2><small>用于快速验证标题候选，不保存数据</small></div><div class="card-body"><div class="single-row"><input id="singleTitle" class="single-input" placeholder="例如：工业硫磺 优等品 液体"><button id="singleBtn" class="btn primary" disabled>执行筛查</button></div><div id="singleResult" style="margin-top:12px"><div class="result-box muted">规则库加载完成后输入标题。</div></div></div></section>
+<section class="card"><div class="card-head"><div><h2>批量标题识别</h2><small id="fileMeta">支持 .xlsx、.xlsm、.xls、.csv；建议包含“编号/样本ID”和“商品标题/商品名称”列</small></div><div class="actions"><label class="btn file">选择文件<input id="fileInput" type="file" accept=".xlsx,.xlsm,.xls,.csv"></label><button id="runBtn" class="btn primary" disabled>识别全部</button><button id="clearBtn" class="btn">清空</button></div></div>
+<div class="card-body">
+<div class="kpis"><div class="kpi"><div id="kTotal" class="v">0</div><div class="l">总数据</div></div><div class="kpi"><div id="kCandidate" class="v">0</div><div class="l">标题风险候选</div></div><div class="kpi"><div id="kInfo" class="v">0</div><div class="l">信息不足</div></div><div class="kpi"><div id="kClear" class="v">0</div><div class="l">未形成候选</div></div><div class="kpi"><div id="kError" class="v">0</div><div class="l">数据错误</div></div></div>
+<div class="progress-wrap"><div id="progress" class="progress"></div></div><div id="progressText" class="meta">尚未导入文件</div>
+<div class="toolbar"><div class="left"><input id="search" class="search" placeholder="搜索编号、标题、候选词"><select id="filter" class="select"><option value="all">全部结果</option><option value="candidate">标题风险候选</option><option value="info">信息不足</option><option value="clear">未形成候选</option><option value="error">数据错误</option></select></div><div class="right"><button id="exportXlsx" class="btn" disabled>导出Excel</button><button id="exportCsv" class="btn" disabled>导出CSV</button><span id="shownMeta" class="meta">0条</span></div></div>
+<div class="table-wrap"><table class="table"><thead><tr><th>编号</th><th>商品标题</th><th>纯规则处理类别</th><th>毒（易制毒）</th><th>危（危险化学品）</th><th>爆（易制爆）</th><th>标题候选</th><th>建议处置</th><th>备注</th></tr></thead><tbody id="tbody"><tr><td colspan="9" class="empty">请先导入文件。</td></tr></tbody></table></div>
+</div></section>
+<div class="footer">本工具用于平台商品标题风险筛查与审核分流，不替代危险化学品鉴定、SDS审核、行政许可判断或人工合规复核。上传文件默认只在当前浏览器内存中处理。</div>
+</main>
+<script src="app.js"></script></body>
+</html>
