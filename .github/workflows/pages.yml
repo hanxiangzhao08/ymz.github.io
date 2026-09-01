@@ -86,6 +86,32 @@ jobs:
       - name: Build static site
         run: python build_site.py
 
+      - name: Add category compliance dashboard
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import base64, hashlib, tarfile
+
+          payload_dir = Path('category-dashboard-payload')
+          parts = sorted(payload_dir.glob('part_*'))
+          assert parts, 'Category dashboard payload is missing'
+
+          encoded = ''.join(part.read_text().strip() for part in parts)
+          archive = base64.b64decode(encoded, validate=True)
+          expected = '8459fc75fadeb8396c8b74a4198ad2452e550c791710b58f9a45bf134901bdae'
+          actual = hashlib.sha256(archive).hexdigest()
+          assert actual == expected, (actual, expected)
+
+          archive_path = Path('/tmp/category-dashboard.tar.gz')
+          archive_path.write_bytes(archive)
+          with tarfile.open(archive_path, 'r:gz') as tf:
+              tf.extractall('site', filter='data')
+
+          assert Path('site/category-dashboard/index.html').is_file()
+          print(f'Added category dashboard: {len(archive)} bytes')
+          PY
+
       - name: Configure Pages
         uses: actions/configure-pages@v5
         with:
