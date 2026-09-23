@@ -1,0 +1,1043 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#173e36"><title>旅伴登记 V2.7 · 电脑体验版</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#ecefe7;color:#203e35;font:14px/1.6 -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif}button,select{font:inherit}button{cursor:pointer}.demo-strip{background:#fff1ce;color:#825e22;text-align:center;font-size:12px;padding:8px 16px}.host-header{max-width:1080px;margin:auto;padding:27px 24px 20px;display:flex;justify-content:space-between;align-items:center;gap:20px}.host-brand{display:flex;gap:11px;align-items:center}.host-symbol{display:flex;align-items:center;justify-content:center;width:40px;height:40px;background:#1d4c3c;color:#e5efa9;font-size:22px;border-radius:12px}.host-brand strong{font-size:20px;letter-spacing:1px}.host-brand small{display:block;color:#8a9985;font-size:10px;letter-spacing:2px}.host-caption{font-size:12px;color:#86937e}.controls{max-width:1032px;margin:0 auto 25px;background:#fff;border:1px solid #dfe5d8;border-radius:17px;padding:16px 19px;display:flex;gap:17px;align-items:end;flex-wrap:wrap}.control-field{flex:1;min-width:185px}.control-field label{display:block;font-size:10px;color:#91a086;margin-bottom:5px;letter-spacing:.5px}.control-field select{width:100%;background:#f5f7f0;border:1px solid #dfe7d9;border-radius:9px;padding:9px;color:#3c5942;font-size:12px;height:39px}.host-actions{display:flex;gap:7px;flex-wrap:wrap}.host-button{border:1px solid #d7e0d0;background:white;color:#6c825a;border-radius:9px;font-size:11px;height:39px;padding:8px 11px}.host-button:hover{background:#f3f7ed}.preview-layout{display:flex;max-width:1032px;margin:0 auto;justify-content:center;gap:60px;align-items:start;padding:0 16px 46px}.phone-column{flex-shrink:0}.viewport-note{font-size:11px;color:#81916f;display:flex;justify-content:center;gap:8px;margin-bottom:12px}.phone-stage{position:relative;margin:0 auto}.phone-shell{position:absolute;left:0;top:0;transform-origin:0 0;background:#283b30;border:8px solid #283b30;border-radius:42px;box-shadow:0 25px 60px #2c452329,0 3px 8px #2538251a;overflow:hidden}.phone-shell iframe{display:block;border:0;background:#f4f5ef;border-radius:33px}.guide{width:255px;margin-top:54px}.guide-overline{font-size:10px;letter-spacing:2.6px;color:#97a785}.guide h1{font-size:28px;line-height:1.55;letter-spacing:.5px;margin:9px 0 14px;font-weight:650}.guide-intro{font-size:12px;line-height:1.9;color:#839278;margin-bottom:24px}.guide-step{display:flex;gap:11px;padding:16px 0;border-top:1px solid #d8e2cc}.guide-number{color:#94a875;font-size:11px;padding-top:2px}.guide-step strong{font-size:12px;font-weight:600}.guide-step p{margin:4px 0 0;color:#8c9a80;font-size:11px;line-height:1.8}.guide-note{background:#e3ead9;border-radius:12px;padding:14px;margin-top:18px;font-size:10px;color:#788f62;line-height:1.9}.host-toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#1c4b39;color:#fff;border-radius:10px;padding:10px 18px;font-size:12px;z-index:10;max-width:90vw}.host-foot{text-align:center;color:#a3af95;font-size:10px;margin:10px 0 20px}@media(max-width:760px){.host-header{padding:20px 17px 16px}.host-caption{display:none}.host-brand strong{font-size:18px}.host-symbol{width:36px;height:36px}.controls{margin:0 16px 20px;padding:13px;gap:11px}.control-field{min-width:130px}.control-field select{font-size:11px}.host-actions{flex-basis:100%;justify-content:flex-end}.host-button{font-size:10px;height:31px;padding:5px 11px}.demo-strip{font-size:10px;padding:8px 10px}.guide{display:none}.preview-layout{padding:0 16px 30px}.viewport-note{font-size:10px}.host-foot{font-size:9px}}
+</style>
+<meta name="description" content="旅伴登记 V2.7 电脑体验版：昵称复用、团队搜索筛选、到离备注、逐晚排房与手动调整。仅使用浏览器本地演示数据。">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2032%2032%22%3E%3Crect%20width%3D%2232%22%20height%3D%2232%22%20rx%3D%228%22%20fill%3D%22%23214b38%22%2F%3E%3Cpath%20d%3D%22M8%2023%2017%209m-7%201%207-1%204%207%22%20fill%3D%22none%22%20stroke%3D%22%23e1eca4%22%20stroke-width%3D%223%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E">
+</head>
+<body>
+<div class="demo-strip"><strong>V2.7 · 本地演示 · 数据仅保存在当前浏览器</strong>　｜　虚构行程与人物，不与小程序云端互通，不发送微信通知</div>
+<header class="host-header"><div class="host-brand"><span class="host-symbol" aria-hidden="true">↗</span><div><strong>旅伴登记</strong><small>READY FOR THE JOURNEY</small></div></div><div class="host-caption">V2.7 · 我的团队 · 入团码 · 搜索同住人</div></header>
+<section class="controls" aria-label="演示控制"><div class="control-field"><label for="phone-model">手机尺寸</label><select id="phone-model"><option value="375,667">iPhone SE · 375 × 667</option><option value="390,844" selected>iPhone · 390 × 844</option><option value="430,932">iPhone 大屏 · 430 × 932</option><option value="360,800">Android · 360 × 800</option><option value="412,915">Android 大屏 · 412 × 915</option></select></div><div class="control-field"><label for="demo-identity">演示身份切换（真实小程序自动识别本人）</label><select id="demo-identity" aria-label="演示身份"><option>正在载入…</option></select></div><div class="host-actions"><button class="host-button" id="add-guest">＋ 模拟新团员</button><button class="host-button" id="import-trip">粘贴新建团</button><button class="host-button" id="new-trip">新建演示团</button><button class="host-button" id="history-demo">我的团队</button><button class="host-button" id="reset-demo">新建示例</button></div></section>
+<div class="preview-layout"><div class="phone-column"><div class="viewport-note"><span id="dimension-note">390 × 844 CSS px</span><span>·</span><span>尺寸模拟，非真机</span></div><div class="phone-stage" id="phone-stage"><div class="phone-shell" id="phone-shell"><iframe id="phone-app" title="旅伴登记手机应用" width="390" height="844"></iframe></div></div></div><aside class="guide"><div class="guide-overline">ONE TRIP, TOGETHER.</div><h1>出发前的安排，<br>大家一起填好。</h1><p class="guide-intro">一个团，一份清晰的行程。<br>收集到离时间、每晚住宿与参保状态。</p><div class="guide-step"><span class="guide-number">01</span><div><strong>人人都能创建自己的团</strong><p>设置最大入团人数，创建后生成 8 位入团码。分享给团员即可直接加入，换码后旧码立即失效。</p></div></div><div class="guide-step"><span class="guide-number">02</span><div><strong>四个开关集中管理</strong><p>进入团务管理，顶部就是四个登记开关。可同时开放，到离、住宿、参保截止后修改需审批；住宿须填齐酒店。</p></div></div><div class="guide-step"><span class="guide-number">03</span><div><strong>逐晚选室友，也能向下复制</strong><p>指定同住时按昵称或编号搜索。房型、入住方式与同住人可复制到后续夜晚，提交前还可逐晚修改。管理中可查看谁选了谁，并单独导出。</p></div></div><div class="guide-note">每个团的创建人就是领队；身份随团队而变化。只有领队无需个人登记，其他管理员也需要登记并占入团名额。<br><br>机型选择会改变内部页面的实际宽高，让你检查不同尺寸的排版。</div></aside></div>
+<div class="host-foot">身份字段只需微信昵称 · 不收集真实姓名、手机号或证件信息</div><div id="host-toast"></div>
+<script id="tour-domain-source">(function (root, factory) {
+  if (typeof module === 'object' && module.exports) module.exports = factory();
+  else root.TourDomain = factory();
+}(typeof globalThis !== 'undefined' ? globalThis : this, function () {
+  'use strict';
+  var DAY = 86400000, SECTIONS = ['travel','lodging','insurance'];
+  var own = function (obj,key) { return Object.prototype.hasOwnProperty.call(obj,key); };
+  var copy = function (value) { return JSON.parse(JSON.stringify(value)); };
+  var now = function () { return new Date().toISOString(); };
+  function fail(message) { throw new Error(message); }
+  function object(value,label) { if (!value || typeof value !== 'object' || Array.isArray(value)) fail(label+'格式错误'); return value; }
+  function text(value,label,max,optional) {
+    if (optional && (value === undefined || value === null)) return '';
+    if (typeof value !== 'string') fail(label+'格式错误');
+    var clean=value.trim();
+    if ((!optional&&!clean)||clean.length>max||/[\u0000-\u0008\u000b\u000c\u000e-\u001f]/.test(clean)) fail(label+'不能为空且不能超过'+max+'字');
+    return clean;
+  }
+  function validId(id) { if (typeof id !== 'string'||!/^[A-Za-z0-9_-]{1,80}$/.test(id)||['__proto__','constructor','prototype'].includes(id)) fail('成员标识无效'); }
+  function schema(trip) { if (!trip||trip.schemaVersion!==2) fail('此行程为旧版数据，请联系创建者新建 V2 行程；暂不支持自动迁移'); if(trip.deletedAt) fail('此旅行团已删除'); if(trip.rolesVersion!==3) migrateTrip(trip); }
+  function dateValue(value) {
+    if (typeof value!=='string'||!/^\d{4}-\d{2}-\d{2}$/.test(value)) fail('日期格式应为 YYYY-MM-DD');
+    var valueMs=Date.parse(value+'T00:00:00.000Z');
+    if (!Number.isFinite(valueMs)||new Date(valueMs).toISOString().slice(0,10)!==value) fail('日期不存在');
+    return valueMs;
+  }
+  function datesBetween(start,end) {
+    var first=dateValue(start), count=(dateValue(end)-first)/DAY;
+    if(count<1||count>31) fail('行程需包含 1 至 31 个住宿夜晚');
+    var dates=[]; for(var i=0;i<count;i++) dates.push(new Date(first+i*DAY).toISOString().slice(0,10)); return dates;
+  }
+  function adminOf(trip,id) { schema(trip); if(!own(trip.admins,id)) fail('仅管理员可操作'); return trip.admins[id]; }
+  function memberOf(trip,id,active) {
+    schema(trip); if(!own(trip.members,id)) fail('请先申请加入此旅行团');
+    var member=trip.members[id];
+    if(member.status==='removed') fail('你已被移出此团，请联系管理员恢复');
+    if(active&&member.status!=='active') fail('请等待管理员通过入团申请'); return member;
+  }
+  function orderedMembers(trip,active) {
+    return Object.keys(trip.members).map(function(id,index){return {member:trip.members[id],index:index};})
+      .filter(function(entry){return !active||entry.member.status==='active';})
+      .sort(function(a,b){return a.member.joinedAt.localeCompare(b.member.joinedAt)||a.index-b.index;})
+      .map(function(entry){return entry.member;});
+  }
+  function nightFor(member,date) { return member.sections.lodging&&member.sections.lodging.find(function(night){return night.date===date;})||null; }
+  function sectionName(section) { if(!SECTIONS.includes(section)) fail('登记阶段无效'); return section; }
+  function lodgingReady(nights,alreadyOpen) {
+    var placeholders=['待定','未定','待确认','未确认','待安排','暂未确定'];
+    var missing=nights.filter(function(night){
+      return !night.place.trim()||!night.hotel.trim()||placeholders.includes(night.hotel.replace(/\s/g,''));
+    });
+    if(missing.length) fail((alreadyOpen?'住宿收集中不能清空地点或酒店、改为待定；请先关闭住宿收集。':'')+'请先确定并填写每晚住宿地点和酒店，再开放住宿收集；尚未完成：'+missing.map(function(night){return night.date;}).join('、'));
+  }
+  function transportOptions(route) {
+    route=route||{};
+    if(Array.isArray(route.options)) return copy(route.options);
+    if(!route.suggestion&&!route.saleAt) return [];
+    return [{id:'legacy',type:'train',code:'',suggestion:route.suggestion||'',saleAt:route.saleAt||'',advanceMinutes:route.advanceMinutes===undefined?30:route.advanceMinutes}];
+  }
+  function transportRoute(route) {
+    route=route||{};
+    return {suggestion:route.suggestion||'',options:transportOptions(route),version:Number.isSafeInteger(route.version)&&route.version>=0?route.version:0};
+  }
+  function saleTime(value) {
+    if(value===undefined) return '';
+    if(typeof value!=='string'||(value!==''&&!/^\d{4}-\d{2}-\d{2}T([01]\d|2[0-3]):[0-5]\d$/.test(value))) fail('开售时间应为北京时间 YYYY-MM-DDTHH:mm');
+    if(value) dateValue(value.slice(0,10));return value;
+  }
+  function advanceMinutes(value) {
+    if(value===undefined) return 30;
+    if(!Number.isInteger(value)||value<5||value>1440) fail('提醒提前量需为 5 至 1440 分钟');return value;
+  }
+  function validateTransportOptions(options) {
+    if(!Array.isArray(options)||options.length>12) fail('每个方向最多填写 12 条交通推荐');
+    var ids=new Set();
+    return options.map(function(option){
+      object(option,'交通推荐');
+      if(Object.keys(option).some(function(key){return !['id','type','code','suggestion','saleAt','advanceMinutes'].includes(key);})) fail('交通推荐字段无效');
+      if(typeof option.id!=='string'||!/^[A-Za-z0-9_-]{1,40}$/.test(option.id)||['__proto__','constructor','prototype'].includes(option.id)||ids.has(option.id)) fail('交通推荐标识无效或重复');
+      ids.add(option.id);
+      if(!['train','flight'].includes(option.type)) fail('交通类型请选择火车或飞机');
+      var saleAt=saleTime(option.saleAt);
+      if(option.type==='flight'&&saleAt) fail('机票建议不设置火车开售时间');
+      return {id:option.id,type:option.type,code:text(option.code,'车次或航班',60,true),suggestion:text(option.suggestion,'交通建议',500,true),saleAt:saleAt,advanceMinutes:advanceMinutes(option.advanceMinutes)};
+    });
+  }
+  function pruneRequests(trip) {
+    var terminal=trip.requests.filter(function(request){return request.status!=='pending';});
+    var keep=new Set(terminal.slice(-300).map(function(request){return request.id;}));
+    trip.requests=trip.requests.filter(function(request){return request.status==='pending'||keep.has(request.id);});
+  }
+  function supersede(trip,section,memberId) {
+    trip.requests.forEach(function(request){ if(request.status==='pending'&&(!section||request.section===section)&&(!memberId||request.memberId===memberId)) { request.status='superseded'; request.reviewedAt=now(); } });
+    pruneRequests(trip);
+  }
+  function sha256(string) {
+    var constants = [0x428a2f98,0x71374491,0xb5c0fbcf,0xe9b5dba5,0x3956c25b,0x59f111f1,0x923f82a4,0xab1c5ed5,0xd807aa98,0x12835b01,0x243185be,0x550c7dc3,0x72be5d74,0x80deb1fe,0x9bdc06a7,0xc19bf174,0xe49b69c1,0xefbe4786,0x0fc19dc6,0x240ca1cc,0x2de92c6f,0x4a7484aa,0x5cb0a9dc,0x76f988da,0x983e5152,0xa831c66d,0xb00327c8,0xbf597fc7,0xc6e00bf3,0xd5a79147,0x06ca6351,0x14292967,0x27b70a85,0x2e1b2138,0x4d2c6dfc,0x53380d13,0x650a7354,0x766a0abb,0x81c2c92e,0x92722c85,0xa2bfe8a1,0xa81a664b,0xc24b8b70,0xc76c51a3,0xd192e819,0xd6990624,0xf40e3585,0x106aa070,0x19a4c116,0x1e376c08,0x2748774c,0x34b0bcb5,0x391c0cb3,0x4ed8aa4a,0x5b9cca4f,0x682e6ff3,0x748f82ee,0x78a5636f,0x84c87814,0x8cc70208,0x90befffa,0xa4506ceb,0xbef9a3f7,0xc67178f2];
+    var hash = [0x6a09e667,0xbb67ae85,0x3c6ef372,0xa54ff53a,0x510e527f,0x9b05688c,0x1f83d9ab,0x5be0cd19];
+    // JSON.stringify escapes lone surrogates, so signatures are valid UTF-8.
+    var bytes = unescape(encodeURIComponent(string)).split('').map(function (c) { return c.charCodeAt(0); });
+    var bits = bytes.length * 8;
+    bytes.push(128);
+    while (bytes.length % 64 !== 56) bytes.push(0);
+    for (var pad = 7; pad >= 0; pad--) bytes.push(pad >= 4 ? 0 : (bits >>> (pad * 8)) & 255);
+    var rotate = function (n, count) { return (n >>> count) | (n << (32 - count)); };
+    for (var block = 0; block < bytes.length; block += 64) {
+      var words = [];
+      for (var w = 0; w < 16; w++) words[w] = (bytes[block + w * 4] << 24) | (bytes[block + w * 4 + 1] << 16) | (bytes[block + w * 4 + 2] << 8) | bytes[block + w * 4 + 3];
+      for (var j = 16; j < 64; j++) {
+        var s0 = rotate(words[j - 15], 7) ^ rotate(words[j - 15], 18) ^ (words[j - 15] >>> 3);
+        var s1 = rotate(words[j - 2], 17) ^ rotate(words[j - 2], 19) ^ (words[j - 2] >>> 10);
+        words[j] = (words[j - 16] + s0 + words[j - 7] + s1) | 0;
+      }
+      var a=hash[0],b=hash[1],c=hash[2],d=hash[3],e=hash[4],f=hash[5],g=hash[6],h=hash[7];
+      for (var round = 0; round < 64; round++) {
+        var upper = rotate(e,6) ^ rotate(e,11) ^ rotate(e,25);
+        var choice = (e & f) ^ (~e & g);
+        var t1 = (h + upper + choice + constants[round] + words[round]) | 0;
+        var lower = rotate(a,2) ^ rotate(a,13) ^ rotate(a,22);
+        var majority = (a & b) ^ (a & c) ^ (b & c);
+        var t2 = (lower + majority) | 0;
+        h=g;g=f;f=e;e=(d+t1)|0;d=c;c=b;b=a;a=(t1+t2)|0;
+      }
+      [a,b,c,d,e,f,g,h].forEach(function (value, index) { hash[index] = (hash[index] + value) | 0; });
+    }
+    return hash.map(function (value) { return (value >>> 0).toString(16).padStart(8, '0'); }).join('');
+  }
+  function invalidate(trip) {
+    Object.keys(trip.roomPairs||{}).forEach(function(date){
+      if(!trip.nights.some(function(night){return night.date===date;})||trip.roomPairs[date].signature!==autoPoolSignature(trip,date))delete trip.roomPairs[date];
+    });
+    Object.keys(trip.confirmations).forEach(function(date){
+      if(trip.confirmations[date].signature!==buildPlan(trip,date).signature) delete trip.confirmations[date];
+    });
+  }
+  function newMember(id,nickname,joinedAt) {return {id:id,nickname:nickname,status:'active',joinedAt:joinedAt||now(),sections:{travel:null,lodging:null,insurance:null},sectionVersions:{travel:0,lodging:0,insurance:0}};}
+  function activeCount(trip) {return Object.keys(trip.members).filter(function(id){return id!==trip.ownerId&&trip.members[id].status==='active';}).length;}
+  function maximum(value,trip) {
+    var count=trip?activeCount(trip):0,ceiling=Math.max(100,count);
+    if(!Number.isSafeInteger(value)||value<1||value>ceiling) fail('最大入团人数需为 1 至 '+ceiling+' 的整数');
+    if(value<count) fail('最大入团人数不能少于已入团人数（'+count+' 人）');return value;
+  }
+  function codeValue(code) {if(typeof code!=='string'||!/^\d{8}$/.test(code)) fail('入团码应为 8 位数字');return code;}
+  function migrateTrip(trip,joinCode) {
+    if(!trip||trip.schemaVersion!==2) fail('此行程为旧版数据，请联系创建者新建 V2 行程；暂不支持自动迁移');
+    if(trip.deletedAt) fail('此旅行团已删除');
+    if(joinCode!==undefined) codeValue(joinCode);
+    var changed=false;
+    if(trip.rolesVersion!==3) {
+      Object.keys(trip.members).forEach(function(id){if(trip.members[id].status==='pending')trip.members[id].status='active';});
+      Object.keys(trip.admins).forEach(function(id){
+        if(id===trip.ownerId)return;
+        if(!own(trip.members,id))trip.members[id]=newMember(id,trip.admins[id].nickname,trip.createdAt);
+        trip.members[id].status='active';trip.admins[id].nickname=trip.members[id].nickname;
+      });
+      trip.rolesVersion=3;trip.recordType='trip';
+      trip.maxMembers=Math.max(Number.isSafeInteger(trip.maxMembers)&&trip.maxMembers>0?trip.maxMembers:100,activeCount(trip));
+      trip.createdAt=trip.createdAt||now();changed=true;
+    }
+    if(!trip.joinCode&&joinCode!==undefined){trip.joinCode=joinCode;changed=true;}
+    if(changed){trip.revision++;invalidate(trip);}return trip;
+  }
+  function setMaxMembers(trip,actorId,value) {adminOf(trip,actorId);var next=maximum(value,trip);if(trip.maxMembers!==next){trip.maxMembers=next;trip.revision++;}return trip;}
+  function rotateJoinCode(trip,actorId,code) {adminOf(trip,actorId);codeValue(code);if(code===trip.joinCode)fail('新入团码不能与旧码相同');trip.joinCode=code;trip.revision++;return trip;}
+  function deleteTrip(trip,actorId) {adminOf(trip,actorId);if(actorId!==trip.ownerId)fail('仅领队（创建者）可删除旅行团');trip.deletedAt=now();trip.enrollmentOpen=false;trip.adminInviteCode='';trip.revision++;return trip;}
+  function setAdmin(trip,actorId,targetId,enabled) {
+    adminOf(trip,actorId);validId(targetId);if(typeof enabled!=='boolean')fail('管理员设置格式错误');
+    if(targetId===trip.ownerId)fail('不能更改领队（创建者）的身份');
+    var member=memberOf(trip,targetId,true);
+    if(own(trip.admins,targetId)===enabled)return trip;
+    if(enabled)trip.admins[targetId]={id:targetId,nickname:member.nickname};else delete trip.admins[targetId];
+    trip.revision++;return trip;
+  }
+  function createTrip(input,ownerId,tripId) {
+    object(input,'行程'); validId(ownerId); validId(tripId);
+    var dates=datesBetween(input.startDate,input.endDate), nickname=text(input.nickname,'微信昵称',32), maxMembers=maximum(input.maxMembers), joinCode=codeValue(input.joinCode);
+    var trip={schemaVersion:2,rolesVersion:3,recordType:'trip',createdAt:now(),maxMembers:maxMembers,joinCode:joinCode,id:tripId,name:text(input.name,'行程名称',80),startDate:input.startDate,endDate:input.endDate,ownerId:ownerId,
+      leaderName:input.leaderName===undefined?nickname:text(input.leaderName,'领队称呼',32),admins:{},adminInviteCode:'',members:{},
+      nights:dates.map(function(date){return {date:date,place:'',hotel:''};}),
+      itinerary:dates.concat(input.endDate).map(function(date){return {date:date,plan:''};}),
+      transport:{outbound:{suggestion:'',options:[],version:0},inbound:{suggestion:'',options:[],version:0}},
+      enrollmentOpen:true,stages:{travel:'pending',lodging:'pending',insurance:'pending'},requests:[],confirmations:{},revision:0};
+    trip.admins[ownerId]={id:ownerId,nickname:nickname};
+    if(own(input,'initialUpdates')) {
+      var initial=object(input.initialUpdates,'导入内容'),fields=Object.keys(initial);
+      if(fields.some(function(key){return !['itinerary','nights','transport'].includes(key);})) fail('导入内容仅可包含行程安排、住宿设置和交通建议');
+      // Apply the complete draft before returning; callers cannot persist a half-imported trip.
+      if(fields.length) updateTrip(trip,ownerId,initial);
+    }
+    return trip;
+  }
+  function rename(trip,id,nickname) {
+    schema(trip);var clean=text(nickname,'微信昵称',32),person=id===trip.ownerId?adminOf(trip,id):memberOf(trip,id,false);
+    if(person.nickname!==clean||(id===trip.ownerId&&trip.leaderName!==clean)){person.nickname=clean;if(own(trip.admins,id))trip.admins[id].nickname=clean;if(id===trip.ownerId)trip.leaderName=clean;trip.revision++;invalidate(trip);}return trip;
+  }
+  function joinTrip(trip,id,nickname) {
+    schema(trip);validId(id);var clean=text(nickname,'微信昵称',32);
+    if(own(trip.admins,id)||own(trip.members,id))return rename(trip,id,clean);
+    if(trip.enrollmentOpen===false)fail('团员登记已关闭，请联系管理员开放登记');
+    if(activeCount(trip)>=trip.maxMembers||activeCount(trip)>=100)fail('本团人数已满，请联系领队或管理员调整人数上限');
+    trip.members[id]=newMember(id,clean);trip.revision++;invalidate(trip);return trip;
+  }
+  function setAdminInvite(trip,actorId,code) {
+    adminOf(trip,actorId);
+    if(typeof code!=='string'||!/^[A-Fa-f0-9]{24}$/.test(code))fail('管理员邀请码格式无效');
+    trip.adminInviteCode=code.toUpperCase();trip.revision++;return trip;
+  }
+  function joinAdmin(trip,id,nickname,code) {
+    schema(trip);validId(id);var clean=text(nickname,'微信昵称',32);
+    if(own(trip.admins,id))return rename(trip,id,clean);
+    if(typeof code!=='string'||!trip.adminInviteCode||code.toUpperCase()!==trip.adminInviteCode)fail('管理员邀请码无效或已使用');
+    // Administrator access is additional to membership; existing registrations are retained.
+    joinTrip(trip,id,clean);trip.admins[id]={id:id,nickname:clean};trip.adminInviteCode='';trip.revision++;return trip;
+  }
+  function removeAdmin(trip,actorId,targetId) {return setAdmin(trip,actorId,targetId,false);}
+  function setMemberStatus(trip,actorId,memberId,status) {
+    adminOf(trip,actorId);if(!['active','removed'].includes(status))fail('团员状态无效');
+    if(!own(trip.members,memberId))fail('团员不存在');
+    if(own(trip.admins,memberId))fail('请先取消该成员的管理员身份，再移出团员');
+    var member=trip.members[memberId];if(member.status===status)return trip;
+    if(status==='active'&&(activeCount(trip)>=trip.maxMembers||activeCount(trip)>=100))fail('本团人数已满，请先调整人数上限');
+    member.status=status;if(status==='removed')supersede(trip,null,memberId);
+    trip.revision++;invalidate(trip);return trip;
+  }
+  function setStage(trip,actorId,section,status) {
+    adminOf(trip,actorId);sectionName(section);
+    if(!['open','closed'].includes(status)) fail('阶段状态无效');
+    if(status==='closed') {
+      if(trip.stages[section]!=='open') fail('只能关闭当前开放的阶段');
+    } else {
+      if(section==='lodging') lodgingReady(trip.nights);
+      if(section==='lodging')delete trip.lodgingClosedForExpansion;
+      if(trip.stages[section]==='open') return trip;
+      supersede(trip,section,null);
+    }
+    trip.stages[section]=status;trip.revision++;return trip;
+  }
+  function setEnrollment(trip,actorId,open) {
+    adminOf(trip,actorId);
+    if(typeof open!=='boolean') fail('团员登记开关格式错误');
+    if((trip.enrollmentOpen!==false)===open) return trip;
+    trip.enrollmentOpen=open;trip.revision++;return trip;
+  }
+  function travelPoint(value,label) {
+    if(value===undefined||value===null) fail('请填写预计'+label+'日期和时间，或明确选择时间待定');object(value,label);
+    if(typeof value.unknown!=='boolean') fail(label+'待定状态格式错误');
+    if(value.unknown) return {unknown:true,date:'',time:''};dateValue(value.date);
+    if(typeof value.time!=='string'||!/^([01]\d|2[0-3]):[0-5]\d$/.test(value.time)) fail(label+'时间格式应为 HH:mm');
+    return {unknown:false,date:value.date,time:value.time};
+  }
+  function validateSection(trip,id,section,value) {
+    sectionName(section);
+    if(section==='travel') {
+      object(value,'往返登记');var arrival=travelPoint(value.arrival,'到达'),departure=travelPoint(value.departure,'离开');
+      if(!arrival.unknown&&!departure.unknown&&arrival.date+'T'+arrival.time>departure.date+'T'+departure.time) fail('离开时间不能早于到达时间');
+      return {arrival:arrival,departure:departure,note:text(value.note,'到离备注',500,true)};
+    }
+    if(section==='insurance') {if(!['yes','no'].includes(value)) fail('请选择已参保或未参保');return value;}
+    if(!Array.isArray(value)||value.length!==trip.nights.length) fail('请逐晚选择住宿情况');
+    var mapped={};
+    value.forEach(function(entry){
+      object(entry,'住宿信息');
+      if(!trip.nights.some(function(night){return night.date===entry.date;})||own(mapped,entry.date)) fail('住宿日期重复或不属于本行程');
+      if(!['king','twin','self'].includes(entry.room)) fail('请逐晚选择大床房、双床房或自理住宿');
+      var mode=entry.mode===undefined?'single':entry.mode,partnerId='',hotel='';
+      if(!['single','designated','auto'].includes(mode)) fail('住宿方式无效');
+      if(mode==='auto'&&entry.room!=='twin') fail('自动拼房仅适用于双床房');
+      if(entry.room==='self') {if(mode!=='single') fail('住宿自理不能选择拼房');hotel=text(entry.hotel,'自理酒店',80,true);}
+      else if(mode==='designated') {
+        if(typeof entry.partnerId!=='string'||entry.partnerId===id||!own(trip.members,entry.partnerId)||trip.members[entry.partnerId].status!=='active') fail('请选择本团其他有效团员作为室友');
+        partnerId=entry.partnerId;
+      }
+      mapped[entry.date]={date:entry.date,room:entry.room,mode:mode,partnerId:partnerId,hotel:hotel};
+    });
+    return trip.nights.map(function(night){return mapped[night.date];});
+  }
+  function insuranceValue(value) {return value==='yes'||value==='no'?value:null;}
+  function lodgingValue(entry) {return {date:entry.date,room:entry.room,mode:entry.mode,partnerId:entry.partnerId||'',hotel:entry.hotel||''};}
+  function sectionFilled(trip,member,section) {
+    if(section==='insurance')return insuranceValue(member.sections.insurance)!==null;
+    if(section==='lodging')return Array.isArray(member.sections.lodging)&&trip.nights.every(function(night){return !!nightFor(member,night.date);});
+    return member.sections[section]!=null;
+  }
+  function commitSection(member,section,value) {
+    var previous=member.sections[section],stamp=now(),changed,previousTimes=member.sectionTimes&&member.sectionTimes[section];
+    if(section==='lodging') {
+      value=value.map(function(entry){
+        var old=Array.isArray(previous)&&previous.find(function(item){return item.date===entry.date;}),same=old&&JSON.stringify(lodgingValue(old))===JSON.stringify(lodgingValue(entry));
+        return Object.assign({},entry,{firstSubmittedAt:old?(old.firstSubmittedAt||''):stamp,lastModifiedAt:same?(old.lastModifiedAt||''):stamp});
+      });
+      changed=JSON.stringify((previous||[]).map(lodgingValue))!==JSON.stringify(value.map(lodgingValue));
+    } else changed=JSON.stringify(previous)!==JSON.stringify(value);
+    var previouslyFilled=section==='insurance'?insuranceValue(previous)!==null:previous!=null;
+    if(!member.sectionTimes)member.sectionTimes={};
+    member.sectionTimes[section]={firstSubmittedAt:previousTimes?previousTimes.firstSubmittedAt||'':previouslyFilled?'':stamp,lastModifiedAt:changed?stamp:previousTimes&&previousTimes.lastModifiedAt||''};
+    member.sections[section]=value;member.sectionVersions[section]++;
+  }
+  function submitSection(trip,id,section,value,reason) {
+    var member=memberOf(trip,id,true);sectionName(section);
+    if(trip.stages[section]==='pending') fail('此阶段尚未开放');
+    var proposed=validateSection(trip,id,section,value),cleanReason=text(reason,'修改原因',200,true);
+    supersede(trip,section,id);
+    if(trip.stages[section]==='open') {
+      commitSection(member,section,proposed);trip.revision++;invalidate(trip);
+    } else {
+      trip.requests.push({id:'r_'+(trip.revision+1)+'_'+section,memberId:id,section:section,proposed:proposed,baseVersion:member.sectionVersions[section],status:'pending',reason:cleanReason,reviewNote:'',createdAt:now(),reviewedAt:'',reviewerId:''});
+      trip.revision++;pruneRequests(trip);
+    }
+    return trip;
+  }
+  function reviewRequest(trip,actorId,requestId,decision,note) {
+    adminOf(trip,actorId);if(!['approved','rejected'].includes(decision)) fail('审核结论无效');
+    var request=trip.requests.find(function(item){return item.id===requestId;});
+    if(!request||request.status!=='pending') fail('申请已处理或不存在，请刷新');
+    var cleanNote=text(note,'审核说明',200,true);
+    if(decision==='approved') {
+      var member=memberOf(trip,request.memberId,true);
+      if(trip.stages[request.section]!=='closed') fail('此阶段已重新开放，申请不能继续审批');
+      if(member.sectionVersions[request.section]!==request.baseVersion) fail('正式登记已更新，请让团员重新提交申请');
+      if(request.section==='insurance'&&insuranceValue(request.proposed)===null)fail('此历史参保申请为待确认，请团员重新选择已参保或未参保后提交');
+      var value=validateSection(trip,member.id,request.section,request.proposed);
+      commitSection(member,request.section,value);
+    }
+    request.status=decision;request.reviewNote=cleanNote;request.reviewedAt=now();request.reviewerId=actorId;
+    trip.revision++;invalidate(trip);pruneRequests(trip);return trip;
+  }
+  function updateTrip(trip,actorId,input) {
+    adminOf(trip,actorId);object(input,'行程设置');
+    var allowed=['name','leaderName','itinerary','nights','transport','startDate','endDate','maxMembers','expandDates'];
+    if(Object.keys(input).some(function(key){return !allowed.includes(key);})) fail('行程设置包含不支持的字段');
+    if(own(input,'expandDates')&&typeof input.expandDates!=='boolean')fail('扩展日期确认格式错误');
+    var start=own(input,'startDate')?input.startDate:trip.startDate,end=own(input,'endDate')?input.endDate:trip.endDate,expanded=start!==trip.startDate||end!==trip.endDate;
+    if(expanded&&input.expandDates!==true)fail('日期不可修改；请先确认扩展团队时间');
+    var dates=datesBetween(start,end);
+    if(start>trip.startDate||end<trip.endDate)fail('仅支持扩大团队时间，不能缩短已有行程');
+    // Validate a copy before committing so direct domain calls are atomic, too.
+    var updates={};
+    if(expanded){
+      updates.startDate=start;updates.endDate=end;
+      updates.itinerary=dates.concat(end).map(function(date){return copy(trip.itinerary.find(function(item){return item.date===date;})||{date:date,plan:''});});
+      updates.nights=dates.map(function(date){return copy(trip.nights.find(function(item){return item.date===date;})||{date:date,place:'',hotel:''});});
+    }
+    if(own(input,'maxMembers'))updates.maxMembers=maximum(input.maxMembers,trip);
+    if(own(input,'name')) updates.name=text(input.name,'行程名称',80);
+    if(own(input,'leaderName')) updates.leaderName=text(input.leaderName,'领队称呼',32);
+    if(own(input,'itinerary')) {
+      var days=dates.concat(end),byDay={};
+      if(!Array.isArray(input.itinerary)||input.itinerary.length!==days.length) fail('每日行程需包含出发至结束的全部日期');
+      input.itinerary.forEach(function(item){object(item,'每日行程');if(!days.includes(item.date)||own(byDay,item.date)) fail('行程日期重复或不匹配');byDay[item.date]={date:item.date,plan:text(item.plan,'每日行程',500,true)};});
+      updates.itinerary=days.map(function(date){return byDay[date];});
+    }
+    if(own(input,'nights')) {
+      var nights={};if(!Array.isArray(input.nights)||input.nights.length!==dates.length) fail('住宿设置需包含全部夜晚');
+      input.nights.forEach(function(item){object(item,'住宿设置');if(!dates.includes(item.date)||own(nights,item.date)) fail('住宿日期重复或不匹配');nights[item.date]={date:item.date,place:text(item.place,'住宿地点',80,true),hotel:text(item.hotel,'酒店',80,true)};});
+      updates.nights=dates.map(function(date){return nights[date];});
+      if(trip.stages.lodging==='open'&&!expanded) lodgingReady(updates.nights,true);
+    }
+    if(own(input,'transport')) {
+      object(input.transport,'交通建议');updates.transport=copy(trip.transport);
+      if(Object.keys(input.transport).some(function(key){return !['outbound','inbound'].includes(key);})) fail('交通方向无效');
+      Object.keys(input.transport).forEach(function(direction){
+        var entry=object(input.transport[direction],'交通建议'),stored=trip.transport[direction],current=transportRoute(stored),next=copy(current);
+        if(Object.keys(entry).some(function(key){return !['suggestion','options','saleAt','advanceMinutes','version'].includes(key);})) fail('交通建议字段无效');
+        if(own(entry,'suggestion')) next.suggestion=text(entry.suggestion,'交通建议',500,true);
+        if(own(entry,'options')) next.options=validateTransportOptions(entry.options);
+        if(own(entry,'saleAt')||own(entry,'advanceMinutes')) {
+          // Older clients can finish a draft only against the original single-route format.
+          if(Array.isArray(stored.options)||own(entry,'options')) fail('请在具体火车推荐中设置开售时间');
+          var legacy={id:'legacy',type:'train',code:'',suggestion:next.suggestion,saleAt:own(entry,'saleAt')?entry.saleAt:stored.saleAt,advanceMinutes:own(entry,'advanceMinutes')?entry.advanceMinutes:stored.advanceMinutes};
+          next.options=validateTransportOptions([legacy]);
+        }
+        var changed=next.suggestion!==current.suggestion||JSON.stringify(next.options)!==JSON.stringify(current.options);
+        if(changed) next.version=current.version+1;
+        // An unchanged legacy route keeps its persisted shape and existing reminder records.
+        updates.transport[direction]=changed?next:copy(stored);
+      });
+    }
+    var closeLodging=false;
+    if(expanded){try{lodgingReady(updates.nights);}catch(error){closeLodging=true;}}
+    Object.keys(updates).forEach(function(key){trip[key]=updates[key];});
+    if(expanded){supersede(trip,'lodging',null);if(closeLodging&&trip.stages.lodging==='open'){trip.stages.lodging='closed';trip.lodgingClosedForExpansion=true;}}
+    trip.revision++;invalidate(trip);return trip;
+  }
+  function autoPoolMembers(trip,date) {
+    return orderedMembers(trip,true).filter(function(member){var pref=nightFor(member,date);return pref&&pref.room==='twin'&&pref.mode==='auto';}).sort(function(a,b){
+      var ap=nightFor(a,date),bp=nightFor(b,date);
+      // Historical registrations without timestamps precede tracked submissions;
+      // joined time and ID are a stable fallback, never invented submission times.
+      return (ap.firstSubmittedAt||'').localeCompare(bp.firstSubmittedAt||'')||a.joinedAt.localeCompare(b.joinedAt)||a.id.localeCompare(b.id);
+    });
+  }
+  function autoPoolSignature(trip,date) {
+    // Manual pair choices belong to this exact eligible pool. Hotel or nickname
+    // changes revoke confirmation, but must not silently discard an admin's work.
+    return sha256(JSON.stringify([date,autoPoolMembers(trip,date).map(function(member){return member.id;}).sort()]));
+  }
+  function validRoomPairs(pairs,ids) {
+    if(!Array.isArray(pairs)||pairs.length!==Math.ceil(ids.length/2))fail('请为全部双床拼房团员安排两人一间');
+    var required=ids.concat(ids.length%2?['@leader']:[]),used=new Set();
+    pairs.forEach(function(pair){
+      if(!Array.isArray(pair)||pair.length!==2)fail('双床拼房每间需要两人');
+      pair.forEach(function(id){if(typeof id!=='string'||!required.includes(id)||used.has(id))fail('配对只能包含当晚双床拼房团员，且每人只能出现一次');used.add(id);});
+    });
+    if(used.size!==required.length)fail('请为全部双床拼房团员安排房间');
+    return copy(pairs);
+  }
+  function setRoomPairs(trip,actorId,date,pairs) {
+    adminOf(trip,actorId);if(!trip.nights.some(function(night){return night.date===date;}))fail('此日期不在行程内');
+    var clean=validRoomPairs(pairs,autoPoolMembers(trip,date).map(function(member){return member.id;}));
+    if(!clean.length)fail('当晚没有双床拼房团员');
+    if(!trip.roomPairs)trip.roomPairs={};
+    trip.roomPairs[date]={pairs:clean,signature:autoPoolSignature(trip,date),updatedAt:now()};
+    delete trip.confirmations[date];trip.revision++;return trip;
+  }
+  function resetRoomPairs(trip,actorId,date) {
+    adminOf(trip,actorId);if(!trip.nights.some(function(night){return night.date===date;}))fail('此日期不在行程内');
+    if(trip.roomPairs&&trip.roomPairs[date]){delete trip.roomPairs[date];delete trip.confirmations[date];trip.revision++;}return trip;
+  }
+  function buildPlan(trip,date) {
+    schema(trip);var night=trip.nights.find(function(item){return item.date===date;});if(!night) fail('此日期不在行程内');
+    var members=orderedMembers(trip,true),used=new Set(),rooms=[],pending=[],auto=[],selections=[];
+    var names={king:'大床房',twin:'双床房',self:'住宿自理'},sources={single:'单住',designated:'指定室友',auto:'自动拼房',manual:'手动拼房',leader:'领队补位',self:'自理'};
+    function displayName(member) {
+      if(!member||member.status!=='active') return '已移出';
+      return member.nickname+(members.some(function(other){return other.id!==member.id&&other.nickname===member.nickname;})?'（'+member.id.slice(-6)+'）':'');
+    }
+    members.forEach(function(member){
+      var pref=nightFor(member,date);if(!pref||pref.mode!=='designated') return;
+      var partner=own(trip.members,pref.partnerId)?trip.members[pref.partnerId]:null,partnerActive=!!partner&&partner.status==='active',other=partnerActive?nightFor(partner,date):null;
+      var otherSelected=other&&other.mode==='designated'?other.partnerId:'',mutual=!!other&&otherSelected===member.id,status,reason;
+      if(!partnerActive){status='partner_missing';reason='指定室友已移出，请重新选择';}
+      else if(!other){status='partner_unsubmitted';reason=displayName(partner)+' 尚未提交当晚住宿登记';}
+      else if(!mutual){
+        status='partner_other';
+        if(otherSelected) reason=displayName(partner)+' 选择了 '+displayName(own(trip.members,otherSelected)?trip.members[otherSelected]:null)+'，尚未互选';
+        else reason=displayName(partner)+' 选择了'+(other.room==='self'?'住宿自理':other.mode==='auto'?'自动拼房':'单住')+'，尚未互选';
+        if(other.room!==pref.room) reason+='；双方房型不一致';
+      }
+      else if(other.room!==pref.room){status='room_mismatch';reason='双方已互选，但房型不一致（'+names[pref.room]+' / '+names[other.room]+'）';}
+      else {status='matched';reason='双方已互选且房型一致';}
+      selections.push({memberId:member.id,partnerId:pref.partnerId,partnerSelectedId:otherSelected,room:pref.room,partnerRoom:other?other.room:'',partnerActive:partnerActive,mutual:mutual,status:status,reason:reason});
+    });
+    function addRoom(room,ids,source,hotel) {
+      ids.forEach(function(id){if(used.has(id)) fail('同一成员重复分房');used.add(id);});
+      rooms.push({room:room,memberIds:ids,label:room==='self'&&hotel?'住宿自理 · '+hotel:names[room]+' · '+sources[source],source:source});
+    }
+    members.forEach(function(member){
+      if(used.has(member.id)) return;var pref=nightFor(member,date);
+      if(!pref){pending.push({memberId:member.id,reason:'尚未提交住宿登记'});return;}
+      if(pref.room==='self'){addRoom('self',[member.id],'self',pref.hotel);return;}
+      if(pref.mode==='single'){addRoom(pref.room,[member.id],'single');return;}
+      if(pref.mode==='designated') {
+        var selection=selections.find(function(item){return item.memberId===member.id;});
+        if(selection.status==='matched'&&!used.has(pref.partnerId)) addRoom(pref.room,[member.id,pref.partnerId],'designated');
+        else pending.push(copy(selection));
+      } else if(pref.mode==='auto'&&pref.room==='twin') auto.push(member.id);
+    });
+    var pool=autoPoolMembers(trip,date),autoPool=pool.map(function(member){var pref=nightFor(member,date);return {id:member.id,memberId:member.id,nickname:member.nickname,firstSubmittedAt:pref.firstSubmittedAt||'',lastModifiedAt:pref.lastModifiedAt||''};}),manual=trip.roomPairs&&trip.roomPairs[date],manualPairs=null;
+    if(manual&&manual.signature===autoPoolSignature(trip,date)){try{manualPairs=validRoomPairs(manual.pairs,pool.map(function(member){return member.id;}));}catch(error){manualPairs=null;}}
+    if(manualPairs)manualPairs.forEach(function(pair){addRoom('twin',pair,pair.includes('@leader')?'leader':'manual');});
+    else {
+      auto=pool.map(function(member){return member.id;});
+      while(auto.length>=2) addRoom('twin',[auto.shift(),auto.shift()],'auto');
+      if(auto.length) addRoom('twin',[auto.shift(),'@leader'],'leader');
+    }
+    var signature=sha256(JSON.stringify([date,night.place,night.hotel,trip.leaderName,members.map(function(member){var pref=nightFor(member,date);return [member.id,member.nickname,pref?[pref.room,pref.mode,pref.partnerId,pref.hotel]:null];}),rooms.map(function(room){return room.memberIds;})]));
+    return {date:date,place:night.place,hotel:night.hotel,rooms:rooms,pending:pending,selections:selections,autoPool:autoPool,manual:!!manualPairs,confirmed:!!trip.confirmations[date]&&trip.confirmations[date].signature===signature,signature:signature};
+  }
+  function confirmPlan(trip,actorId,date) {
+    adminOf(trip,actorId);var plan=buildPlan(trip,date);trip.confirmations[date]={signature:plan.signature,rooms:copy(plan.rooms),confirmedAt:now()};trip.revision++;return trip;
+  }
+  function roommateName(trip,id) { return id==='@leader'?(trip.leaderName||'领队'):trip.members[id].nickname; }
+  function memberView(member) {
+    var result=copy(member);if(!result.sections)return result;
+    result.sections.insurance=insuranceValue(result.sections.insurance);
+    if(result.sections.travel)result.sections.travel.note=result.sections.travel.note||'';
+    result.sectionTimes=result.sectionTimes||{};
+    SECTIONS.forEach(function(section){if(!result.sectionTimes[section])result.sectionTimes[section]={firstSubmittedAt:'',lastModifiedAt:''};});
+    if(Array.isArray(result.sections.lodging))result.sections.lodging.forEach(function(pref){pref.firstSubmittedAt=pref.firstSubmittedAt||'';pref.lastModifiedAt=pref.lastModifiedAt||'';});
+    return result;
+  }
+  function viewTrip(trip,id) {
+    schema(trip);var isAdmin=own(trip.admins,id),isOwner=id===trip.ownerId,me=isOwner?trip.admins[id]:memberOf(trip,id,false),canRegister=!isOwner&&me.status==='active';
+    var members=orderedMembers(trip,true),plans=trip.nights.map(function(night){return buildPlan(trip,night.date);}),myRooms=[];
+    if(canRegister) plans.forEach(function(plan){if(!plan.confirmed)return;plan.rooms.forEach(function(room){if(room.memberIds.includes(id))myRooms.push({date:plan.date,room:room.room,label:room.label,roommateNames:room.memberIds.filter(function(other){return other!==id;}).map(function(other){return roommateName(trip,other);}),confirmed:true});});});
+    var result={schemaVersion:2,rolesVersion:3,joinCode:trip.joinCode||'',maxMembers:trip.maxMembers,activeCount:members.length,canRegister:canRegister,role:isOwner?'leader':isAdmin?'admin':'member',id:trip.id,name:trip.name,startDate:trip.startDate,endDate:trip.endDate,leaderName:trip.leaderName,nights:copy(trip.nights),itinerary:copy(trip.itinerary),transport:{outbound:transportRoute(trip.transport.outbound),inbound:transportRoute(trip.transport.inbound)},enrollmentOpen:trip.enrollmentOpen!==false,stages:copy(trip.stages),revision:trip.revision,isAdmin:isAdmin,isOwner:id===trip.ownerId,me:copy(me),members:members.map(function(member){return {id:member.id,nickname:member.nickname};}),myRooms:myRooms,myRequests:!canRegister?[]:copy(trip.requests.filter(function(request){return request.memberId===id;}))};
+    result.me=memberView(me);result.lodgingClosedForExpansion=!!trip.lodgingClosedForExpansion;
+    if(isAdmin){result.ownerId=trip.ownerId;result.admins=Object.keys(trip.admins).map(function(key){return copy(trip.admins[key]);});result.adminInviteCode=trip.adminInviteCode;result.registrations=orderedMembers(trip,false).map(memberView);result.requests=copy(trip.requests);result.plans=plans;}
+    return result;
+  }
+  function csvCell(value) {
+    var string=value===undefined||value===null?'':String(value);
+    if(/^[\s\uFEFF]*[=+\-@]/.test(string)||/^[\t\r\n]/.test(string)) string="'"+string;
+    return '"'+string.replace(/"/g,'""')+'"';
+  }
+  function memberFilters(filters) {
+    if(filters===undefined) filters={};object(filters,'筛选条件');
+    if(Object.keys(filters).some(function(key){return !['search','travel','lodging','insurance','insuranceStatus'].includes(key);})) fail('筛选字段无效');
+    var result={search:'',travel:'all',lodging:'all',insurance:'all',insuranceStatus:'all'};
+    if(own(filters,'search')) {
+      if(typeof filters.search!=='string'||filters.search.length>80||/[\u0000-\u001f]/.test(filters.search)) fail('搜索内容应为不超过 80 字的昵称或成员编号');
+      result.search=filters.search.trim().toLowerCase();
+    }
+    SECTIONS.forEach(function(section){
+      if(own(filters,section)) {if(!['all','filled','unfilled'].includes(filters[section])) fail('登记完成情况筛选无效');result[section]=filters[section];}
+    });
+    if(own(filters,'insuranceStatus')) {if(!['all','yes','no','unfilled'].includes(filters.insuranceStatus)) fail('参保状态筛选无效');result.insuranceStatus=filters.insuranceStatus;}
+    return result;
+  }
+  function filterMembers(trip,filters,rosterStatus) {
+    schema(trip);var values=memberFilters(filters),status=rosterStatus===undefined?'active':rosterStatus;
+    if(!['active','pending','removed'].includes(status)) fail('团员名单状态无效');
+    return orderedMembers(trip,false).filter(function(member){
+      if(member.status!==status) return false;
+      if(values.search&&!member.nickname.toLowerCase().includes(values.search)&&!member.id.toLowerCase().includes(values.search)) return false;
+      if(!SECTIONS.every(function(section){var filled=sectionFilled(trip,member,section);return values[section]==='all'||(values[section]==='filled'?filled:!filled);})) return false;
+      return values.insuranceStatus==='all'||(values.insuranceStatus==='unfilled'?insuranceValue(member.sections.insurance)===null:member.sections.insurance===values.insuranceStatus);
+    });
+  }
+  function toCSV(trip,options) {
+    schema(trip);if(options===undefined) options={};object(options,'导出选项');
+    if(Object.keys(options).some(function(key){return !['section','filters'].includes(key);})) fail('导出字段无效');
+    var section=own(options,'section')?options.section:'all';if(!['all','travel','lodging','insurance'].includes(section)) fail('导出模块无效');
+    var members=filterMembers(trip,options.filters),headers={
+      all:['成员编号','微信昵称','往返登记','到达时间','离开时间','住宿登记','保险登记','参保状态','住宿日期','住宿地点','安排酒店','住宿类型','住宿方式','指定室友','自理酒店','分房状态','确认房间','确认室友','到离备注','到离首次提交确认时间（北京时间）','到离最后修改时间（北京时间）','参保首次提交确认时间（北京时间）','参保最后修改时间（北京时间）','住宿首次提交确认时间（北京时间）','住宿最后修改时间（北京时间）','当晚首次提交确认时间（北京时间）','当晚最后修改时间（北京时间）'],
+      travel:['成员编号','微信昵称','到离登记','预计到达时间','预计离开时间','备注','首次提交确认时间（北京时间）','最后修改时间（北京时间）'],
+      insurance:['成员编号','微信昵称','参保登记','参保状态','首次提交确认时间（北京时间）','最后修改时间（北京时间）'],
+      lodging:['成员编号','微信昵称','住宿登记','住宿日期','住宿地点','安排酒店','住宿类型','住宿方式','指定室友编号','指定室友','对方选择编号','对方选择','拼房核对','自理酒店','分房状态','确认房间','确认室友','首次提交确认时间（北京时间）','最后修改时间（北京时间）','当晚首次提交确认时间（北京时间）','当晚最后修改时间（北京时间）']
+    },lines=[headers[section]];
+    var roomNames={king:'大床房',twin:'双床房',self:'住宿自理'},modeNames={single:'单住',designated:'指定室友',auto:'自动拼房'},insuranceNames={yes:'已参保',no:'未参保'},plans={};
+    if(section==='all'||section==='lodging') trip.nights.forEach(function(night){plans[night.date]=buildPlan(trip,night.date);});
+    function travelLabel(point){return !point?'未填写':point.unknown?'待定':point.date+' '+point.time;}
+    function partnerName(id){return id&&own(trip.members,id)&&trip.members[id].status==='active'?trip.members[id].nickname:id?'已移出':'';}
+    function timeLabel(value,filled){var ms=value&&Date.parse(value);return Number.isFinite(ms)?new Date(ms+8*3600000).toISOString().slice(0,19).replace('T',' '):filled?'历史未记录':'';}
+    function times(value,filled){return [timeLabel(value&&value.firstSubmittedAt,filled),timeLabel(value&&value.lastModifiedAt,filled)];}
+    function sectionTimes(member,section){return times(member.sectionTimes&&member.sectionTimes[section],section==='insurance'?insuranceValue(member.sections[section])!==null:member.sections[section]!=null);}
+    members.forEach(function(member){
+      var travel=member.sections.travel,insurance=insuranceValue(member.sections.insurance);
+      if(section==='travel'){lines.push([member.id,member.nickname,travel!=null?'已填写':'未填写',travelLabel(travel&&travel.arrival),travelLabel(travel&&travel.departure),travel&&travel.note||''].concat(sectionTimes(member,'travel')));return;}
+      if(section==='insurance'){lines.push([member.id,member.nickname,insurance!=null?'已填写':'未填写',insuranceNames[insurance]||'未填写'].concat(sectionTimes(member,'insurance')));return;}
+      trip.nights.forEach(function(night){
+      var travel=member.sections.travel,pref=nightFor(member,night.date),plan=plans[night.date],room=plan.confirmed&&plan.rooms.find(function(entry){return entry.memberIds.includes(member.id);});
+      if(section==='lodging'){
+        var selection=plan.selections.find(function(entry){return entry.memberId===member.id;});
+        lines.push([member.id,member.nickname,sectionFilled(trip,member,'lodging')?'已填写':'未填写',night.date,night.place,night.hotel,pref?roomNames[pref.room]:'未填写',pref&&pref.room!=='self'?modeNames[pref.mode]:'',pref&&pref.partnerId||'',partnerName(pref&&pref.partnerId),selection&&selection.partnerSelectedId||'',partnerName(selection&&selection.partnerSelectedId),selection?selection.reason:'',pref?pref.hotel:'',room?'已确认':'待安排',room?room.label:'',room?room.memberIds.filter(function(other){return other!==member.id;}).map(function(other){return roommateName(trip,other);}).join('、'):''].concat(sectionTimes(member,'lodging'),times(pref,!!pref)));return;
+      }
+      lines.push([member.id,member.nickname,travel?'已提交':'未提交',travelLabel(travel&&travel.arrival),travelLabel(travel&&travel.departure),sectionFilled(trip,member,'lodging')?'已提交':'未提交',insurance===null?'未提交':'已提交',insuranceNames[insurance]||'未提交',night.date,night.place,night.hotel,pref?roomNames[pref.room]:'未填写',pref&&pref.room!=='self'?modeNames[pref.mode]:'',pref&&pref.partnerId?(trip.members[pref.partnerId]?trip.members[pref.partnerId].nickname:'室友已移出'):'',pref?pref.hotel:'',room?'已确认':'待安排',room?room.label:'',room?room.memberIds.filter(function(other){return other!==member.id;}).map(function(other){return roommateName(trip,other);}).join('、'):'',travel&&travel.note||''].concat(sectionTimes(member,'travel'),sectionTimes(member,'insurance'),sectionTimes(member,'lodging'),times(pref,!!pref)));
+    });});
+    return '\uFEFF'+lines.map(function(line){return line.map(csvCell).join(',');}).join('\r\n');
+  }
+  return {migrateTrip:migrateTrip,setMaxMembers:setMaxMembers,rotateJoinCode:rotateJoinCode,setAdmin:setAdmin,deleteTrip:deleteTrip,activeCount:activeCount,datesBetween:datesBetween,transportOptions:transportOptions,createTrip:createTrip,joinTrip:joinTrip,joinAdmin:joinAdmin,setAdminInvite:setAdminInvite,removeAdmin:removeAdmin,setMemberStatus:setMemberStatus,setStage:setStage,setEnrollment:setEnrollment,submitSection:submitSection,reviewRequest:reviewRequest,updateTrip:updateTrip,rename:rename,buildPlan:buildPlan,confirmPlan:confirmPlan,setRoomPairs:setRoomPairs,resetRoomPairs:resetRoomPairs,sectionFilled:sectionFilled,viewTrip:viewTrip,filterMembers:filterMembers,toCSV:toCSV};
+}));
+</script>
+<script id="tour-importer-source" type="text/plain">(function (root, factory) {
+  if (typeof module === 'object' && module.exports) module.exports = factory();
+  else root.TourImporter = factory();
+}(typeof globalThis !== 'undefined' ? globalThis : this, function () {
+  'use strict';
+  var DAY = 86400000;
+  var MAX_SOURCE = 20000;
+  var SAMPLE = '9月24日\n\n18:46-21:21 北京北-朔州东（9月10日12:00 开售）\n\n19:25-21:59 清河-朔州东（9月10日16:00开售）\n\n9月25日\n\n07:09-07:25-09:50 北京北-清河-朔州东（北站9月11日12:00开售，清河16:00开售，不参加崇福寺行程）\n\n09:00 去崇福寺（国三）\n\n10:30 所有人崇福寺集合\n\n11:30 代县午餐 办理入住\n\n13:00 阿育王塔（国五）-边靖楼（国五）-代州文庙（国六）\n\n15:00 雁门关（国五）\n\n18:30 中秋茶话会\n\n9月26日\n\n08:00 去佛光寺\n\n09:30 佛光寺（国一）\n\n11:00 五台县午餐\n\n12:30 延庆寺（国六）\n\n14:20 南禅寺（国一）\n\n15:40 洪福寺（国五）\n\n16:15 定襄关王庙（待定）（国六）\n\n17:30 入住定襄县\n\n\n9月27日\n\n09:00 去原平惠济寺（国七）\n\n10:50 原平普济桥（待定）（国八）\n\n12:00 忻州午餐\n\n14:00 金洞寺（国六）\n\n15:30 忻州古城\n\n18:21-21:55 忻州西-北京北（9月13日15:00开售）';
+  function fail(message) { throw new Error(message); }
+  function warn(warnings, message) { if (warnings.indexOf(message) === -1) warnings.push(message); }
+  function pad(n) { return String(n).padStart(2, '0'); }
+  function validYear(value) {
+    if (!/^[0-9]{4}$/.test(String(value)) || +value < 1900 || +value > 2199) fail('请选择 1900—2199 年之间的四位年份');
+    return +value;
+  }
+  function dateValue(year, month, day) {
+    var value = String(year) + '-' + pad(month) + '-' + pad(day), ms = Date.parse(value + 'T00:00:00Z');
+    if (!Number.isFinite(ms) || new Date(ms).toISOString().slice(0, 10) !== value) fail('日期不存在：' + value);
+    return value;
+  }
+  function clock(value) {
+    var match = /^(\d{1,2})[:：](\d{2})$/.exec(value.trim());
+    if (!match || +match[1] > 23 || +match[2] > 59) return '';
+    return pad(match[1]) + ':' + match[2];
+  }
+  function dateToken(value) {
+    var m = /(?:(\d{4})年)?(\d{1,2})月(\d{1,2})日/.exec(value);
+    if (m) return { year: m[1] ? +m[1] : null, month: +m[2], day: +m[3], index: m.index, length: m[0].length };
+    m = /(\d{4})-(\d{1,2})-(\d{1,2})/.exec(value);
+    return m ? { year: +m[1], month: +m[2], day: +m[3], index: m.index, length: m[0].length } : null;
+  }
+  function heading(value) {
+    var clean = value.trim().replace(/(?:[（(](?:周|星期)[一二三四五六日天][）)]|\s+(?:周|星期)[一二三四五六日天])$/, '').trim();
+    var token = dateToken(clean);
+    return token && token.index === 0 && token.length === clean.length ? token : null;
+  }
+  function hash(value) {
+    var h = 2166136261;
+    for (var i = 0; i < value.length; i++) { h ^= value.charCodeAt(i); h = Math.imul(h, 16777619); }
+    return (h >>> 0).toString(36);
+  }
+  function brief(line) { return line.length > 48 ? line.slice(0, 48) + '…' : line; }
+  function checkLength(value, label, max) {
+    if (value.length > max) fail(label + '超过 ' + max + ' 字，请缩短原文后重新识别；未截断内容');
+    return value;
+  }
+  function station(value) { return value.replace(/\s/g, '').replace(/(?:火车站|高铁站|站)$/, ''); }
+  function matchStop(label, departures) {
+    var normalized = station(label.replace(/^[：:\s]+|[：:\s]+$/g, ''));
+    if (!normalized) return -1;
+    var direct = departures.map(station).map(function (value, i) { return value === normalized ? i : -1; }).filter(function (i) { return i >= 0; });
+    if (direct.length === 1) return direct[0];
+    // The sample uses “北站” for 北京北. A suffix alias is accepted only when unique.
+    if (/站$/.test(label.trim())) {
+      var aliases = departures.map(station).map(function (value, i) { return value.endsWith(normalized) ? i : -1; }).filter(function (i) { return i >= 0; });
+      if (aliases.length === 1) return aliases[0];
+    }
+    return -1;
+  }
+  function saleTimes(line, travelDate, departures, warnings) {
+    var results = departures.map(function () { return ''; }), seen = {}, invalid = {};
+    var groups = [], pattern = /[（(]([^（）()]*)[）)]/g, match;
+    while ((match = pattern.exec(line))) if (/开售|起售|售票/.test(match[1])) groups.push(match[1]);
+    // Outside-parenthesis sale hints are supported without carrying a date from another parenthesis.
+    var outside = line.replace(/[（(][^（）()]*[）)]/g, '');
+    if (/开售|起售|售票/.test(outside)) groups.push(outside.replace(/^.*?(?:开售时间|起售时间|售票时间)\s*[:：]?\s*/, ''));
+    groups.forEach(function (group) {
+      var inheritedDate = '';
+      group.split(/[，,；;]/).forEach(function (segment) {
+        if (!/开售|起售|售票/.test(segment)) return;
+        var token = dateToken(segment), timeMatches = segment.match(/\d{1,2}[:：]\d{2}/g) || [], time = timeMatches.length === 1 ? clock(timeMatches[0]) : '';
+        var saleDate = inheritedDate;
+        if (token) {
+          var year = token.year || +travelDate.slice(0, 4);
+          if (!token.year && +travelDate.slice(5, 7) <= 2 && token.month >= 11) year -= 1;
+          try { saleDate = dateValue(validYear(year), token.month, token.day); inheritedDate = saleDate; }
+          catch (error) { saleDate = ''; inheritedDate = ''; warn(warnings, travelDate + ' 开售日期无效，已留空：' + brief(segment)); }
+        }
+        var before = token ? token.index : segment.search(/\d{1,2}[:：]\d{2}/);
+        var label = before < 0 ? '' : segment.slice(0, before).trim().replace(/(?:预计|开售时间|起售时间|售票时间|于|：|:)\s*/g, '').trim();
+        var stopIndex = matchStop(label, departures);
+        if (stopIndex < 0 && departures.length === 1 && /^(?:火车票|车票|高铁票|动车票|列车|火车|高铁|动车|\s)*$/.test(label)) stopIndex = 0;
+        if (stopIndex < 0) { warn(warnings, travelDate + ' 开售信息无法对应到唯一出发站，开售时间未自动填写：' + brief(segment)); return; }
+        if (!saleDate || !time) { warn(warnings, travelDate + ' ' + departures[stopIndex] + ' 开售日期或时间不完整，已留空，请核对原文'); invalid[stopIndex] = true; return; }
+        var saleAt = saleDate + 'T' + time;
+        if (seen[stopIndex] && seen[stopIndex] !== saleAt) { invalid[stopIndex] = true; warn(warnings, travelDate + ' ' + departures[stopIndex] + ' 有冲突的开售时间，已留空'); return; }
+        seen[stopIndex] = saleAt; results[stopIndex] = saleAt;
+        if (saleDate > travelDate) warn(warnings, travelDate + ' ' + departures[stopIndex] + ' 的开售日期晚于乘车日期，请核对');
+      });
+    });
+    departures.forEach(function (_, index) { if (invalid[index]) results[index] = ''; });
+    return results;
+  }
+  function routesFor(line, date, endDate, warnings) {
+    var isFlight = /航班|机票|飞机|航空/.test(line);
+    var trainCode = /(?:^|[\s：:（(])([GCDZTKSYL]\d{1,5})(?=$|[\s：:）)])/i.exec(line);
+    var explicitTrain = /火车|高铁|动车|列车/.test(line) || !!trainCode;
+    var trainHint = explicitTrain || /开售|起售/.test(line);
+    if (!isFlight && !trainHint) return [];
+    var hasReturn = /回程|返程|返京|返回/.test(line), hasOutbound = /去程|出发/.test(line);
+    var direction = hasReturn ? 'inbound' : hasOutbound ? 'outbound' : date === endDate ? 'inbound' : 'outbound';
+    if (hasReturn && hasOutbound) warn(warnings, date + ' 同一条交通建议同时出现去程和回程，暂放回程，请在确认页调整方向：' + brief(line));
+    if (!/回程|返程|返京|返回|去程|出发/.test(line)) warn(warnings, '部分推荐交通按所在日期暂分为去程或回程，请在确认页核对方向');
+    var timeChain = /\d{1,2}[:：]\d{2}(?:\s*[-—–~～至→]\s*\d{1,2}[:：]\d{2})+/.exec(line);
+    var routeText = timeChain ? line.slice(timeChain.index + timeChain[0].length).trim() : line;
+    routeText = routeText.split(/[（(，,；;]/)[0].replace(/^[：:\s]+/, '')
+      .replace(/^(?:(?:推荐|建议|去程|回程|返程|机票|航班|飞机|航空|火车|高铁|动车|列车)\s*[:：]?\s*)+/, '');
+    var route = /([\u3400-\u9fffA-Za-z][\u3400-\u9fffA-Za-z0-9·]{0,29}(?:\s*[-—–→至]\s*[\u3400-\u9fffA-Za-z][\u3400-\u9fffA-Za-z0-9·]{0,29})+)/.exec(routeText);
+    var stops = route ? route[1].split(/\s*[-—–→至]\s*/) : [];
+    var times = timeChain ? timeChain[0].split(/\s*[-—–~～至→]\s*/).map(clock) : [];
+    var validStops = stops.length >= 2 && stops.every(function (name) { return name.length <= 30; });
+    if (!isFlight && !explicitTrain && !(timeChain && validStops)) {
+      warn(warnings, date + ' 出现开售信息，但无法确认为火车建议，仅保留在每日行程：' + brief(line));
+      return [];
+    }
+    var type = isFlight ? 'flight' : 'train';
+    var code = isFlight ? (/(?:^|[\s：:（(])([A-Z0-9]{2}\s?\d{3,4})(?=$|[\s：:）)])/i.exec(line) || [])[1] : trainCode && trainCode[1];
+    var description = date + ' ' + line;
+    var departures = validStops ? stops.slice(0, -1) : [];
+    var canSplit = type === 'train' && validStops && times.length === stops.length && times.every(Boolean);
+    if (timeChain && times.some(function (value) { return !value; })) warn(warnings, date + ' 交通时间格式有误，请核对：' + brief(line));
+    if (!canSplit || type === 'flight') {
+      if (type === 'train' && (!validStops || (stops.length > 2 && times.length !== stops.length))) warn(warnings, date + ' 未能可靠拆分出发站和时间，已保留整条交通建议，请手动核对：' + brief(line));
+      var unsplitCode = code || (validStops ? stops.join('-') : '');
+      var unsplitSale = type === 'train' && departures.length === 1 ? saleTimes(line, date, departures, warnings)[0] : '';
+      if (type === 'train' && !unsplitSale) warn(warnings, date + ' 部分火车建议未识别出可靠开售时间，请手动补充');
+      return [{ direction: direction, option: { id: 'imp_' + hash(date + '|' + line + '|whole'), type: type, code: checkLength(unsplitCode, '交通站点或车次', 60), suggestion: checkLength(description, date + ' 交通建议', 500), saleAt: unsplitSale, advanceMinutes: 30 } }];
+    }
+    var sales = saleTimes(line, date, departures, warnings);
+    if (sales.some(function (sale) { return !sale; })) warn(warnings, date + ' 部分火车建议未识别出可靠开售时间，请手动补充');
+    return departures.map(function (departure, index) {
+      var stationPair = departure + '-' + stops[stops.length - 1];
+      var suggestion = date + ' ' + times[index] + '-' + times[times.length - 1] + ' ' + stationPair + '\n原文：' + line;
+      return { direction: direction, option: { id: 'imp_' + hash(date + '|' + line + '|' + index), type: type, code: checkLength(code || stationPair, '交通站点或车次', 60), suggestion: checkLength(suggestion, date + ' 交通建议', 500), saleAt: sales[index], advanceMinutes: 30 } };
+    });
+  }
+  function lodgingPlace(lines, date, warnings) {
+    var places = [], uncertain = false;
+    lines.forEach(function (line) {
+      if (!/入住|住宿/.test(line)) return;
+      if (/(?:不|未|无需|不用|取消|不再|暂不)(?:安排|办理|需要)?\s*(?:入住|住宿)|(?:入住|住宿).*(?:或|待定|待确认|未定)|(?:可能|也许|待定|待确认|未定).*?(?:入住|住宿)/.test(line)) {
+        warn(warnings, date + ' 入住地点存在否定、待定或多个备选，未自动填写：' + brief(line));
+        uncertain = true;
+        return;
+      }
+      var after = /(?:入住|住宿(?:于|在)?)\s*(?:在)?\s*([\u3400-\u9fff]{1,20}?(?:自治县|自治州|县|市|区|镇|乡|村|旗|州))(?=$|[\s，,。；;（(]|酒店|宾馆|旅馆|民宿)/.exec(line);
+      var before = /([\u3400-\u9fff]{1,20}?(?:自治县|自治州|县|市|区|镇|乡|村|旗|州))\s*(?:午餐|晚餐|早餐|用餐|酒店|宾馆|民宿)?\s*(?:办理)?\s*入住/.exec(line);
+      var value = after ? after[1] : before ? before[1] : '';
+      value = value.replace(/^(?:抵达|到达|前往|在|去|到|于)/, '');
+      if (value && places.indexOf(value) < 0) places.push(value);
+    });
+    if (places.length === 1 && !uncertain) return places[0];
+    warn(warnings, date + (places.length > 1 ? ' 出现多个入住地点，住宿地点已留空，请确认' : ' 未明确住宿地点，已留空，请补充'));
+    return '';
+  }
+  function parse(source, options) {
+    var year = validYear(options && options.year);
+    if (typeof source !== 'string' || !source.trim()) fail('请先粘贴行程说明');
+    if (source.length > MAX_SOURCE) fail('行程原文超过 20000 字，请分段整理后导入');
+    if (/[\u0000-\u0008\u000b\u000c\u000e-\u001f]/.test(source)) fail('行程原文含有无法识别的控制字符，请清理后重试');
+    var warnings = [], days = [], current = null, preamble = [], previousDate = '', rollingYear = year;
+    source.replace(/^\uFEFF/, '').replace(/\r\n?/g, '\n').split('\n').forEach(function (line) {
+      var day = heading(line);
+      if (!day) {
+        if (/^\s*(?:(?:\d{4}年)?\d{1,2}月\d{1,2}|\d{4}[-/.]\d{1,2}[-/.]\d{1,2}|\d{1,2}[-/.]\d{1,2})(?:日|\b|\s|[（(]|$)/.test(line)) fail('日期标题请单独一行填写，例如“9月24日”；请将说明移到下一行：' + line.trim());
+        (current ? current.lines : preamble).push(line);
+        return;
+      }
+      var thisYear = day.year || rollingYear;
+      if (!day.year && previousDate && +previousDate.slice(5, 7) === 12 && day.month === 1) {
+        thisYear += 1;
+        warn(warnings, '识别到跨年行程，1 月日期使用下一年，请核对');
+      }
+      var date = dateValue(validYear(thisYear), day.month, day.day);
+      if (previousDate && date <= previousDate) fail('日期标题需要按时间顺序排列且不能重复：' + date);
+      if (day.year && day.year !== year) warn(warnings, '原文含明确年份 ' + day.year + '，对应日期按原文保留，请核对所选年份');
+      rollingYear = thisYear; previousDate = date;
+      current = { date: date, lines: [] }; days.push(current);
+    });
+    if (!days.length) fail('未识别到日期标题，请使用独立一行的“9月24日”或“2026-09-24”');
+    var startDate = days[0].date, endDate = days[days.length - 1].date;
+    var count = (Date.parse(endDate + 'T00:00:00Z') - Date.parse(startDate + 'T00:00:00Z')) / DAY;
+    if (count < 1 || count > 31) fail('行程需要包含 1 至 31 个住宿夜晚，请核对起止日期');
+    if (preamble.join('\n').trim()) {
+      days[0].lines = preamble.concat([''], days[0].lines);
+      warn(warnings, '日期标题之前的文字已保留在首日行程，请核对归属');
+    }
+    var byDate = {}, itinerary = [], nights = [];
+    var transport = { outbound: { suggestion: '', options: [] }, inbound: { suggestion: '', options: [] } };
+    days.forEach(function (day) { byDate[day.date] = day; });
+    for (var index = 0; index <= count; index++) {
+      var date = new Date(Date.parse(startDate + 'T00:00:00Z') + index * DAY).toISOString().slice(0, 10);
+      var lines = byDate[date] ? byDate[date].lines : [];
+      if (!byDate[date]) warn(warnings, date + ' 缺少行程原文，已添加空白日期，请补充');
+      itinerary.push({ date: date, plan: checkLength(lines.join('\n').trim(), date + ' 每日行程', 500) });
+      if (index < count) nights.push({ date: date, place: lodgingPlace(lines, date, warnings), hotel: '' });
+      lines.forEach(function (line) {
+        routesFor(line.trim(), date, endDate, warnings).forEach(function (entry) {
+          var target = transport[entry.direction].options;
+          // Duplicate text must remain visible in the daily plan; one identical booking option is sufficient.
+          if (target.some(function (option) { return option.id === entry.option.id && option.suggestion === entry.option.suggestion; })) return;
+          if (target.some(function (option) { return option.id === entry.option.id; })) entry.option.id += '_' + target.length;
+          target.push(entry.option);
+          if (target.length > 12) fail((entry.direction === 'outbound' ? '去程' : '回程') + '交通建议超过 12 条，请合并或减少后重新识别；未截断内容');
+        });
+      });
+    }
+    if (!transport.outbound.options.length && !transport.inbound.options.length) warn(warnings, '未识别到明确的火车或飞机建议，原文已保留在每日行程，可在确认页手动补充');
+    warn(warnings, '酒店名称不会自动确定；所有新识别的酒店留空，填齐确认后才能开放住宿收集');
+    return { year: +startDate.slice(0, 4), startDate: startDate, endDate: endDate, sourceDates: days.map(function (day) { return day.date; }), itinerary: itinerary, nights: nights, transport: transport, warnings: warnings };
+  }
+  function mergeExisting(parsed, trip) {
+    var result = JSON.parse(JSON.stringify(parsed));
+    var startDate = parsed.startDate < trip.startDate ? parsed.startDate : trip.startDate;
+    var endDate = parsed.endDate > trip.endDate ? parsed.endDate : trip.endDate;
+    var count = (Date.parse(endDate + 'T00:00:00Z') - Date.parse(startDate + 'T00:00:00Z')) / DAY;
+    if (!Number.isInteger(count) || count < 1 || count > 31) fail('扩展后的行程需包含 1 至 31 个住宿夜晚，请调整原文日期');
+    result.expandedDates = startDate !== trip.startDate || endDate !== trip.endDate;
+    result.sourceStartDate = parsed.startDate; result.sourceEndDate = parsed.endDate;
+    result.startDate = startDate; result.endDate = endDate; result.year = +startDate.slice(0, 4);
+    result.itinerary = []; result.nights = [];
+    var sourceDates = parsed.sourceDates || parsed.itinerary.map(function (day) { return day.date; });
+    for (var index = 0; index <= count; index++) {
+      var date = new Date(Date.parse(startDate + 'T00:00:00Z') + index * DAY).toISOString().slice(0, 10);
+      var incomingDay = parsed.itinerary.find(function (day) { return day.date === date; });
+      var oldDay = (trip.itinerary || []).find(function (day) { return day.date === date; });
+      result.itinerary.push({date: date, plan: incomingDay && sourceDates.indexOf(date) >= 0 ? incomingDay.plan : oldDay ? oldDay.plan : ''});
+      if (index < count) {
+        var incomingNight = parsed.nights.find(function (night) { return night.date === date; });
+        var oldNight = (trip.nights || []).find(function (night) { return night.date === date; });
+        result.nights.push({date: date, place: incomingNight && incomingNight.place || oldNight && oldNight.place || '', hotel: oldNight && oldNight.hotel || ''});
+      }
+    }
+    return result;
+  }
+  return { parse: parse, mergeExisting: mergeExisting, SAMPLE: SAMPLE };
+}));
+</script>
+<script id="mobile-style" type="text/plain">
+:root{--bg:#f3f5ee;--card:#fff;--ink:#214337;--muted:#607151;--line:#e4eadc;--green:#2a684b;--pale:#edf4e5;--lime:#e1eca4;--orange:#9c7838;--warn:#fff6df;--red:#a25e48}*{box-sizing:border-box}body{margin:0;background:var(--bg);font:13px/1.65 -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;color:var(--ink);padding-bottom:85px}button,input,select,textarea{font:inherit}button{cursor:pointer;border:0}button:disabled{cursor:not-allowed;opacity:.44}button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:2px solid #579161;outline-offset:2px}h1,h2,h3,p{margin:0}svg{display:block}input,select,textarea{width:100%;min-width:0;border:1px solid #dce5d4;border-radius:9px;padding:10px 11px;background:#fff;color:#36533d;min-height:42px;font-size:12px}input:disabled{background:#eef2e7;color:#607151}textarea{min-height:76px;resize:vertical;line-height:1.75}input[type=checkbox]{width:15px;height:15px;min-height:15px;accent-color:#497840;margin:0}.status-bar{display:flex;justify-content:space-between;align-items:center;padding:13px 24px 7px;font-size:11px;font-weight:600;color:#213b2d;background:#f3f5ee}.status-icons{display:flex;align-items:center;gap:5px}.status-signal{width:14px;height:9px;background:linear-gradient(to top,#293f30 0 100%);clip-path:polygon(0 100%,0 65%,18% 65%,18% 100%,27% 100%,27% 42%,46% 42%,46% 100%,56% 100%,56% 22%,74% 22%,74% 100%,83% 100%,83% 0,100% 0,100% 100%)}.status-battery{height:8px;width:17px;border:1px solid #536749;border-radius:2px;position:relative;padding:1px}.status-battery:after{content:'';display:block;height:100%;width:90%;background:#536749;border-radius:1px}.app-header{display:flex;justify-content:space-between;align-items:center;padding:10px 19px 14px;background:var(--bg)}.brand{font-size:16px;font-weight:700;letter-spacing:1px;display:flex;gap:7px;align-items:center}.brand-icon{background:#244b36;color:#e5efa9;border-radius:7px;padding:4px}.wechat-capsule{display:flex;gap:11px;align-items:center;border:1px solid #dae3d1;border-radius:22px;padding:5px 12px;color:#516746;font-weight:700;background:#fafcf6;font-size:13px}.capsule-line{height:12px;border-left:1px solid #d9e1d0}.main{padding:0 17px}.greeting{display:flex;justify-content:space-between;gap:10px;align-items:center;margin:3px 0 15px}.greeting-title{font-size:12px;color:#607151}.greeting-name{font-weight:600;color:#3c6241}.role-badge{font-size:11px;border:1px solid #dce6cd;border-radius:16px;padding:3px 8px;color:#607151;background:#f8fbf3;white-space:nowrap}.hero{position:relative;border-radius:18px;background:#214b38;overflow:hidden;padding:24px 20px;color:white;min-height:215px}.hero:before{content:'';position:absolute;right:-25px;bottom:-1px;width:235px;height:145px;background:#365e3b;clip-path:polygon(0 100%,33% 18%,56% 65%,73% 35%,100% 100%)}.hero:after{content:'';position:absolute;right:8px;bottom:-1px;width:160px;height:110px;background:#537340;clip-path:polygon(0 100%,50% 5%,100% 100%)}.hero-content{position:relative;z-index:1}.hero-overline{font-size:11px;color:#bfd0a5;letter-spacing:2px}.hero h1{font-size:26px;font-weight:600;line-height:1.45;margin:10px 0 8px;max-width:270px;overflow-wrap:anywhere}.hero-dates{font-size:11px;color:#cedbbc}.hero-bottom{display:flex;gap:17px;margin-top:25px;align-items:center}.avatar-group{display:flex;padding-left:0}.avatar{width:26px;height:26px;border:2px solid #214b38;border-radius:50%;background:#dce9b4;display:flex;align-items:center;justify-content:center;color:#607151;font-size:11px;margin-left:-6px}.avatar:first-child{margin-left:0}.avatar:nth-child(2){background:#ede3bc}.avatar:nth-child(3){background:#bed5bf}.hero-count{font-size:11px;color:#e1e9d3}.overview-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:13px 0 22px}.overview-stat{background:#fff;border:1px solid var(--line);border-radius:12px;padding:13px 7px;text-align:center}.overview-stat strong{font-size:20px;line-height:1;font-weight:600}.overview-stat small{font-size:11px;margin-left:2px;color:#607151}.overview-stat span{display:block;font-size:11px;color:#607151;margin-top:5px}.section-heading{display:flex;gap:10px;justify-content:space-between;align-items:center;margin:22px 0 12px}.section-heading h2{font-size:15px;letter-spacing:.2px;font-weight:650}.tiny{font-size:11px;color:#607151}.text-button{background:transparent;color:#607151;font-size:11px;padding:2px 0}.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:17px;margin:12px 0}.card-title{font-size:13px;font-weight:650}.card-header{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:13px}.pill{display:inline-block;font-size:11px;padding:3px 8px;border-radius:13px;line-height:1.5;background:#edf3e3;color:#607151;white-space:nowrap}.pill.open{background:#e8f3df;color:#607151}.pill.closed{background:#eff0e9;color:#607151}.pill.pending{background:#fff4d9;color:#805d34}.pill.removed{background:#faeee5;color:#805d34}.pill.rejected{background:#fbeee8;color:#805d34}.pill.approved{background:#e9f2df;color:#607151}.pill.superseded{background:#f1f2ec;color:#607151}.stages{display:flex;gap:8px}.stage-mini{flex:1;background:#f6f8f1;border-radius:9px;padding:10px 5px;text-align:center}.stage-mini strong{display:block;font-size:11px;font-weight:600}.stage-mini span{display:block;font-size:11px;color:#607151;margin-top:3px}.stage-mini.open{background:#edf5e4}.stage-mini.open span{color:#607151}.journey{padding:5px 0}.day{position:relative;display:grid;grid-template-columns:38px 1fr;gap:10px;padding-bottom:19px}.day:last-child{padding-bottom:0}.day:not(:last-child):before{content:'';position:absolute;left:17px;top:35px;height:calc(100% - 33px);border-left:1px dashed #d0ddb9}.day-num{width:35px;height:35px;background:#f1f5e8;border-radius:10px;text-align:center;padding-top:3px;line-height:1.2;color:#607151}.day-num small{font-size:8px;display:block}.day-num strong{font-size:14px}.day-date{font-size:11px;color:#607151;margin-top:1px}.day-plan{font-size:12px;line-height:1.85;color:#536e48;margin-top:4px;white-space:pre-wrap;overflow-wrap:anywhere}.day-hotel{display:flex;gap:5px;align-items:start;font-size:11px;color:#607151;margin-top:6px;line-height:1.8}.day-hotel svg{margin-top:3px;flex-shrink:0}.transport-heading{display:flex;gap:9px;align-items:center}.icon-tile{background:#f0f5e6;color:#607151;padding:8px;border-radius:10px}.transport-direction{font-size:12px;font-weight:600}.transport-caption{font-size:11px;color:#607151;margin-top:2px}.transport-suggestion{font-size:11px;line-height:1.9;color:#607151;margin:12px 0;white-space:pre-wrap;overflow-wrap:anywhere}.sale-row{display:flex;justify-content:space-between;gap:8px;border-top:1px solid #edf1e6;padding-top:11px;align-items:center}.sale-time{font-size:11px;color:#607151}.sale-time strong{display:block;font-size:11px;color:#607151;font-weight:500;margin-top:3px}.reminder-button{border:1px solid #dce8cc;background:#f6faef;border-radius:8px;color:#607151;padding:7px 9px;font-size:11px}.local-note{font-size:11px;color:#607151;text-align:center;margin:12px 0 22px;line-height:1.8}.page-heading{margin:5px 0 18px}.page-heading h1{font-size:24px;font-weight:650;letter-spacing:.3px}.page-heading p{color:#607151;font-size:11px;margin-top:5px;line-height:1.9}.segmented{display:flex;border:1px solid #e1e8d6;background:#eaf0e0;border-radius:11px;padding:4px;gap:4px;margin:15px 0}.segment{flex:1;min-width:0;padding:9px 3px;background:transparent;border-radius:8px;color:#607151;font-size:11px;white-space:nowrap}.segment.active{background:#fff;color:#547843;box-shadow:0 2px 5px #536c3010;font-weight:600}.segment small{display:inline-block;font-size:8px;margin-left:3px;color:#607151}.notice{font-size:11px;line-height:1.9;color:#607151;background:#eef5e4;border:1px solid #dfebcc;border-radius:11px;padding:12px 13px;margin:12px 0}.notice.warn{background:#fff7e7;border-color:#f0e7ce;color:#805d34}.notice.gray{background:#f0f2eb;border-color:#e2e7d8;color:#607151}.field{margin:13px 0}.field:first-child{margin-top:0}.field:last-child{margin-bottom:0}.field-label{font-size:11px;font-weight:600;display:block;margin-bottom:7px}.field-label .optional{font-size:11px;font-weight:400;color:#607151;margin-left:5px}.field-hint{font-size:11px;color:#607151;line-height:1.8;margin-top:7px}.nickname-row{display:flex;align-items:center;gap:13px}.nickname-row label{font-size:11px;white-space:nowrap;color:#607151}.nickname-row input{height:39px;min-height:39px;background:#fafcf6}.travel-part+.travel-part{border-top:1px solid #edf1e7;padding-top:19px;margin-top:19px}.travel-title{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:11px}.travel-title strong{font-size:12px;font-weight:600}.unknown-label{display:flex;gap:6px;align-items:center;color:#607151;font-size:11px}.date-time{display:grid;grid-template-columns:1.35fr 1fr;gap:8px}.date-time input{padding:10px 7px;font-size:11px}.night+.night{border-top:1px solid #e9efdf;margin-top:20px;padding-top:18px}.night-heading{display:flex;gap:8px;justify-content:space-between;align-items:center;margin-bottom:5px}.night-date{font-size:12px;font-weight:600}.night-hotel{font-size:11px;color:#607151;line-height:1.8;margin-bottom:12px;overflow-wrap:anywhere}.room-options{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}.room-option{border:1px solid #e0e8d4;border-radius:9px;padding:10px 5px;font-size:11px;color:#607151;background:#fff}.room-option.active{border-color:#98b47c;background:#f0f7e6;color:#607151;font-weight:600}.night-extra{padding:12px;background:#f7f9f2;border-radius:10px;margin-top:10px}.night-extra .field{margin:10px 0}.night-extra .field:first-child{margin-top:0}.night-extra .field:last-child{margin-bottom:0}.night-extra select,.night-extra input{font-size:11px;min-height:38px;padding:8px 9px}.night-help{font-size:11px;color:#607151;line-height:1.9;margin-top:8px}.insurance-options{display:grid;gap:10px}.insurance-option{background:#fff;border:1px solid #e0e8d6;border-radius:11px;padding:14px;display:flex;align-items:center;gap:11px;text-align:left;color:#607151}.insurance-option.active{border-color:#94b179;background:#f0f7e6}.radio{width:15px;height:15px;border:1px solid #c5d5b5;border-radius:50%;flex-shrink:0}.insurance-option.active .radio{border:5px solid #6f9951}.insurance-option strong{font-size:12px;font-weight:600}.insurance-option small{display:block;color:#607151;font-size:11px;margin-top:3px}.submit{width:100%;display:flex;gap:8px;justify-content:center;align-items:center;background:#2c684a;color:#fff;border-radius:11px;padding:13px;font-size:12px;font-weight:600;min-height:44px;margin-top:16px}.submit.secondary{background:#edf4e3;border:1px solid #dce8cc;color:#607151}.small-button{display:inline-flex;align-items:center;justify-content:center;gap:5px;background:#edf5e2;border:1px solid #dbe8cb;color:#607151;border-radius:8px;padding:7px 10px;font-size:11px;white-space:nowrap}.small-button.primary{background:#35734f;border-color:#35734f;color:#fff}.small-button.danger{color:#805d34;background:#faf3e8;border-color:#eadcc7}.summary-lines{display:grid;gap:7px;font-size:11px;color:#607151;line-height:1.85}.summary-line{display:flex;gap:10px;justify-content:space-between;align-items:start}.summary-line strong{font-weight:500;color:#607151;text-align:right;overflow-wrap:anywhere;max-width:76%}.summary-stack{color:#607151;font-size:11px;line-height:1.9;white-space:pre-wrap;overflow-wrap:anywhere}.effective-title{font-size:11px;color:#607151;margin-bottom:9px}.request-mini{font-size:11px;color:#607151;line-height:1.9}.request-mini+.request-mini{border-top:1px solid #eaf0df;margin-top:10px;padding-top:10px}.request-mini-title{display:flex;justify-content:space-between;gap:8px;margin-bottom:5px}.readonly-state{text-align:center;padding:36px 19px}.empty-icon{display:inline-flex;background:#edf4e2;color:#607151;padding:17px;border-radius:50%;margin-bottom:15px}.readonly-state h2{font-size:17px;font-weight:600}.readonly-state p{font-size:11px;color:#607151;line-height:1.9;margin-top:9px}.bottom-nav{position:fixed;bottom:0;left:0;right:0;z-index:20;display:flex;justify-content:space-around;background:#ffffffed;backdrop-filter:blur(12px);border-top:1px solid #e1e8d7;padding:9px 12px 18px}.nav-item{flex:1;display:flex;gap:3px;flex-direction:column;align-items:center;padding:4px;background:transparent;color:#607151;font-size:11px;position:relative}.nav-item.active{color:#4f7a40;font-weight:600}.nav-icon{padding:5px 12px;border-radius:12px}.nav-item.active .nav-icon{background:#eff5e5}.nav-dot{position:absolute;width:5px;height:5px;background:#cdb179;border-radius:50%;left:calc(50% + 11px);top:8px}.admin-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:16px 0}.metric{background:#fff;border:1px solid var(--line);border-radius:12px;padding:13px 7px;text-align:center}.metric strong{font-size:23px;font-weight:600;line-height:1.2;color:#607151}.metric span{display:block;font-size:11px;color:#607151;margin-top:4px}.roster-filter{display:flex;gap:9px;align-items:center;flex-wrap:wrap;margin:12px 0}.filter{background:transparent;color:#607151;font-size:11px;padding:5px 10px;border:1px solid transparent;border-radius:15px}.filter.active{background:#f8fbf2;border-color:#dce7cd;color:#607151}.member-row{border-top:1px solid #edf1e6;padding:15px 0}.member-row:first-child{border:0;padding-top:0}.member-row:last-child{padding-bottom:0}.member-top{display:flex;justify-content:space-between;gap:10px;align-items:center}.member-name{font-size:12px;font-weight:600;color:#597648}.member-meta{font-size:11px;color:#607151;margin-top:4px}.member-stages{display:flex;gap:7px;margin-top:10px}.member-stage{background:#f4f7ee;border-radius:5px;padding:3px 6px;font-size:11px;color:#607151}.member-stage.done{background:#edf4e2;color:#607151}.member-detail{border-top:1px dashed #e6eeda;margin-top:11px;padding-top:10px}.member-detail summary{font-size:11px;color:#607151;cursor:pointer}.member-detail .summary-stack{margin-top:8px}.stage-full{position:relative}.stage-full-head{display:flex;gap:10px;align-items:center;margin-bottom:10px}.stage-index{width:26px;height:26px;background:#f0f5e7;display:flex;align-items:center;justify-content:center;border-radius:8px;color:#607151;font-size:11px}.stage-full-head h3{font-size:13px;font-weight:600;flex:1}.stage-text{font-size:11px;color:#607151;line-height:1.9}.stage-actions{display:flex;justify-content:space-between;align-items:center;margin-top:13px;gap:10px}.stage-progress{font-size:11px;color:#607151}.request-card-title{display:flex;gap:8px;justify-content:space-between;align-items:center}.request-card-title strong{font-size:12px;font-weight:600}.request-section{font-size:11px;color:#607151;margin-top:4px}.compare{display:grid;gap:8px;margin-top:14px}.compare-box{padding:11px;border:1px solid #e8eede;background:#f7faf2;border-radius:9px}.compare-box.after{background:#f0f7e6;border-color:#dfedcd}.compare-label{font-size:11px;color:#607151;letter-spacing:.2px;margin-bottom:5px}.compare-box.after .compare-label{color:#607151}.review-reason{font-size:11px;color:#607151;line-height:1.8;margin-top:10px;white-space:pre-wrap}.review-buttons{display:flex;gap:8px;margin-top:12px}.review-buttons .small-button{flex:1;min-height:35px}.settings-row{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:14px 0;border-top:1px solid #eef2e6}.settings-row:first-child{border:0;padding-top:0}.settings-row:last-child{padding-bottom:0}.settings-row strong{font-size:12px;font-weight:600}.settings-row p{font-size:11px;color:#607151;margin-top:3px;line-height:1.8}.settings-row button{flex-shrink:0}.admin-person{display:flex;justify-content:space-between;gap:8px;align-items:center;font-size:11px;margin:11px 0;color:#607151}.invite-code{background:#f4f8ec;border:1px dashed #cadcbc;border-radius:9px;padding:13px;letter-spacing:1px;font-size:12px;color:#607151;word-break:break-all;margin-top:12px}.night-tabs{display:flex;gap:7px;overflow-x:auto;padding-bottom:4px;margin:15px 0}.night-tab{flex:1;min-width:91px;padding:11px 9px;text-align:left;background:#edf2e3;border:1px solid #e0e8d2;color:#607151;border-radius:10px}.night-tab.active{background:#f8fcf0;border-color:#a8c38c;color:#607151}.night-tab strong{display:block;font-size:11px;font-weight:600}.night-tab span{font-size:11px;display:block;max-width:130px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin-top:3px}.room-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}.room-card{padding:13px 11px;background:#fff;border:1px solid var(--line);border-radius:11px}.room-card.topical{background:#f3f9e9;border-color:#dfedcf}.room-card-head{display:flex;justify-content:space-between;gap:8px;font-size:11px;color:#607151}.room-names{font-size:12px;font-weight:600;color:#607151;line-height:1.8;margin-top:7px;overflow-wrap:anywhere}.room-source{font-size:11px;color:#607151;line-height:1.9;margin-top:4px}.room-card.topical .room-source{color:#607151}.room-info{font-size:11px;color:#607151;line-height:1.9;display:flex;justify-content:space-between;gap:9px;align-items:center;margin:11px 0 14px}.room-hotel{font-size:11px;color:#607151;line-height:1.9;margin-bottom:13px}.pending-person{font-size:11px;line-height:1.9;margin-top:7px;color:#805d34}.confirmed-room{display:flex;justify-content:space-between;gap:12px;align-items:start}.confirmed-room h3{font-size:13px;font-weight:600;color:#607151}.confirmed-room p{font-size:11px;line-height:1.9;color:#607151;margin-top:5px}.modal-backdrop{position:fixed;inset:0;background:#233e305c;z-index:50;display:flex;align-items:flex-end;padding:12px;backdrop-filter:blur(3px)}.modal{width:100%;max-height:calc(100dvh - 48px);overflow:auto;background:#fff;border-radius:18px;padding:21px 18px;box-shadow:0 -5px 35px #233e3012}.modal h2{font-size:18px;line-height:1.5;font-weight:600;color:#547443}.modal-intro{font-size:11px;line-height:1.9;color:#607151;margin:8px 0 17px}.modal-actions{display:flex;gap:8px;margin-top:17px}.modal-actions button{flex:1;margin-top:0}.cancel{background:#f4f7ee;color:#607151;border:1px solid #e2ead7;border-radius:10px;padding:12px;font-size:11px}.modal-section{padding-top:17px;margin-top:17px;border-top:1px solid #e8efdf}.modal-section-title{font-size:11px;font-weight:600;color:#607151;margin-bottom:12px}.date-pair{display:grid;grid-template-columns:1fr 1fr;gap:9px}.date-pair input{padding:9px 7px;font-size:11px}.toast{position:fixed;z-index:90;left:20px;right:20px;bottom:96px;max-width:430px;margin:auto;border-radius:11px;background:#2e6244;color:white;padding:13px 16px;font-size:11px;line-height:1.8;box-shadow:0 5px 30px #29503220;pointer-events:none}.toast.error{background:#987950}.sr-only{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}.footnote{font-size:11px;color:#607151;text-align:center;margin:18px 0 25px;line-height:1.9}.empty-list{text-align:center;font-size:11px;color:#607151;padding:22px 7px}.admin-only-note{font-size:11px;color:#607151;line-height:1.8;text-align:center;padding:7px 0 0}.compact-info{font-size:11px;color:#607151;line-height:1.9;margin-top:10px}@media(max-width:375px){.main{padding:0 14px}.card{padding:15px}.hero{padding:23px 18px}.hero h1{font-size:24px}.date-time{grid-template-columns:1.25fr 1fr}.date-time input{font-size:11px;padding:10px 6px}.segment{font-size:11px}.room-card{padding:12px 10px}.room-names{font-size:11px}.night-tab{min-width:84px}.night-tab strong{font-size:11px}.date-pair{grid-template-columns:1fr}.app-header{padding-left:17px;padding-right:17px}.page-heading h1{font-size:23px}.request-card-title strong{font-size:11px}}@media(min-width:420px){.main{padding:0 21px}.card{padding:19px}.hero{padding:26px 22px}.hero h1{font-size:28px}.room-card{padding:15px 13px}.room-names{font-size:13px}}
+
+.hero-overline{font-size:9px}.day-num small{font-size:8px}.status-bar{font-size:11px}.wechat-capsule{font-size:13px}.day-hotel,.field-hint,.night-help,.room-source,.room-hotel,.compact-info,.stage-text,.request-section,.transport-caption,.transport-suggestion,.local-note,.footnote{color:#607151}.night-tab span,.stage-mini span,.member-meta,.member-stage,.stage-progress,.tiny{color:#607151}.room-card.topical .room-source{color:#607151}.member-stages{flex-wrap:wrap}.room-info{flex-wrap:wrap}.pill{white-space:normal}.room-card-head{align-items:start}.nav-item{font-size:11px}
+
+.admin-editors{display:grid;gap:9px;margin:15px 0}.editor-entry{display:flex;align-items:center;gap:11px;padding:14px 13px;background:#fff;border:1px solid #dce6d2;border-radius:13px;text-align:left;color:var(--ink);min-width:0;width:100%}.editor-entry>span:nth-child(2){flex:1;min-width:0}.editor-entry strong{font-size:13px;display:block;font-weight:650}.editor-entry small{display:block;font-size:11px;line-height:1.8;color:#607151;margin-top:3px;overflow-wrap:anywhere}.editor-icon{flex-shrink:0;background:#eef5e5;border-radius:10px;padding:9px;color:#426c41}.editor-arrow{color:#6d8556;font-size:18px}.transport-option{border-top:1px solid #e5ebdd;padding-top:13px;margin-top:14px}.transport-option-head{display:flex;justify-content:space-between;align-items:start;gap:10px}.transport-option-head strong{font-size:12px;overflow-wrap:anywhere;min-width:0}.route-editor{background:#f7f9f2;border:1px solid #e0e9d6;border-radius:12px;padding:13px;margin:14px 0}.route-editor .transport-option-head{align-items:center;margin-bottom:9px}.route-add{display:flex;flex-wrap:wrap;gap:8px;align-items:center}.route-editor .field-label{line-height:1.7}.sale-row{flex-wrap:wrap}.sale-time span{font-size:11px;color:#607151}.reminder-button{white-space:normal}.modal input[type=datetime-local]{max-width:100%;font-size:11px}.settings-row>div{min-width:0}.settings-row p{overflow-wrap:anywhere}@media(max-width:375px){.editor-entry{padding:12px 11px;gap:9px}.editor-icon{padding:8px}.modal{padding:19px 15px}.route-editor{padding:11px}.segmented{gap:2px}.segment{padding:9px 2px}}
+
+.inline-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap}.setup-hint{display:flex;align-items:center;justify-content:space-between;gap:10px}.night-summary+.night-summary{border-top:1px solid #e3e8dc;padding-top:12px;margin-top:12px}.night-summary strong{font-size:13px}.night-summary p{margin:4px 0 0;color:#607151;font-size:12px}.import-source{min-height:230px!important}.import-choices{display:flex;flex-direction:column;gap:9px;margin:15px 0}.import-choices label{display:flex;gap:9px;align-items:center;font-size:13px}.import-choices input{width:17px!important;height:17px!important}.import-warning-list{margin:5px 0;padding-left:20px;font-size:12px}.import-meta{font-size:12px;line-height:1.8}.import-review .modal-section{margin-top:18px}.import-inactive{opacity:.6}.import-option-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}.import-year-note{font-weight:600;color:#294c37}.import-date-summary{padding:12px;border:1px solid #dce5d1;border-radius:10px;margin:12px 0}.modal-actions{flex-wrap:wrap}.modal-actions button{flex:1;min-width:95px}.host-actions{flex-wrap:wrap}
+
+.manage-tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:5px}.manage-tabs .segment{white-space:normal;line-height:1.5;min-height:39px}.stages{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.search-row{display:flex;gap:8px;align-items:center}.search-row input{min-width:0;flex:1}.search-row button{min-height:42px}.filter-selects{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.filter-selects label{flex:1;min-width:78px;font-size:11px}.filter-selects select{padding:8px 6px;margin-top:5px;font-size:11px}.report-count{font-size:12px;color:#607151;margin:12px 3px}.choice-row{border-top:1px solid #e4eadc;padding:13px 0}.choice-row:last-child{padding-bottom:0}.choice-line{display:flex;flex-wrap:wrap;gap:9px;align-items:center;font-size:13px;overflow-wrap:anywhere}.choice-arrow{color:#507347;font-size:18px}.choice-ids{font-size:10px;color:#607151;margin:4px 0 6px;overflow-wrap:anywhere}.choice-status{font-size:11px;line-height:1.8;border-radius:7px;padding:7px 9px}.choice-status.conflict{background:#fff4df;color:#805d34}.choice-status.matched{background:#edf5e6}.export-scroll{max-width:100%;overflow:auto;border:1px solid #dfe7d7;border-radius:9px;max-height:48vh}.export-table{border-collapse:collapse;font-size:11px;width:max-content;min-width:100%;max-width:none}.export-table th,.export-table td{padding:9px 10px;text-align:left;border-bottom:1px solid #e2e8dc;border-right:1px solid #e2e8dc;max-width:240px;min-width:85px;overflow-wrap:anywhere;white-space:pre-wrap;vertical-align:top}.export-table th{background:#edf4e4;position:sticky;top:0;z-index:1}.export-actions{display:flex;gap:8px;flex-wrap:wrap;margin:13px 0}.export-actions button{flex:1;min-width:100px;min-height:40px}.export-source{min-height:125px;font-size:11px;margin-top:8px}.export-count{font-size:12px;color:#607151;margin:9px 0}.export-note{font-size:11px;color:#805d34;line-height:1.8}.member-top>div{min-width:0}.member-name{overflow-wrap:anywhere}
+.version-badge{font-size:10px;letter-spacing:0;color:#53754a;background:#e7efd9;border-radius:5px;padding:2px 5px}.collection-panel{padding:13px 15px}.collection-panel .card-header{margin-bottom:4px}.collection-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid #eef1e9}.collection-row strong{display:block;font-size:12px;font-weight:600}.collection-row small{display:block;font-size:10px;color:#607151;margin-top:2px}.collection-switch{width:44px;height:26px;min-width:44px;border-radius:16px;background:#c9d1c5;padding:3px;flex-shrink:0;transition:background .15s}.collection-switch span{display:block;width:20px;height:20px;background:#fff;border-radius:50%;box-shadow:0 1px 3px #244b3628;transition:transform .15s}.collection-switch[aria-checked=true]{background:#39704f}.collection-switch[aria-checked=true] span{transform:translateX(18px)}.collection-gate{background:#fff6e4;border-radius:8px;padding:8px 10px;font-size:10px;color:#805d34;line-height:1.7;margin-top:9px}.collection-gate .text-button{display:block;color:#805d34;margin-top:3px}.collection-hint{font-size:10px;color:#607151;line-height:1.7;margin-top:9px}
+.home-actions{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}.home-actions button{flex:1;min-width:90px;white-space:normal}.person-select,.person-result{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;padding:12px;background:#fff;border:1px solid #dce5d4;border-radius:9px;text-align:left;color:var(--ink)}.person-select small,.person-result small{display:block;font-size:10px;color:var(--muted);margin-top:3px}.person-result{border:0;border-bottom:1px solid var(--line);border-radius:0}.people-results{max-height:48vh;overflow:auto;margin-top:9px}.copy-night{margin-top:13px;white-space:normal}.team-card .submit{margin-top:10px}.invite-code{user-select:all;overflow-wrap:anywhere}.bottom-nav{padding-left:4px;padding-right:4px}.nav-item{font-size:10px}.team-card strong{overflow-wrap:anywhere}.home-actions .danger{color:var(--red)}
+.overview-shortcuts{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:18px 0}.overview-shortcuts button{background:#e3edda;color:#34573f;border:1px solid #cdddbe;border-radius:10px;padding:12px 3px;font-weight:650;font-size:12px}.greeting-title{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.role-badge{background:#dceacb;color:#2c563c;font-weight:700}.transport-heading{padding:14px;margin:-17px -17px 14px;background:#dfecd3;border-radius:13px 13px 0 0;border-bottom:2px solid #a3bd89}.transport-direction{font-size:17px;font-weight:750;color:#284a36}.modal-section-title{font-size:16px;color:#294d36}.compact-report{padding:11px 13px;margin:8px 0}.compact-member{display:flex;align-items:center;gap:8px}.compact-member strong{min-width:0;overflow-wrap:anywhere;font-size:12px}.compact-member .pill{margin-left:auto;font-size:10px}.compact-member .tiny{font-size:9px;white-space:nowrap}.travel-summary-line{display:flex;gap:8px;justify-content:space-between;font-size:10px;margin-top:6px}.report-note{font-size:11px;color:var(--muted);overflow-wrap:anywhere;margin-top:4px}.room-actions{display:flex;gap:8px;margin:12px 0}.room-actions .submit{margin:0;padding:10px 5px;font-size:11px}.pair-slot{display:block;width:100%;padding:9px;border:1px solid #dae6d1;border-radius:8px;background:#f6f9f1;color:#36543d;text-align:left;margin-top:6px}.pair-slot small{display:block;font-size:10px;color:var(--muted)}.plan-time{display:block;font-size:9px;color:var(--muted);line-height:1.8;margin-top:5px}.room-pair-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.team-card .card-header strong{min-width:0}.home-actions button{min-height:44px}.home-actions{flex-wrap:nowrap}.home-actions button{min-width:0}
+.transport-card.inbound .transport-heading{background:#e2ebef;border-bottom-color:#abc3cd}.transport-card.inbound .transport-direction{color:#30576a}.transport-card.inbound .icon-tile{background:#f0f5f8;color:#527889}
+</script>
+<script id="mobile-code" type="text/plain">
+(function(){
+'use strict';
+var D=window.TourDomain,I=window.TourImporter,KEY='tour-miniapp-preview-v2.1',state,drafts={},page='home',section='travel',manageTab='members',memberFilter='active',planDate='',modalKind='',modalData={},toastTimer;
+var homeFilters={search:'',startDate:'',endDate:'',role:''};
+var reportFilters={members:{search:'',travel:'all',lodging:'all',insurance:'all'},travel:{search:'',travel:'all'},insurance:{search:'',insuranceStatus:'all'}};
+var sections=['travel','lodging','insurance'],sectionNames={travel:'到离时间',lodging:'住宿登记',insurance:'参保状态'},stageNames={pending:'尚未开始',open:'正在收集',closed:'已关闭'},roomNames={king:'大床房',twin:'双床房',self:'自行安排'},modeNames={single:'独住整间',designated:'指定同住',auto:'双床拼房'},statusNames={pending:'待迁移',active:'正式团员',removed:'已移出'},insuranceNames={yes:'已参保',no:'未参保',unknown:'未填写'},requestNames={pending:'待审核',approved:'已通过',rejected:'已拒绝',superseded:'已失效'};
+function esc(v){return String(v==null?'':v).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+function clone(v){return JSON.parse(JSON.stringify(v))}
+function icon(name,size){var p={mountain:'<path d="m3 20 7-15 4 8 3-5 5 12H3Zm4-8 3 3 3-3"/>',home:'<path d="m3 10 9-7 9 7v11H3V10Zm6 11v-7h6v7"/>',form:'<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 7h6M9 11h6M9 15h3"/>',people:'<circle cx="9" cy="8" r="3"/><path d="M3 21v-3a6 6 0 0 1 12 0v3m1-16a3 3 0 0 1 0 6m3 10v-3a6 6 0 0 0-2-4"/>',bed:'<path d="M3 18v3m18-3v3M3 18V7h18v11H3Zm0-6h18M7 8v4m10-4v4"/>',train:'<rect x="5" y="3" width="14" height="15" rx="3"/><path d="M5 11h14M12 3v8m-4 7-3 4m11-4 3 4M8 15h1m6 0h1"/>',bell:'<path d="M5 17h14l-2-4V9a5 5 0 0 0-10 0v4l-2 4Zm5 3h4"/>',check:'<path d="m5 12 4 4L19 6"/>',clock:'<circle cx="12" cy="12" r="9"/><path d="M12 6v6l4 2"/>',shield:'<path d="m12 3 8 3v6c0 5-8 9-8 9s-8-4-8-9V6l8-3Z"/><path d="m8 12 3 3 5-6"/>',lock:'<rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3m-4 4v3"/>',arrow:'<path d="M4 12h15m-6-6 6 6-6 6"/>',download:'<path d="M12 3v12m-5-5 5 5 5-5M5 17v4h14v-4"/>',edit:'<path d="m4 16 12-12 4 4L8 20H4v-4ZM13 7l4 4"/>',pin:'<path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 0 1 14 0Z"/><circle cx="12" cy="10" r="2"/>'};return '<svg width="'+(size||17)+'" height="'+(size||17)+'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+(p[name]||p.check)+'</svg>'}
+function shortDate(d){return d?Number(d.slice(5,7))+'月'+Number(d.slice(8,10))+'日':'—'}
+function nameOf(id){if(id==='@leader')return state.trip.leaderName||'领队';var m=state.trip.members[id]||state.trip.admins[id];if(!m)return '已移出 / '+String(id||'未选择').slice(-8);var dup=Object.values(state.trip.members).filter(function(x){return x.status==='active'&&x.nickname===m.nickname}).length>1;return m.nickname+(dup?' · '+m.id.slice(-8):'')+(m.status==='removed'?'（已移出）':'')}
+function memberLabel(m){return m.nickname+' · '+m.id.slice(-8)}
+function tripDays(){return state.trip.itinerary.length}
+function activeMembers(){return Object.values(state.trip.members).filter(function(m){return m.status==='active'})}
+function toast(message,error){clearTimeout(toastTimer);document.getElementById('toast').innerHTML='<div class="toast'+(error?' error':'')+'" role="status">'+esc(message)+'</div>';toastTimer=setTimeout(function(){document.getElementById('toast').innerHTML=''},4000)}
+function error(e){toast(e&&e.message?e.message:String(e),true)}
+function readStored(key,fallback){try{var v=JSON.parse(localStorage.getItem(key));return v||fallback}catch(e){return fallback}}
+function allTrips(){var seen={},items=[];if(state&&state.trip)items.push(state);demoHistory().forEach(function(x){items.push(x)});return items.filter(function(x){if(!x.trip||x.trip.deletedAt||seen[x.trip.id])return false;seen[x.trip.id]=true;return true})}
+function belongs(t,id){return !!t.admins[id]||!!(t.members[id]&&t.members[id].status==='active')}
+function profiles(){var map={};allTrips().slice().reverse().forEach(function(x){Object.values(x.trip.members).concat(Object.values(x.trip.admins)).forEach(function(m){map[m.id]={id:m.id,nickname:m.nickname}})});readStored(KEY+'-people',[]).forEach(function(x){map[x.id]=x});if(state&&state.profile)map[state.profile.id]=state.profile;return Object.values(map)}
+function saveProfiles(){localStorage.setItem(KEY+'-people',JSON.stringify(profiles()))}
+function currentProfile(){return profiles().find(function(x){return x.id===state.activeId})||{id:state.activeId,nickname:'旅伴'}}
+function rememberCodes(t){var list=readStored(KEY+'-codes',[]);if(t.joinCode)list.push(t.joinCode);(t.usedJoinCodes||[]).forEach(function(c){list.push(c)});localStorage.setItem(KEY+'-codes',JSON.stringify(Array.from(new Set(list))))}
+function capacityField(name,value){return field('最大入团人数',''+name,value,'number','min="1" max="100" step="1" required placeholder="请设置，例如 30"')+'<p class="field-hint">包括管理员，不包括领队；创建后可调整，不能少于已入团人数。当前版本支持 1–100 人。</p>'}
+function homePage(){var p=currentProfile();return '<div class="home-actions"><button class="small-button primary" data-action="new-team">＋ 创建团队</button><button class="small-button" data-action="join-team">凭入团码入团</button></div><div class="greeting"><span>你好，<strong>'+esc(p.nickname)+'</strong></span><button class="text-button" data-action="edit-profile">修改昵称</button></div>'+heading('团队总览','创建、管理、参与的团队，一处查看。')+'<form id="home-filters" class="card"><label class="field-label" for="team-search">搜索全部团队</label><div class="search-row"><input id="team-search" name="search" type="search" value="'+esc(homeFilters.search)+'" placeholder="搜索团名称"><button class="small-button primary" type="submit">筛选</button></div><div class="date-pair">'+field('开始日期','filterStart',homeFilters.startDate,'date')+field('结束日期','filterEnd',homeFilters.endDate,'date')+'</div><div class="inline-actions"><span class="field-hint">显示与所选时间段重叠的活动</span><button class="text-button" type="button" data-action="clear-home-filter">清除筛选</button></div></form>'+teamGroups()+'<p class="local-note">演示昵称可修改并用于创建、加入团队。<br>电脑体验版不读取微信账号，数据仅保存在当前浏览器。</p>'}
+
+function teamGroups(){var items=allTrips().filter(function(x){var t=x.trip;return belongs(t,state.activeId)&&(!homeFilters.search||t.name.toLowerCase().indexOf(homeFilters.search.toLowerCase())>=0)&&(!homeFilters.startDate||t.endDate>=homeFilters.startDate)&&(!homeFilters.endDate||t.startDate<=homeFilters.endDate)});return [['owner','我创建的'],['admin','我管理的'],['member','我参与的']].filter(function(g){return !homeFilters.role||g[0]===homeFilters.role}).map(function(g){var list=items.filter(function(x){var t=x.trip;return (t.ownerId===state.activeId?'owner':t.admins[state.activeId]?'admin':'member')===g[0]});return '<div class="section-heading"><h2>'+g[1]+'</h2><span class="tiny">'+list.length+' 个</span></div>'+(list.length?list.map(function(x){var t=x.trip,count=Object.values(t.members).filter(function(m){return m.status==='active'}).length;return '<section class="card team-card"><div class="card-header"><strong>'+esc(t.name)+'</strong>'+(g[0]==='owner'?'<button class="small-button danger" data-action="delete-team" data-id="'+esc(t.id)+'">删除</button>':'<span class="pill">'+(g[0]==='admin'?'管理员':'团员')+'</span>')+'</div><p class="tiny">'+esc(t.startDate)+' — '+esc(t.endDate)+'</p><p class="compact-info">已入团 '+count+' / '+(t.maxMembers||Math.max(100,count))+' 人</p><button type="button" class="submit secondary" data-action="restore-demo" data-id="'+esc(t.id)+'">进入团队 ↗</button></section>'}).join(''):'<section class="card empty-list">暂无符合筛选的'+g[1]+'团队</section>')}).join('')}
+
+function teamSettings(v){return '<section class="card"><div class="card-header"><h2 class="card-title">入团与名额</h2><span class="pill">'+v.members.length+' / '+v.maxMembers+' 人</span></div><p class="field-hint">团员凭码直接加入，无需审批；其他管理员也占名额，领队不占。</p><div class="invite-code">'+esc(v.joinCode)+'</div><div class="home-actions"><button class="small-button" data-action="copy-code">复制入团码</button><button class="small-button" data-action="rotate-code">重新生成</button><button class="small-button" data-action="change-capacity">修改人数上限</button></div><p class="field-hint">换码后旧码立即失效，已入团成员不受影响。</p>'+'</section>'}
+function peopleMatches(kind,query){var q=String(query||'').trim().toLowerCase();return activeMembers().filter(function(m){return m.id!==state.activeId&&(kind!=='admin'||!state.trip.admins[m.id])&&(!q||m.nickname.toLowerCase().indexOf(q)>=0||m.id.toLowerCase().indexOf(q)>=0)})}
+function peopleResults(kind,query){var list=peopleMatches(kind,query);return '<p class="field-hint">找到 '+list.length+' 人'+(list.length>20?'，先显示前 20 人，请输入昵称或编号缩小范围':'')+'</p>'+list.slice(0,20).map(function(m){return '<button type="button" class="person-result" data-action="select-person" data-id="'+esc(m.id)+'"><span>'+esc(m.nickname)+'<small>'+esc(m.id.slice(-8))+'</small></span><span>选择</span></button>'}).join('')+(!list.length?'<p class="empty-list">没有匹配的团员</p>':'')}
+function peoplePicker(kind){return '<input id="people-query" type="search" placeholder="搜索昵称或团员编号" aria-label="搜索团员" autocomplete="off"><div id="people-results" class="people-results">'+peopleResults(kind,'')+'</div>'}
+function copyLater(index){var d=getDraft(),source=d.value[index];if(!source||!source.room)throw new Error('请先选择本晚房型');if(source.mode==='designated'&&!source.partnerId)throw new Error('请先选择本晚同住人');for(var i=index+1;i<d.value.length;i++){var old=d.value[i];d.value[i]={date:old.date,room:source.room,mode:source.mode,partnerId:source.partnerId||'',hotel:source.room==='self'&&old.room==='self'?old.hotel||'':''}}closeModal();render();toast('已复制到后续夜晚，请检查后保存登记')}
+function joinWithCode(code,nickname,newIdentity){if(!/^\d{8}$/.test(code))throw new Error('请输入完整的 8 位数字入团码');var item=allTrips().find(function(x){return x.trip.joinCode===code});if(!item)throw new Error('入团码无效或已失效，请向领队索取新码');var id=newIdentity?uid('demo-member'):state.activeId,t=clone(item.trip);if(t.members[id]&&t.members[id].status==='removed')throw new Error('你已被移出此团，请联系管理员恢复资格');D.joinTrip(t,id,nickname,code);archiveCurrent();state={trip:t,activeId:id,profile:newIdentity?{id:id,nickname:nickname}:currentProfile()};drafts={};page='overview'}
+function deleteCurrent(id){var item=allTrips().find(function(x){return x.trip.id===id});if(!item)throw new Error('团队已不存在');var trip=clone(item.trip);D.deleteTrip(trip,state.activeId);rememberCodes(trip);saveProfiles();localStorage.setItem(KEY+'-history',JSON.stringify(demoHistory().filter(function(x){return x.trip.id!==id})));if(state.trip&&state.trip.id===id)state.trip=null;drafts={};page='home';persist();closeModal();render();toast('团队已删除，所有成员将不再看到此团，旧入团码已失效')}
+
+function persist(){try{if(state.trip)rememberCodes(state.trip);localStorage.setItem(KEY,JSON.stringify(state));saveProfiles()}catch(e){toast('当前浏览器无法持久保存，刷新后修改可能丢失',true)}notifyHost()}
+function notifyHost(){var people=profiles();parent.postMessage({type:'tour-identities',identities:people.map(function(m){var t=state.trip,role=t&&t.ownerId===m.id?'领队':t&&t.admins[m.id]?'管理员 · 需登记':t&&t.members[m.id]?statusNames[t.members[m.id].status]:'演示用户';return {id:m.id,label:m.nickname+' · '+role+(t&&t.members[m.id]&&t.members[m.id].status==='active'&&!t.members[m.id].sections.travel?' · 到离未填写':'')}}),activeId:state.activeId},'*')}
+function mutate(fn,message){var next=clone(state.trip);fn(next);state.trip=next;persist();render();if(message)toast(message)}
+function seed(){
+var t=D.createTrip({name:'桂林山水四日团',startDate:'2026-10-01',endDate:'2026-10-04',nickname:'小林',leaderName:'小林',maxMembers:80,joinCode:randomCode()},'admin-lin','DEMO20261001');
+D.joinTrip(t,'admin-yue','小悦',t.joinCode);D.setAdmin(t,'admin-lin','admin-yue',true);
+D.updateTrip(t,'admin-lin',{itinerary:[{date:'2026-10-01',plan:'抵达桂林，下午象鼻山集合\n傍晚两江四湖自由漫步（示例）'},{date:'2026-10-02',plan:'漓江风光 · 兴坪古镇\n下午到阳朔，沿遇龙河慢行（示例）'},{date:'2026-10-03',plan:'前往龙脊，走进山间梯田\n日落前在观景台集合（示例）'},{date:'2026-10-04',plan:'早餐后下山，送站返程\n建议预留充足转乘时间（示例）'}],nights:[{date:'2026-10-01',place:'桂林',hotel:'江畔假日酒店（示例）'},{date:'2026-10-02',place:'阳朔',hotel:''},{date:'2026-10-03',place:'龙脊',hotel:''}],transport:{outbound:{suggestion:'建议 10月1日 12:00 前抵达桂林北站，领队在出站口集合。以下车次与开售时间均为演示，请以实际售票信息为准。',options:[{id:'train-a',type:'train',code:'G1234（示例）',suggestion:'广州南 → 桂林北，约 11:20 抵达，适合上午集合。',saleAt:'2026-09-17T10:00',advanceMinutes:30},{id:'train-b',type:'train',code:'D5678（示例）',suggestion:'广州南 → 桂林北，约 11:45 抵达，可作为备选车次。',saleAt:'2026-09-17T11:00',advanceMinutes:30}]},inbound:{suggestion:'10月4日早餐后下山，返程请预留充足转乘时间。',options:[{id:'flight-a',type:'flight',code:'桂林两江机场 → 出发城市',suggestion:'建议选择 19:00 后起飞的航班。先比较机票和机场接驳时间，再按个人安排购票。（示例）',saleAt:'',advanceMinutes:30}]}}});
+[['m-zhou','小周'],['m-chen','小陈'],['m-xu','小许'],['m-tang','小唐'],['m-luo','小罗']].forEach(function(p){D.joinTrip(t,p[0],p[1],t.joinCode)});D.joinTrip(t,'m-he','小禾',t.joinCode);for(var k=1;k<=45;k++)D.joinTrip(t,'demo-guest-'+String(k).padStart(3,'0'),'旅伴'+String(k).padStart(2,'0'),t.joinCode);
+D.setStage(t,'admin-lin','travel','open');D.setStage(t,'admin-lin','insurance','open');
+['m-zhou','m-chen','m-xu','m-tang','m-luo'].map(function(id){return t.members[id]}).forEach(function(m,i){if(i<4)D.submitSection(t,m.id,'travel',{arrival:{unknown:false,date:'2026-10-01',time:['11:20','11:20','12:00','10:35','11:45'][i]},departure:{unknown:i===2,date:i===2?'':'2026-10-04',time:i===2?'':['18:00','18:00','','17:30','19:00'][i]}});if(i<2)D.submitSection(t,m.id,'insurance',['yes','no'][i])});
+// Historical lodging choices demonstrate one-way roommate requests while hotels are being updated.
+var originals=clone(t.nights);D.updateTrip(t,'admin-lin',{nights:t.nights.map(function(n){return {date:n.date,place:n.place,hotel:n.hotel||n.place+'示例酒店'}})});D.setStage(t,'admin-lin','lodging','open');
+['m-zhou','m-chen','m-xu','m-tang'].forEach(function(id,i){D.submitSection(t,id,'lodging',t.nights.map(function(n,j){return {date:n.date,room:'twin',mode:j===0&&i<3?'designated':'auto',partnerId:j===0&&i<3?['m-chen','m-xu','m-zhou'][i]:'',hotel:''}}))});D.setStage(t,'admin-lin','lodging','closed');D.updateTrip(t,'admin-lin',{nights:originals});
+return {trip:t,activeId:'admin-lin'};
+}
+function load(){var s;try{s=JSON.parse(localStorage.getItem(KEY))}catch(e){}if(s&&s.activeId&&(s.trip===null||s.trip&&s.trip.schemaVersion===2)){if(s.trip){rememberCodes(s.trip);D.migrateTrip(s.trip,s.trip.joinCode||randomCode())}return s}var created=seed();return created}
+function effective(id,key){var m=state.trip.members[id];return m&&m.sections?m.sections[key]:null}
+function blank(key){if(key==='travel')return {arrival:{unknown:false,date:'',time:''},departure:{unknown:false,date:'',time:''},note:''};if(key==='insurance')return '';return state.trip.nights.map(function(n){return {date:n.date,room:'',mode:'single',partnerId:'',hotel:''}})}
+function draftKey(){return state.trip.id+':'+state.activeId+':'+section}
+function getDraft(){var key=draftKey();if(!drafts[key]){var m=state.trip.members[state.activeId],pending=state.trip.requests.filter(function(r){return r.memberId===state.activeId&&r.section===section&&r.status==='pending'}).slice(-1)[0],value=pending?pending.proposed:m.sections[section];drafts[key]={value:clone(value==null||section==='insurance'&&value==='unknown'?blank(section):value),reason:pending?pending.reason||'':''}}var d=drafts[key];if(section==='lodging')d.value=state.trip.nights.map(function(n){var old=d.value.find(function(x){return x.date===n.date});return {date:n.date,room:old&&old.room||'',mode:old&&old.mode||'single',partnerId:old&&old.partnerId||'',hotel:old&&old.hotel||''}});return d}
+function capture(){var f=document.getElementById('section-form');if(!f)return;var d=getDraft();if(f.elements.reason)d.reason=f.elements.reason.value;if(section==='travel'){['arrival','departure'].forEach(function(k){d.value[k]={unknown:f.elements[k+'Unknown'].checked,date:f.elements[k+'Date'].value,time:f.elements[k+'Time'].value}});d.value.note=f.elements.travelNote?f.elements.travelNote.value:''}else if(section==='lodging'){d.value.forEach(function(n,i){if(f.elements['mode'+i])n.mode=f.elements['mode'+i].value;if(f.elements['partner'+i])n.partnerId=f.elements['partner'+i].value;if(f.elements['hotel'+i])n.hotel=f.elements['hotel'+i].value})}}
+function statePill(status){return '<span class="pill '+esc(status)+'">'+esc(stageNames[status]||statusNames[status]||requestNames[status]||status)+'</span>'}
+function nav(view){var items;if(!view){items=[['owner','home','我创建的'],['admin','people','我管理的'],['member','form','我参与的']];return '<nav class="bottom-nav" aria-label="团队身份筛选">'+items.map(function(x){return '<button class="nav-item'+(homeFilters.role===x[0]?' active':'')+'" data-action="home-role" data-value="'+x[0]+'"><span class="nav-icon">'+icon(x[1],19)+'</span>'+x[2]+'</button>'}).join('')+'</nav>'}items=[['home','people','首页团队总览'],['overview','home','行程概览']];if(view.isAdmin)items.push(['manage','people','团务管理']);if(view.canRegister)items.push(['form','form','我的登记']);else if(view.isOwner)items.push(['rooms','bed','住宿安排']);return '<nav class="bottom-nav" aria-label="主要功能">'+items.map(function(x){return '<button class="nav-item'+(page===x[0]?' active':'')+'" data-action="page" data-value="'+x[0]+'"><span class="nav-icon">'+icon(x[1],19)+'</span>'+x[2]+'</button>'}).join('')+'</nav>'}
+
+function heading(title,sub){return '<header class="page-heading"><h1>'+esc(title)+'</h1><p>'+esc(sub)+'</p></header>'}
+function hotelReadiness(nights){var missing=nights.filter(function(n){return !String(n.place||'').trim()||!String(n.hotel||'').trim()||/^(待定|未定|待确认|未确认|待安排|暂未确定)$/.test(String(n.hotel).replace(/\s/g,''))});return {ready:nights.length-missing.length,total:nights.length,missing:missing}}
+function readinessText(nights){var r=hotelReadiness(nights);return '已确定 '+r.ready+' / '+r.total+' 晚酒店'+(r.missing.length?' · 待补充：'+r.missing.map(function(n){return shortDate(n.date)+' '+(n.place||'住宿地点未填')}).join('、'):' · 可开放住宿收集')}
+function quickEditors(v){var missing=[];if(!v.itinerary.some(function(d){return String(d.plan||'').trim()}))missing.push(['itinerary','补充行程']);if(!['outbound','inbound'].some(function(dir){var r=v.transport[dir];return String(r.suggestion||'').trim()||transportOptions(r).length}))missing.push(['transport','补充交通']);var hotels=hotelReadiness(v.nights);if(hotels.missing.length)missing.push(['hotels','补充 '+hotels.missing.length+' 晚酒店']);return missing.length?'<div class="notice gray setup-hint"><span>待完善</span><div class="inline-actions">'+missing.map(function(x){return '<button class="text-button" data-action="edit-meta" data-value="'+x[0]+'">'+x[1]+' ↗</button>'}).join('')+'</div></div>':''}
+function inlineEdit(kind){return '<button class="text-button" data-action="edit-meta" data-value="'+kind+'">编辑</button>'}
+function detailsSections(v){return '<div class="section-heading" id="overview-itinerary"><h2>每日行程安排</h2>'+(v.isAdmin?inlineEdit('itinerary'):'<span class="tiny">计划可随实际情况调整</span>')+'</div><section class="card"><div class="journey">'+v.itinerary.map(function(day,i){return '<div class="day"><div class="day-num"><small>DAY</small><strong>'+String(i+1).padStart(2,'0')+'</strong></div><div><div class="day-date">'+shortDate(day.date)+'</div><div class="day-plan">'+esc(day.plan||'行程待管理员补充')+'</div></div></div>'}).join('')+'</div></section><div class="section-heading" id="overview-hotels"><h2>每晚住宿酒店</h2>'+(v.isAdmin?inlineEdit('hotels'):'<span class="tiny">统一住宿</span>')+'</div><section class="card">'+v.nights.map(function(n){return '<div class="night-summary"><strong>'+shortDate(n.date)+' · '+esc(n.place||'住宿地点待确认')+'</strong><p>'+esc(n.hotel||'酒店待定')+'</p></div>'}).join('')+'</section><div class="section-heading" id="overview-transport"><h2>往返交通推荐</h2>'+(v.isAdmin?inlineEdit('transport'):'<span class="tiny">领队建议</span>')+'</div>'+transportCards(v)+'<p class="local-note">本地演示不发送微信通知。交通信息请以实际售票信息为准。</p>'}
+function stageSummary(){return '<div class="overview-shortcuts">'+[['itinerary','行程安排'],['hotels','酒店安排'],['transport','交通推荐']].map(function(x){return '<button data-action="overview-anchor" data-value="'+x[0]+'">'+x[1]+' ↓</button>'}).join('')+'</div>'}
+
+function transportOptions(route){return D.transportOptions?D.transportOptions(route):(route.options||[])}
+function transportCards(v){return ['outbound','inbound'].map(function(dir){var t=v.transport[dir],opts=transportOptions(t);return '<section class="card transport-card '+dir+'" aria-label="'+(dir==='outbound'?'去程推荐':'返程推荐')+'"><div class="transport-heading"><span class="icon-tile">'+icon('train',18)+'</span><div><div class="transport-direction">'+(dir==='outbound'?'去程 · 前往集合地':'返程 · 从旅程回家')+'</div><div class="transport-caption">'+opts.length+' 项建议 · 以实际交通信息为准</div></div></div><p class="transport-suggestion">'+esc(t.suggestion||'管理员尚未补充整体建议')+'</p>'+opts.map(function(o,i){return '<div class="transport-option"><div class="transport-option-head"><strong>'+esc(o.code||(o.type==='train'?'推荐车次':'机票建议')+' '+(i+1))+'</strong><span class="pill">'+(o.type==='train'?'火车':'飞机')+'</span></div><p class="transport-suggestion">'+esc(o.suggestion||'暂无补充说明')+'</p>'+(o.type==='train'?'<div class="sale-row"><div class="sale-time">开售时间 · 北京时间<strong>'+esc(o.saleAt?o.saleAt.replace('T',' '):'尚未设置')+'</strong>'+(o.saleAt?'<span>提前 '+o.advanceMinutes+' 分钟提醒</span>':'')+'</div><button type="button" class="reminder-button" data-action="reminder-info" data-direction="'+dir+'" data-id="'+esc(o.id)+'">查看此车次提醒</button></div>':'')+'</div>'}).join('')+'</section>'}).join('')}
+function overview(v){var names=v.members.slice(0,3),total=v.members.length;var summary=stageSummary(v);return '<div class="greeting"><span class="greeting-title">你好，<span class="greeting-name">'+esc(v.me.nickname)+'</span><button class="text-button" data-action="rename-team">修改</button></span><span class="role-badge">'+(v.isOwner?'我是领队':v.isAdmin?'我是管理员':'我是团员')+'</span></div>'+'<section class="hero"><div class="hero-content"><div class="hero-overline">OUR NEXT JOURNEY</div><h1>'+esc(v.name)+'</h1><p class="hero-dates">'+v.startDate.slice(0,4)+'年 '+shortDate(v.startDate)+' — '+shortDate(v.endDate)+'</p><div class="hero-bottom"><div class="avatar-group">'+names.map(function(m){return '<span class="avatar">'+esc(m.nickname.slice(-1))+'</span>'}).join('')+'</div><span class="hero-count">'+total+' 位团员，一起出发</span></div></div></section><div class="overview-stats"><div class="overview-stat"><strong>'+tripDays()+'</strong><small>天</small><span>旅程时长</span></div><div class="overview-stat"><strong>'+v.nights.length+'</strong><small>晚</small><span>住宿安排</span></div><div class="overview-stat"><strong>'+total+'</strong><small>人</small><span>正式团员</span></div></div>'+summary+detailsSections(v)}
+function summarize(s,value){if(value===null||value===undefined)return '尚未登记';if(s==='insurance')return insuranceNames[value]||'未填写';if(s==='travel')return ['arrival','departure'].map(function(k){var x=value[k];return (k==='arrival'?'到达：':'离开：')+(x.unknown?'时间待定':shortDate(x.date)+' '+x.time)}).join('\n')+(value.note?'\n备注：'+value.note:'');return value.map(function(n){return shortDate(n.date)+' '+(roomNames[n.room]||'未选房型')+(n.room==='self'?(n.hotel?' · '+n.hotel:''):' · '+(modeNames[n.mode]||'未选择')+(n.mode==='designated'?' · '+nameOf(n.partnerId):''))}).join('\n')}
+function travelFields(d){return ['arrival','departure'].map(function(k){var x=d.value[k],label=k==='arrival'?'预计到达':'预计离开';return '<div class="travel-part"><div class="travel-title"><strong>'+label+'</strong><label class="unknown-label"><input type="checkbox" name="'+k+'Unknown"'+(x.unknown?' checked':'')+'>时间待定</label></div><div class="date-time"><label class="sr-only" for="'+k+'Date">'+label+'日期</label><input id="'+k+'Date" name="'+k+'Date" type="date" value="'+esc(x.date)+'"'+(x.unknown?' disabled':' required')+'><label class="sr-only" for="'+k+'Time">'+label+'时间</label><input id="'+k+'Time" name="'+k+'Time" type="time" value="'+esc(x.time)+'"'+(x.unknown?' disabled':' required')+'></div><p class="field-hint">'+(x.unknown?'已明确选择时间待定':'请选择日期与时间')+'</p></div>'}).join('')+textarea('备注（选填）','travelNote',d.value.note||'',500)+'<p class="field-hint">可补充车次、航班、车站或接送说明，最多 500 字。按行程当地时间填写。</p>'}
+function lodgingFields(d,v){return d.value.map(function(n,i){var loc=v.nights[i];return '<div class="night"><div class="night-heading"><span class="night-date">'+shortDate(n.date)+' · '+esc(loc.place||'地点待确认')+'</span><span class="pill">第 '+(i+1)+' 晚</span></div><p class="night-hotel">'+esc(loc.hotel||'统一酒店待确认')+'</p><div class="room-options" role="group" aria-label="'+shortDate(n.date)+'住宿选择">'+Object.keys(roomNames).map(function(r){return '<button type="button" class="room-option'+(n.room===r?' active':'')+'" data-action="room-choice" data-index="'+i+'" data-value="'+r+'" aria-pressed="'+(n.room===r)+'">'+roomNames[r]+'</button>'}).join('')+'</div>'+(!n.room?'<p class="night-help">请为当晚选择一种住宿安排。</p>':n.room==='self'?'<div class="night-extra"><label class="field-label" for="hotel'+i+'">自订住宿地点<span class="optional">选填</span></label><input id="hotel'+i+'" name="hotel'+i+'" maxlength="80" value="'+esc(n.hotel)+'" placeholder="例如：自订酒店或亲友家"></div>':'<div class="night-extra"><div class="field"><label class="field-label" for="mode'+i+'">入住方式</label><select id="mode'+i+'" name="mode'+i+'">'+[['single','独住整间'],['designated','指定同住人']].concat(n.room==='twin'?[['auto','双床拼房']]:[]).map(function(m){return '<option value="'+m[0]+'"'+(n.mode===m[0]?' selected':'')+'>'+m[1]+'</option>'}).join('')+'</select></div>'+(n.mode==='designated'?'<div class="field"><label class="field-label">当晚同住人 · 必选</label><button class="person-select" type="button" data-action="pick-roommate" data-index="'+i+'"><span>'+(n.partnerId?esc(nameOf(n.partnerId))+'<small>'+esc(n.partnerId.slice(-8))+'</small>':'搜索昵称或团员编号')+'</span><span>⌕</span></button></div>':'')+'<p class="night-help">'+(n.mode==='single'?'独占整间，不参与拼房。':n.mode==='designated'?'每晚可选择不同的人。双方需房型相同且互选才安排同住。':'与选择双床拼房的团员配对，管理员确认后生效。')+'</p></div>')+(n.room&&i<d.value.length-1?'<button class="small-button copy-night" type="button" data-action="copy-lodging" data-index="'+i+'">复制本晚安排到后续 '+(d.value.length-i-1)+' 晚 ↓</button>':'')+'</div>'}).join('')}
+function insuranceFields(d){return '<div class="insurance-options">'+[['yes','已参保','已购买本次出行所需保险'],['no','未参保','尚未购买本次出行保险']].map(function(s){return '<button type="button" class="insurance-option'+(d.value===s[0]?' active':'')+'" data-action="insurance-choice" data-value="'+s[0]+'" aria-pressed="'+(d.value===s[0])+'"><span class="radio"></span><span><strong>'+s[1]+'</strong><small>'+s[2]+'</small></span></button>'}).join('')+'</div><p class="field-hint" style="margin-top:13px">仅登记你自报的参保状态，不办理投保，不收集保单或证件信息。</p>'}
+function requestHistory(v){var list=v.myRequests.filter(function(r){return r.section===section}).slice(-4).reverse();if(!list.length)return '';return '<section class="card"><div class="card-header"><h2 class="card-title">我的修改申请</h2><span class="tiny">最近 '+list.length+' 条</span></div>'+list.map(function(r){return '<div class="request-mini"><div class="request-mini-title"><span>'+sectionNames[r.section]+'</span><span class="pill '+r.status+'">'+requestNames[r.status]+'</span></div><div class="summary-stack">'+esc(summarize(r.section,r.proposed))+'</div>'+(r.reviewNote?'<div class="compact-info">审核说明：'+esc(r.reviewNote)+'</div>':'')+'</div>'}).join('')+'</section>'}
+function formPage(v){var status=v.stages[section],official=v.me.sections[section],d=status==='pending'?null:getDraft();return heading('我的出行登记','三个阶段分别提交。只有微信昵称，不需要其他身份信息。')+'<div class="segmented" role="group" aria-label="登记阶段">'+sections.map(function(s){return '<button class="segment'+(section===s?' active':'')+'" data-action="section" data-value="'+s+'">'+sectionNames[s]+'</button>'}).join('')+'</div><div class="card-header" style="margin:16px 2px 12px"><strong class="card-title">'+sectionNames[section]+'</strong>'+statePill(status)+'</div>'+(status==='pending'?'<section class="card readonly-state"><span class="empty-icon">'+icon('clock',29)+'</span><h2>这一阶段还没有开始</h2><p>各项收集独立开放，可同时进行。<br>住宿需先由管理员确定全部酒店。</p></section>':'<div class="notice '+(status==='closed'?'warn':'')+'">'+(status==='closed'?'当前阶段已关闭。你可以提交修改申请，管理员通过后才更新生效。':'当前正在收集，可随时保存修改，无需审核。')+'</div>'+(status==='closed'?'<section class="card"><div class="effective-title">当前生效信息</div><div class="summary-stack">'+esc(summarize(section,official))+'</div></section>':'')+'<form id="section-form"><section class="card">'+(section==='travel'?travelFields(d):section==='lodging'?lodgingFields(d,v):insuranceFields(d))+'</section>'+(status==='closed'?'<section class="card"><label class="field-label" for="reason">修改原因<span class="optional">选填</span></label><textarea id="reason" name="reason" maxlength="200" placeholder="简单说明调整原因，方便管理员确认">'+esc(d.reason)+'</textarea></section>':'')+'<button class="submit" type="submit">'+icon(status==='closed'?'form':'check',16)+(status==='closed'?'提交修改申请':'保存'+sectionNames[section])+'</button><p class="footnote">'+(status==='closed'?'申请通过前，当前生效信息保持原值。':'你的详细登记仅本人和管理员可见。')+'</p></form>')+requestHistory(v)+(section==='lodging'?myRoomsPanel(v):'')}
+function countSubmitted(v,s){return v.registrations.filter(function(m){return m.status==='active'&&D.sectionFilled(state.trip,m,s)}).length}
+function filterControls(scope){var f=reportFilters[scope],keys=scope==='members'?sections:scope==='insurance'?[]:[scope];return '<form id="filters-form" data-scope="'+scope+'" class="card filter-panel"><label class="field-label" for="member-search">搜索团员昵称或编号</label><div class="search-row"><input type="search" id="member-search" name="search" maxlength="80" value="'+esc(f.search)+'" placeholder="输入昵称或编号"><button type="submit" class="small-button primary">筛选</button></div><div class="filter-selects">'+keys.map(function(k){return '<label><span>'+sectionNames[k]+'</span><select name="'+k+'" data-filter="'+k+'">'+[['all','全部'],['filled','已填'],['unfilled','未填']].map(function(o){return '<option value="'+o[0]+'"'+(f[k]===o[0]?' selected':'')+'>'+o[1]+'</option>'}).join('')+'</select></label>'}).join('')+(scope==='insurance'?'<label><span>参保状态</span><select name="insuranceStatus" data-filter="insuranceStatus">'+[['all','全部'],['yes','已参保'],['no','未参保'],['unfilled','未填写']].map(function(o){return '<option value="'+o[0]+'"'+(f.insuranceStatus===o[0]?' selected':'')+'>'+o[1]+'</option>'}).join('')+'</select></label>':'')+'</div></form>'}
+
+function applyFilters(form){try{var scope=form.dataset.scope,fields=clone(reportFilters[scope]);Object.keys(fields).forEach(function(k){if(form.elements[k])fields[k]=form.elements[k].value.trim()});D.filterMembers(state.trip,fields,scope==='members'?memberFilter:'active');reportFilters[scope]=fields;render()}catch(e){error(e)}}
+function exportButton(section,scope,label){return '<button class="submit secondary" data-action="export" data-section="'+section+'" data-scope="'+(scope||'')+'">'+icon('download',15)+(label||'预览并导出')+'</button>'}
+function memberList(v){var list=D.filterMembers(state.trip,reportFilters.members,memberFilter);return '<div class="roster-filter">'+[['active','正式团员'],['removed','已移出']].map(function(x){return '<button class="filter'+(memberFilter===x[0]?' active':'')+'" data-action="member-filter" data-value="'+x[0]+'">'+x[1]+' '+v.registrations.filter(function(m){return m.status===x[0]}).length+'</button>'}).join('')+'</div>'+filterControls('members')+'<div class="report-count">符合筛选：'+list.length+' 人</div><section class="card">'+(list.length?list.map(function(m){return '<div class="member-row"><div class="member-top"><div><div class="member-name">'+esc(m.nickname)+'</div><div class="member-meta">'+esc(m.id.slice(-8))+' · '+statusNames[m.status]+(state.trip.admins[m.id]?' · 管理员':'')+'</div></div><button class="small-button '+(m.status==='active'?'danger':'primary')+'" data-action="member-status" data-id="'+esc(m.id)+'" data-value="'+(m.status==='active'?'removed':'active')+'">'+(m.status==='active'?'移出':'恢复团员')+'</button></div>'+(m.status==='active'?'<div class="member-stages">'+sections.map(function(s){return '<span class="member-stage'+(D.sectionFilled(state.trip,m,s)?' done':'')+'">'+sectionNames[s]+' · '+(D.sectionFilled(state.trip,m,s)?'已填':'未填')+'</span>'}).join('')+'</div><details class="member-detail"><summary>查看登记详情</summary>'+sections.map(function(s){return '<div class="compact-info">'+sectionNames[s]+'</div><div class="summary-stack">'+esc(summarize(s,m.sections[s]))+'</div>'}).join('')+'</details>':'')+'</div>'}).join(''):'<div class="empty-list">没有符合当前筛选的团员。</div>')+'</section>'+(memberFilter==='active'?exportButton('all','members','预览 / 导出筛选后的正式团员登记'):'')+'<p class="admin-only-note">领队不占名额、无需登记；其他管理员也是团员，计入名额和登记统计。</p>'}
+function reportPanel(v,key){var list=D.filterMembers(state.trip,reportFilters[key]);return '<div class="notice gray">仅统计当前生效登记，未审核修改不计入；导出与当前筛选一致。</div>'+filterControls(key)+'<div class="report-count">符合筛选：'+list.length+' / '+v.members.length+' 位团员</div>'+list.map(function(m){var value=m.sections[key],filled=key==='insurance'?value==='yes'||value==='no':value!=null,label=key==='insurance'?(filled?insuranceNames[value]:'未填写'):(filled?'已填写':'未填写');return '<section class="card compact-report"><div class="compact-member"><strong>'+esc(m.nickname)+'</strong><span class="tiny">'+esc(m.id.slice(-8))+'</span><span class="pill '+(filled?'approved':'pending')+'">'+label+'</span></div>'+(key==='travel'?'<div class="travel-summary-line">'+(value?['arrival','departure'].map(function(k){var x=value[k];return '<span>'+(k==='arrival'?'到：':'离：')+esc(x.unknown?'时间待定':shortDate(x.date)+' '+x.time)+'</span>'}).join(''):'<span>到：未填写</span><span>离：未填写</span>')+'</div><div class="report-note">备注：'+esc(value&&value.note||'—')+'</div>':'')+'</section>'}).join('')+(!list.length?'<section class="card empty-list">没有符合当前筛选的团员。</section>':'')+exportButton(key,key,'预览 / 导出'+sectionNames[key]+'（'+list.length+' 人）')}
+
+function switchControl(label,checked,action,attrs,disabled){return '<button type="button" role="switch" class="collection-switch" aria-label="'+label+'" aria-checked="'+checked+'" data-action="'+action+'" '+attrs+(disabled?' disabled aria-describedby="lodging-gate"':'')+'><span></span></button>'}
+function stagesPanel(v){var ready=hotelReadiness(v.nights),enrollment=v.enrollmentOpen!==false;return '<section class="card collection-panel" aria-label="登记开关"><div class="card-header"><h2 class="card-title">登记开关</h2><span class="tiny">四项独立，可同时开放</span></div><div class="collection-row"><div><strong>团员登记</strong><small>'+(enrollment?'已开启 · 凭入团码直接加入':'已关闭 · 已入团成员不受影响')+'</small></div>'+switchControl('团员登记',enrollment,'enrollment-status','data-value="'+(enrollment?'closed':'open')+'"',false)+'</div>'+sections.map(function(key){var status=v.stages[key],opened=status==='open',blocked=key==='lodging'&&!opened&&ready.missing.length;return '<div class="collection-row"><div><strong>'+sectionNames[key]+'</strong><small>'+(opened?'收集中':status==='closed'?'已截止 · 修改需审批':'未开放')+' · 已填 '+countSubmitted(v,key)+'/'+v.members.length+'</small></div>'+switchControl(sectionNames[key],opened,'stage-status','data-section="'+key+'" data-value="'+(opened?'closed':'open')+'"',blocked)+'</div>'}).join('')+(ready.missing.length?'<div class="collection-gate" id="lodging-gate"><span>住宿暂不可开启：'+esc(readinessText(v.nights))+'</span><button class="text-button" data-action="edit-meta" data-value="hotels">填写酒店 ›</button></div>':'')+'<p class="collection-hint">关闭到离、住宿或参保收集后，修改需管理员审批。</p></section>'}
+
+function requestsPanel(v){var list=v.requests.slice().sort(function(a,b){return (a.status==='pending'?0:1)-(b.status==='pending'?0:1)||b.createdAt.localeCompare(a.createdAt)});return '<div class="notice gray">修改通过前，排房和导出仍使用当前生效数据。拒绝申请不会改动原登记。</div>'+(list.length?list.map(function(r){var current=effective(r.memberId,r.section);return '<section class="card"><div class="request-card-title"><strong>'+esc(nameOf(r.memberId))+' · '+sectionNames[r.section]+'</strong><span class="pill '+r.status+'">'+requestNames[r.status]+'</span></div><div class="request-section">'+(r.status==='pending'?'待管理员确认':'已处理的申请记录')+'</div><div class="compare">'+(r.status==='pending'?'<div class="compare-box"><div class="compare-label">修改前 · 当前生效</div><div class="summary-stack">'+esc(summarize(r.section,current))+'</div></div>':'')+'<div class="compare-box after"><div class="compare-label">'+(r.status==='pending'?'申请修改为':'申请内容')+'</div><div class="summary-stack">'+esc(summarize(r.section,r.proposed))+'</div></div></div>'+(r.reason?'<p class="review-reason">原因：'+esc(r.reason)+'</p>':'')+(r.reviewNote?'<p class="review-reason">审核说明：'+esc(r.reviewNote)+'</p>':'')+(r.status==='pending'?'<div class="field"><label class="sr-only" for="review-'+esc(r.id)+'">审核备注</label><input id="review-'+esc(r.id)+'" maxlength="200" placeholder="审核说明（选填）"></div><div class="review-buttons"><button class="small-button danger" data-action="review" data-id="'+esc(r.id)+'" data-value="rejected">拒绝申请</button><button class="small-button primary" data-action="review" data-id="'+esc(r.id)+'" data-value="approved">通过并更新</button></div>':'')+'</section>'}).join(''):'<section class="card empty-list">暂时没有修改申请。</section>')}
+function settingsPanel(v){return teamSettings(v)+'<section class="card"><div class="settings-row"><div><strong>旅游团基本信息</strong><p>修改团名；称呼在行程概览问候处修改</p></div><button class="small-button" data-action="edit-meta" data-value="basic">编辑</button></div><div class="settings-row"><div><strong>每日行程安排</strong><p>每天去哪儿、景点与计划内容</p></div><button class="small-button" data-action="edit-meta" data-value="itinerary">编辑</button></div><div class="settings-row"><div><strong>每晚住宿酒店</strong><p>酒店未定可留空，全部确定后开放收集</p></div><button class="small-button" data-action="edit-meta" data-value="hotels">编辑</button></div><div class="settings-row"><div><strong>推荐交通与开售时间</strong><p>多个火车车次或机票建议</p></div><button class="small-button" data-action="edit-meta" data-value="transport">编辑</button></div></section>'}
+function adminsPanel(v){return '<section class="card"><div class="card-header"><h2 class="card-title">领队与管理员</h2><span class="tiny">只有领队可删团</span></div>'+v.admins.map(function(a){return '<div class="admin-person"><span>'+esc(a.nickname)+' · '+(a.id===state.trip.ownerId?'领队':'管理员')+'</span>'+(a.id!==state.trip.ownerId?'<button class="text-button" data-action="remove-admin" data-id="'+esc(a.id)+'">取消管理员</button>':'')+'</div>'}).join('')+'<button class="submit secondary" data-action="add-admin">从已入团成员中增加管理员</button><p class="field-hint">管理员可管理团务、名额、入团码和其他管理员；仍须填写到离、住宿、参保。取消管理权限后保留团员身份与登记。</p></section><section class="card"><div class="card-title">微信开售提醒</div><p class="compact-info">本地演示不发送微信通知。正式小程序需要有效订阅模板与定时任务，并由团员主动授权。</p></section>'}
+function managePage(v){var requests=v.requests.filter(function(r){return r.status==='pending'}).length;var tabs='<div class="segmented manage-tabs">'+[['members','团员情况'],['travel','到离时间'],['insurance','参保状态'],['rooms','住宿安排'],['requests','审批'],['settings','编辑安排'],['admins','协作']].map(function(t){return '<button class="segment'+(manageTab===t[0]?' active':'')+'" data-action="manage-tab" data-value="'+t[0]+'">'+t[1]+(t[0]==='requests'&&requests?'<small>'+requests+'</small>':'')+'</button>'}).join('')+'</div>';return heading('团务管理',v.name+' · '+(v.isOwner?'我是领队':'你是管理员，也需要完成个人登记。'))+stagesPanel(v)+tabs+(manageTab==='members'?memberList(v):manageTab==='travel'||manageTab==='insurance'?reportPanel(v,manageTab):manageTab==='rooms'?roomsPage(v):manageTab==='requests'?requestsPanel(v):manageTab==='admins'?adminsPanel(v):settingsPanel(v))}
+function choiceReason(x){var partner=nameOf(x.partnerId);if(x.status==='matched')return '双方互选，房型一致';if(x.status==='partner_missing')return partner+'已不在正式名单中';if(x.status==='partner_unsubmitted')return partner+'尚未填写当晚住宿';if(x.status==='room_mismatch')return partner+'选择了'+(roomNames[x.partnerRoom]||'其他房型')+'，双方房型不一致'+(x.partnerSelectedId?'；'+partner+' → '+nameOf(x.partnerSelectedId):'');return x.partnerSelectedId?partner+'选择了'+nameOf(x.partnerSelectedId)+'，没有互选':partner+'没有指定此团员，尚未互选'}
+function selectionPanel(p){var list=p.selections||[];return '<section class="card"><div class="card-header"><h2 class="card-title">同住选择 · 谁选了谁</h2><span class="tiny">'+list.length+' 条</span></div><p class="field-hint">箭头从选择人指向被选人。仅双方互选且房型一致才会安排同住。</p>'+(list.length?list.map(function(x){return '<div class="choice-row"><div class="choice-line"><strong>'+esc(nameOf(x.memberId))+'</strong><span class="choice-arrow">→</span><strong>'+esc(nameOf(x.partnerId))+'</strong></div><p class="choice-ids">'+esc(x.memberId.slice(-8))+' → '+esc(x.partnerId.slice(-8))+' · '+roomNames[x.room]+'</p><div class="choice-status '+(x.status==='matched'?'matched':'conflict')+'">'+esc(choiceReason(x))+'</div></div>'}).join(''):'<div class="empty-list">当晚暂无指定同住选择。</div>')+'</section>'}
+function roomSource(r){return {single:'独住整间',designated:'双方已互相指定',manual:'管理员调整拼房',auto:'按首次确认时间拼房',leader:'双床人数为单数 · 领队补位',self:r.label}[r.source]||r.label}
+function myRoomsPanel(v){var rooms=v.myRooms||[];return heading('我的住宿确认','管理员确认后，这里会显示你每晚的住宿与同住人。')+(rooms.length?rooms.map(function(r){var n=v.nights.find(function(n){return n.date===r.date});return '<section class="card"><div class="confirmed-room"><div><h3>'+shortDate(r.date)+' · '+esc(n?n.place:'')+'</h3><p>'+esc(r.label)+'<br>'+esc(r.room==='self'?'自订住宿':n?n.hotel||'酒店待确认':'')+'</p></div><span class="pill approved">已确认</span></div><div class="notice" style="margin-bottom:0">'+(r.roommateNames.length?'同住人：'+esc(r.roommateNames.join('、')):'本晚安排无需与其他团员同住')+'</div></section>'}).join(''):'<section class="card readonly-state"><span class="empty-icon">'+icon('bed',30)+'</span><h2>等待管理员确认</h2><p>你可以先填写每晚住宿。<br>确认后的安排会显示在这里。</p></section>')+'<p class="footnote">这里只显示本人的已确认住宿，其他团员的登记不会公开。</p>'}
+function roomsPage(v){if(!v.isAdmin)return myRoomsPanel(v);if(!v.plans.length)return heading('住宿安排','本次行程没有过夜住宿。');if(!planDate||!v.plans.some(function(p){return p.date===planDate}))planDate=v.plans[0].date;var p=v.plans.find(function(x){return x.date===planDate}),count=p.rooms.filter(function(r){return r.room!=='self'}).length;return heading('住宿安排','双床拼房按第一次提交确认时间，依次两两安排；最后落单者与领队同住。')+'<div class="room-actions"><button class="submit secondary" data-action="export" data-section="lodging">'+icon('download',14)+'预览 / 导出</button><button class="submit" data-action="confirm-plan"'+(p.confirmed||!p.rooms.length?' disabled':'')+'>'+icon('check',14)+(p.confirmed?'本晚已确认':'确认安排房间')+'</button></div><div class="night-tabs">'+v.plans.map(function(x){return '<button class="night-tab'+(x.date===planDate?' active':'')+'" data-action="plan-date" data-value="'+x.date+'"><strong>'+shortDate(x.date)+(x.confirmed?' ✓':'')+'</strong><span>'+esc(x.place||'地点待确认')+'</span></button>'}).join('')+'</div><p class="room-hotel">'+esc(p.hotel||'统一酒店待确认')+'</p><div class="room-info"><span>'+count+' 间统一安排 · '+p.pending.length+' 人待处理</span><span class="pill '+(p.confirmed?'approved':'pending')+'">'+(p.confirmed?'已确认':p.manual?'手动调整 · 待确认':'自动方案 · 待确认')+'</span></div>'+((p.autoPool||[]).length?'<div class="inline-actions"><button class="small-button" data-action="edit-room-pairs">调整双床拼住人</button>'+(p.manual?'<button class="text-button" data-action="reset-room-pairs">恢复按首次时间拼房</button>':'')+'</div>':'')+'<div class="room-grid">'+p.rooms.map(function(r){return '<div class="room-card'+(r.source==='leader'?' topical':'')+'"><div class="room-card-head"><span>'+roomNames[r.room]+'</span><span>'+r.memberIds.length+' 人</span></div><div class="room-names">'+r.memberIds.map(function(id){var m=state.trip.members[id],pref=m&&m.sections.lodging&&m.sections.lodging.find(function(x){return x.date===p.date});return '<div>'+esc(nameOf(id))+(id==='@leader'?'':'<small class="plan-time">首次确认：'+esc(formatStamp(pref&&pref.firstSubmittedAt))+'<br>最后修改：'+esc(formatStamp(pref&&pref.lastModifiedAt))+'</small>')+'</div>'}).join('')+'</div><div class="room-source">'+esc(roomSource(r))+'</div></div>'}).join('')+'</div>'+(!p.rooms.length?'<section class="card empty-list">暂无可安排的房间，等待团员填写住宿。</section>':'')+(p.pending.length?'<div class="notice warn"><strong>仍待安排 · '+p.pending.length+' 人</strong>'+p.pending.map(function(x){return '<div class="pending-person">'+esc(nameOf(x.memberId))+'：'+esc(x.reason)+'</div>'}).join('')+'</div>':'')+selectionPanel(p)+'<p class="field-hint">时间均为北京时间；旧登记没有时间记录的显示「历史未记录」，按原有成员顺序稳定安排。确认后，团员在「我的登记 → 住宿登记」查看本人的安排。</p>'}
+function formatStamp(value){if(!value)return '历史未记录';var d=new Date(value);if(!Number.isFinite(d.getTime()))return '历史未记录';return new Date(d.getTime()+8*60*60*1000).toISOString().slice(0,19).replace('T',' ')}
+function roomPairOrder(p){var pool=(p.autoPool||[]).map(function(x){return x.memberId||x.id}),order=[],leaderPartner='';p.rooms.filter(function(r){return r.memberIds.some(function(id){return pool.indexOf(id)>=0})}).forEach(function(r){if(r.memberIds.indexOf('@leader')>=0){leaderPartner=r.memberIds.find(function(id){return id!=='@leader'});return}r.memberIds.forEach(function(id){if(id!=='@leader')order.push(id)})});pool.forEach(function(id){if(order.indexOf(id)<0&&id!==leaderPartner)order.push(id)});if(leaderPartner)order.push(leaderPartner);return order}
+function pairEditor(data){var rows=[];for(var i=0;i<data.order.length;i+=2){rows.push('<div class="modal-section"><strong>双床房 '+(i/2+1)+'</strong><div class="room-pair-grid">'+data.order.slice(i,i+2).map(function(id,j){return '<button class="pair-slot" type="button" data-action="change-room-slot" data-index="'+(i+j)+'">'+esc(nameOf(id))+'<small>'+esc(id.slice(-8))+' · 点击调整</small></button>'}).join('')+(i+1===data.order.length?'<div class="pair-slot">'+esc(state.trip.leaderName)+'<small>领队与最后落单者同住</small></div>':'')+'</div></div>')}return '<p class="field-hint">点击一个人，再搜索选择另一人，交换两人在当前房间中的位置。调整只影响本晚拼房，不改团员的住宿登记。</p>'+rows.join('')}
+function pairPeopleResults(data,query){var q=String(query||'').trim().toLowerCase(),ids=data.order.filter(function(id,index){return index!==data.index&&(!q||nameOf(id).toLowerCase().indexOf(q)>=0||id.toLowerCase().indexOf(q)>=0)});return '<p class="field-hint">'+ids.length+' 人可选'+(ids.length>20?'，请搜索缩小范围':'')+'</p>'+ids.slice(0,20).map(function(id){return '<button class="person-result" type="button" data-action="swap-room-slot" data-id="'+esc(id)+'"><span>'+esc(nameOf(id))+'<small>'+esc(id.slice(-8))+'</small></span><span>交换</span></button>'}).join('')}
+function applyHomeFilters(f){var start=f.elements.filterStart.value,end=f.elements.filterEnd.value;if(start&&end&&start>end)throw new Error('筛选开始日期不能晚于结束日期');homeFilters.search=f.elements.search.value.trim();homeFilters.startDate=start;homeFilters.endDate=end;render()}
+
+function render(){try{var v=null,t=state.trip;if(t&&page!=='home'){var own=t.members[state.activeId];if(t.admins[state.activeId]||own&&own.status==='active')v=D.viewTrip(t,state.activeId);else page='home'}if(!v&&page!=='home')page='home';if(v&&page==='form'&&!v.canRegister)page=v.isAdmin?'manage':'overview';if(v&&!v.isAdmin&&page==='manage')page='form';if(v&&page==='rooms'&&!v.isOwner){page=v.isAdmin?'manage':'form';manageTab='rooms';section='lodging'}var content=page==='home'?homePage():page==='form'?formPage(v):page==='manage'?managePage(v):page==='rooms'?roomsPage(v):overview(v);document.getElementById('app').innerHTML='<div class="status-bar"><span>9:41</span><div class="status-icons"><span class="status-signal"></span><span style="font-size:11px">⌁</span><span class="status-battery"></span></div></div><header class="app-header"><span class="brand"><span class="brand-icon">'+icon('mountain',17)+'</span>旅伴登记 </span><span class="wechat-capsule" aria-label="小程序外观示意">•••<span class="capsule-line"></span>◉</span></header><main class="main">'+content+'</main>'+nav(v);notifyHost()}catch(e){error(e)}}
+function randomCode(){if(!window.crypto||!window.crypto.getRandomValues)throw new Error('请使用支持安全随机数的现代浏览器打开体验版');var used=readStored(KEY+'-codes',[]);allTrips().forEach(function(x){if(x.trip.joinCode)used.push(x.trip.joinCode);(x.trip.usedJoinCodes||[]).forEach(function(c){used.push(c)})});for(var i=0;i<100;i++){var a=new Uint32Array(1);window.crypto.getRandomValues(a);if(a[0]>=4200000000)continue;var code=String(a[0]%100000000).padStart(8,'0');if(used.indexOf(code)<0){used.push(code);localStorage.setItem(KEY+'-codes',JSON.stringify(Array.from(new Set(used))));return code}}throw new Error('暂未生成可用入团码，请重试')}
+function uid(prefix){var bytes=new Uint8Array(12);if(!window.crypto||!window.crypto.getRandomValues)throw new Error('当前浏览器不支持安全随机数');window.crypto.getRandomValues(bytes);return prefix+'-'+Array.from(bytes).map(function(x){return x.toString(16).padStart(2,'0')}).join('')}
+function field(label,name,value,type,extra){return '<div class="field"><label class="field-label" for="'+name+'">'+label+'</label><input id="'+name+'" name="'+name+'" type="'+(type||'text')+'" value="'+esc(value)+'" '+(extra||'')+'></div>'}
+function textarea(label,name,value,max){return '<div class="field"><label class="field-label" for="'+name+'">'+label+'</label><textarea id="'+name+'" name="'+name+'" maxlength="'+(max||500)+'">'+esc(value)+'</textarea></div>'}
+function transportEditor(routes){return ['outbound','inbound'].map(function(dir){var route=routes[dir];return '<div class="modal-section"><div class="modal-section-title">'+(dir==='outbound'?'去程 · 到达集合地':'返程 · 离开行程地')+'</div>'+textarea('整体交通建议',dir+'Suggestion',route.suggestion,500)+route.options.map(function(o,i){var prefix=dir+'Opt'+i;return '<div class="route-editor" id="route-'+esc(o.id)+'"><div class="transport-option-head"><strong>推荐 '+(i+1)+'</strong><button type="button" class="small-button danger" data-action="remove-option" data-direction="'+dir+'" data-id="'+esc(o.id)+'">移除</button></div>'+(modalKind==='import'?'<div class="import-option-actions"><button type="button" class="text-button" data-action="move-option" data-direction="'+dir+'" data-id="'+esc(o.id)+'">改为'+(dir==='outbound'?'返程':'去程')+'推荐 ↗</button></div>':'')+'<div class="field"><label class="field-label" for="'+prefix+'Type">交通方式</label><select id="'+prefix+'Type" name="'+prefix+'Type" data-route-type="'+dir+'"><option value="train"'+(o.type==='train'?' selected':'')+'>火车车次</option><option value="flight"'+(o.type==='flight'?' selected':'')+'>机票建议</option></select></div>'+field(o.type==='train'?'推荐车次':'航线或航班',prefix+'Code',o.code,'text','maxlength="60" placeholder="'+(o.type==='train'?'例如：G1234':'例如：桂林 → 上海')+'"')+textarea('推荐说明',prefix+'Suggestion',o.suggestion,500)+(o.type==='train'?field('开售时间 · 北京时间',prefix+'SaleAt',o.saleAt,'datetime-local')+field('提前提醒分钟数',prefix+'Advance',o.advanceMinutes,'number','min="5" max="1440" step="1" required'):'<p class="field-hint">填写机票购买或起飞时间建议即可。</p>')+'</div>'}).join('')+'<div class="route-add"><button class="small-button" type="button" data-action="add-option" data-direction="'+dir+'" data-value="train"'+(route.options.length>=12?' disabled':'')+'>＋ 推荐车次</button><button class="small-button" type="button" data-action="add-option" data-direction="'+dir+'" data-value="flight"'+(route.options.length>=12?' disabled':'')+'>＋ 机票建议</button><span class="tiny">'+route.options.length+' / 12</span></div></div>'}).join('')}
+function captureTransport(f){if(!f||!modalData.transport)return;['outbound','inbound'].forEach(function(dir){var r=modalData.transport[dir];r.suggestion=f.elements[dir+'Suggestion'].value;r.options.forEach(function(o,i){var p=dir+'Opt'+i;o.type=f.elements[p+'Type'].value;o.code=f.elements[p+'Code'].value;o.suggestion=f.elements[p+'Suggestion'].value;o.saleAt=o.type==='train'&&f.elements[p+'SaleAt']?f.elements[p+'SaleAt'].value:'';o.advanceMinutes=o.type==='train'&&f.elements[p+'Advance']?Number(f.elements[p+'Advance'].value):30})})}
+function hotelFormNights(f){return state.trip.nights.map(function(n,i){return {date:n.date,place:f.elements['place'+i].value,hotel:f.elements['hotel'+i].value}})}
+function demoHistory(){return readStored(KEY+'-history',[]).filter(function(x){return x&&x.trip&&x.trip.schemaVersion===2})}
+function archiveCurrent(){if(!state.trip)return;var items=demoHistory().filter(function(x){return x.trip.id!==state.trip.id});items.unshift(clone(state));localStorage.setItem(KEY+'-history',JSON.stringify(items))}
+function restoreDemo(id){var previous=allTrips().find(function(x){return x.trip.id===id});if(!previous)throw new Error('未找到这个演示团');var actor=state.activeId;if(!belongs(previous.trip,actor))throw new Error('你尚未加入这个团，请凭入团码加入');archiveCurrent();state.trip=clone(previous.trip);D.migrateTrip(state.trip,state.trip.joinCode||randomCode());state.activeId=actor;drafts={};planDate='';page='overview';manageTab='members';persist();closeModal();render();toast('已切换演示团')}
+function startImport(mode){
+  if(mode==='existing'&&!state.trip.admins[state.activeId])throw new Error('仅管理员可以导入行程');
+  var own=currentProfile();
+  showModal('import',{mode:mode,step:'source',source:'',year:mode==='existing'?Number(state.trip.startDate.slice(0,4)):new Date().getFullYear(),name:'',nickname:own?own.nickname:'',leaderName:mode==='existing'?state.trip.leaderName:own.nickname,maxMembers:''});
+}
+function captureImport(f){
+  if(!f||modalKind!=='import')return;
+  var d=modalData;
+  if(f.elements.importSource)d.source=f.elements.importSource.value;
+  if(f.elements.importYear)d.year=f.elements.importYear.value;
+  if(f.elements.importName)d.name=f.elements.importName.value;
+  if(f.elements.importNickname)d.nickname=f.elements.importNickname.value;
+  if(f.elements.importLeader)d.leaderName=f.elements.importLeader.value;if(f.elements.importMaxMembers)d.maxMembers=f.elements.importMaxMembers.value;
+  if(d.step!=='review')return;
+  d.review.itinerary.forEach(function(day,i){if(f.elements['importPlan'+i])day.plan=f.elements['importPlan'+i].value});
+  d.review.nights.forEach(function(n,i){if(f.elements['importPlace'+i])n.place=f.elements['importPlace'+i].value;if(f.elements['importHotel'+i])n.hotel=f.elements['importHotel'+i].value});
+  if(f.elements.outboundSuggestion)captureTransport(f);
+}
+function mergeImportTransport(existing,parsed){
+  var result={};['outbound','inbound'].forEach(function(dir){var source=parsed[dir],current=existing&&existing[dir],options=current?clone(transportOptions(current)):[];
+    source.options.forEach(function(o){var duplicate=options.some(function(x){return x.type===o.type&&x.code===o.code&&x.suggestion===o.suggestion&&x.saleAt===o.saleAt&&x.advanceMinutes===o.advanceMinutes});if(!duplicate){var copy=clone(o),suffix=2;while(options.some(function(x){return x.id===copy.id})){var tail='_'+suffix++;copy.id=o.id.slice(0,40-tail.length)+tail}options.push(copy)}});
+    result[dir]={suggestion:current?current.suggestion||'':source.suggestion||'',options:options};
+  });return result;
+}
+function parseImport(f){captureImport(f);var d=modalData;if(!I||!I.parse)throw new Error('导入模块尚未打包，请重新获取体验版');var parsed=I.parse(d.source,{year:Number(d.year)}),t=state.trip;if(d.mode==='existing'&&(parsed.startDate<t.startDate||parsed.endDate>t.endDate)){showModal('importExpand',{draft:d,parsed:parsed,startDate:parsed.startDate<t.startDate?parsed.startDate:t.startDate,endDate:parsed.endDate>t.endDate?parsed.endDate:t.endDate});return}completeImport(d,parsed,false)}
+function completeImport(d,parsed,expand){var t=state.trip,existing=d.mode==='existing';d.parsed=parsed;d.year=parsed.year;d.expandDates=!!expand;d.startDate=existing?(parsed.startDate<t.startDate?parsed.startDate:t.startDate):parsed.startDate;d.endDate=existing?(parsed.endDate>t.endDate?parsed.endDate:t.endDate):parsed.endDate;var dates=D.datesBetween(d.startDate,d.endDate).concat(d.endDate);d.review={itinerary:dates.map(function(date){var imported=parsed.itinerary.find(function(x){return x.date===date}),old=existing?t.itinerary.find(function(x){return x.date===date}):null;return {date:date,plan:imported&&(!existing||(parsed.sourceDates||parsed.itinerary.map(function(x){return x.date})).indexOf(date)>=0)?imported.plan:old?old.plan:''}}),nights:dates.slice(0,-1).map(function(date){var imported=parsed.nights.find(function(x){return x.date===date}),old=existing?t.nights.find(function(x){return x.date===date}):null;return {date:date,place:imported&&imported.place||old&&old.place||'',hotel:old&&old.hotel||''}})};d.transport=mergeImportTransport(existing?t.transport:null,parsed.transport);d.selected={itinerary:true,transport:['outbound','inbound'].some(function(dir){return parsed.transport[dir].options.length||parsed.transport[dir].suggestion}),lodging:parsed.nights.some(function(n){return !!n.place})};d.warnings=parsed.warnings.slice();if(existing){parsed.nights.forEach(function(n){var old=t.nights.find(function(x){return x.date===n.date});if(old&&old.hotel&&n.place&&n.place!==old.place)d.warnings.push(shortDate(n.date)+'住宿地点发生变化，已保留原酒店'+old.hotel+'，请核对。')});if(d.selected.transport)d.warnings.push('已保留现有交通建议并追加识别结果，可删除不需要的推荐。');if(expand)d.warnings.push('确认导入后团队日期扩展为 '+d.startDate+' 至 '+d.endDate+'。新增住宿夜晚酒店需重新确认；未填齐时会关闭已开放的住宿收集。')}if(!d.name)d.name=shortDate(parsed.startDate)+'—'+shortDate(parsed.endDate)+'出游';d.step='review';showModal('import',d)}
+
+function importFields(d){
+  if(d.step!=='review')return '<div class="notice gray">直接粘贴即将发布的出团说明。先识别并检查，不会自动保存。</div>'+field('行程年份 · 请确认','importYear',d.year,'number','min="2000" max="2100" step="1" required')+'<div class="field"><label class="field-label" for="importSource">完整出团说明</label><textarea class="import-source" id="importSource" name="importSource" maxlength="40000" required placeholder="9月24日\n18:46-21:21 北京北-朔州东（9月10日12:00 开售）\n…">'+esc(d.source)+'</textarea></div>'+(d.mode==='existing'?'<p class="field-hint">当前团日期为 '+state.trip.startDate+' 至 '+state.trip.endDate+'。识别到范围外日期时，将询问是否扩展团队时间。</p>':'<p class="field-hint">确认保存后，新建团队。原演示团保留，可用顶部「我的团队」找回。原文不上传。</p>');
+  var selected=d.selected,p=d.parsed;
+  var body='<div class="import-date-summary"><div class="import-year-note">确认年份：'+esc(d.year)+' 年</div><div>'+esc(d.startDate)+' 至 '+esc(d.endDate)+' · '+d.review.itinerary.length+' 天 / '+d.review.nights.length+' 晚</div><p class="field-hint">识别原文日期：'+esc(p.startDate)+' 至 '+esc(p.endDate)+'</p></div>';
+
+  if(d.mode==='new')body+=field('行程名称','importName',d.name,'text','maxlength="80" required')+field('本团领队称呼','importNickname',d.nickname,'text','maxlength="32" required')+capacityField('importMaxMembers',d.maxMembers);
+  if(d.warnings.length)body+='<div class="notice warn"><strong>请核对识别结果</strong><ul class="import-warning-list">'+d.warnings.map(function(w){return '<li>'+esc(w)+'</li>'}).join('')+'</ul></div>';
+  body+='<div class="import-choices">'+[['itinerary','每日行程'],['transport','推荐交通'],['lodging','每晚住宿地点与酒店']].map(function(x){return '<label><input type="checkbox" name="importSelect'+x[0]+'" data-import-select="'+x[0]+'"'+(selected[x[0]]?' checked':'')+'>导入'+x[1]+'</label>'}).join('')+'</div><p class="field-hint">只保存勾选的部分。'+(d.mode==='existing'?'未勾选的内容保持原样；已有酒店已保留在下方。':'酒店未确定请留空，之后再补充。')+'</p>';
+  if(selected.itinerary)body+='<div class="modal-section"><div class="modal-section-title">每日行程 · 可直接修改</div>'+d.review.itinerary.map(function(day,i){return textarea(shortDate(day.date),'importPlan'+i,day.plan,500)}).join('')+'</div>';
+  if(selected.lodging)body+='<div class="modal-section"><div class="modal-section-title">每晚住宿 · 填写酒店即表示已确定</div><p class="field-hint">未识别出的地点保持空白，已有酒店会保留。酒店未定可稍后再补。</p>'+d.review.nights.map(function(n,i){return '<div class="modal-section"><strong>'+shortDate(n.date)+'</strong>'+field('住宿地点','importPlace'+i,n.place,'text','maxlength="80" placeholder="未明确，请补充"')+field('已确定酒店','importHotel'+i,n.hotel,'text','maxlength="80" placeholder="未定请留空"')+'</div>'}).join('')+'</div>';
+  if(selected.transport)body+='<div class="modal-section"><div class="modal-section-title">推荐交通 · 请核对去程 / 返程及开售时间</div>'+transportEditor(d.transport)+'</div>';
+  return body;
+}
+function saveImport(f){captureImport(f);var d=modalData;if(d.step!=='review'){parseImport(f);return}var updates={};if(d.selected.itinerary)updates.itinerary=clone(d.review.itinerary);if(d.selected.lodging)updates.nights=clone(d.review.nights);if(d.selected.transport)updates.transport=clone(d.transport);if(!Object.keys(updates).length)throw new Error('请至少选择一项要导入的内容');if(d.mode==='new'){var owner=state.activeId,profile=currentProfile(),trip=D.createTrip({maxMembers:Number(d.maxMembers),joinCode:randomCode(),name:d.name.trim(),startDate:d.startDate,endDate:d.endDate,nickname:d.nickname.trim(),leaderName:d.nickname.trim(),initialUpdates:updates},owner,uid('DEMO'));archiveCurrent();state={trip:trip,activeId:owner,profile:profile};drafts={};planDate=''}else{if(d.expandDates){updates.expandDates=true;updates.startDate=d.startDate;updates.endDate=d.endDate}var next=clone(state.trip);D.updateTrip(next,state.activeId,updates);state.trip=next}page='overview';manageTab='members';persist();closeModal();render();toast(d.mode==='new'?'已创建团队，收集暂未开放':d.expandDates?'已导入并扩展团队日期，请确认新增夜晚酒店':'已导入选中内容')}
+
+function parseCSV(csv){var rows=[],row=[],cell='',quoted=false,text=String(csv).replace(/^\uFEFF/,'');for(var i=0;i<text.length;i++){var c=text[i];if(quoted){if(c==='"'&&text[i+1]==='"'){cell+='"';i++}else if(c==='"')quoted=false;else cell+=c}else if(c==='"')quoted=true;else if(c===','){row.push(cell);cell=''}else if(c==='\r'||c==='\n'){if(c==='\r'&&text[i+1]==='\n')i++;row.push(cell);rows.push(row);row=[];cell=''}else cell+=c}if(cell||row.length){row.push(cell);rows.push(row)}return rows}
+function showExport(key,scope){if(!state.trip.admins[state.activeId])throw new Error('仅管理员可导出');var filters=scope?clone(reportFilters[scope]):{},csv=D.toCSV(state.trip,{section:key||'all',filters:filters}),rows=parseCSV(csv),label=key==='all'?'完整登记':sectionNames[key]||'完整登记';showModal('export',{csv:csv,rows:rows,label:label,filename:'旅伴登记_'+label+'_'+state.trip.startDate+'.csv',filters:filters})}
+function exportFields(data){var rows=data.rows,head=rows[0]||[],body=rows.slice(1);return '<div class="export-count">'+body.length+' 行数据 · '+head.length+' 列</div><p class="field-hint">下方就是导出文件内容，可左右滑动查看全部列。仅包含正式团员的当前生效信息。</p><div class="export-actions"><button type="button" class="small-button primary" data-action="download-export">下载 CSV 文件</button><button type="button" class="small-button" data-action="copy-export">复制 CSV 内容</button></div><div class="export-scroll"><table class="export-table"><thead><tr>'+head.map(function(x){return '<th scope="col">'+esc(x)+'</th>'}).join('')+'</tr></thead><tbody>'+body.map(function(row){return '<tr>'+row.map(function(x){return '<td>'+esc(x)+'</td>'}).join('')+'</tr>'}).join('')+'</tbody></table></div>'+(!body.length?'<p class="field-hint">没有符合筛选的正式团员，文件仅包含表头。</p>':'')+'<p id="export-status" class="export-note" role="status">如果当前预览限制下载，可复制内容；也可下载体验版后在浏览器中打开再导出。</p><details class="member-detail"><summary>查看或手动复制 CSV 原文</summary><textarea id="export-source" class="export-source" readonly aria-label="导出 CSV 原文">'+esc(data.csv.replace(/^\uFEFF/,''))+'</textarea></details>'}
+function downloadExport(){var data=modalData;if(modalKind!=='export')return;try{var url=URL.createObjectURL(new Blob([data.csv],{type:'text/csv;charset=utf-8;'})),a=document.createElement('a');a.href=url;a.download=data.filename;document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(url)},60000);document.getElementById('export-status').textContent='已请求浏览器下载 '+data.filename+'。如果未出现文件，请复制内容，或在浏览器中打开体验版再试。'}catch(e){document.getElementById('export-status').textContent='当前预览无法下载文件。表格内容仍可查看，请使用复制内容或手动复制原文。'}}
+function copyExport(){if(modalKind!=='export')return;var value=modalData.csv.replace(/^\uFEFF/,''),fallback=function(){var box=document.getElementById('export-source');if(box.parentElement)box.parentElement.open=true;box.focus();box.select();try{if(document.execCommand&&document.execCommand('copy')){document.getElementById('export-status').textContent='CSV 内容已复制，可粘贴保存为 .csv 文件。';return}}catch(e){}document.getElementById('export-status').textContent='原文已选中，请使用系统复制（电脑 Ctrl/Cmd+C，手机长按复制）。'};if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(value).then(function(){document.getElementById('export-status').textContent='CSV 内容已复制，可粘贴保存为 .csv 文件。'},fallback)}else fallback()}
+function showModal(kind,data){capture();modalKind=kind;modalData=data||{};var title='',intro='',body='',submit='保存',t=state.trip;
+if(kind==='history'){title='我的团队';intro='只显示当前演示身份创建、管理或参加的团队。';body=teamGroups();submit='关闭'}
+if(kind==='import'){title=modalData.step==='review'?'检查导入内容':'粘贴行程说明';intro=modalData.mode==='existing'?'导入当前旅游团，可选择更新哪些内容。':'从出团说明快速创建旅游团。';body=importFields(modalData);submit=modalData.step==='review'?(modalData.mode==='new'?'确认新建并切换':'确认导入选中内容'):'识别并预览'}
+if(kind==='export'){title='导出预览 · '+data.label;intro=data.filename;body=exportFields(data);submit='关闭'}
+if(kind==='enrollment'){title=data.open?'开放团员登记':'关闭团员登记';intro=data.open?'有空余名额时，团员凭有效的 8 位入团码直接加入，无需审批。':'关闭后不接收新团员，已入团成员可继续填写开放项目。';submit=data.open?'确认开放':'确认关闭'}
+if(kind==='guest'){title=data.newIdentity?'模拟新团员加入':'凭入团码加入';intro='输入领队或管理员给出的 8 位编码。有空余名额即可直接入团，无需审核。';body=field('8 位入团码','joinCode','','text','inputmode="numeric" pattern="[0-9]{8}" maxlength="8" required placeholder="请输入 8 位数字"')+field('本团团员称呼','newNickname',data.newIdentity?'':currentProfile().nickname,'text','maxlength="32" required placeholder="例如：小安"');submit='加入团队'}
+if(kind==='newTrip'){title='创建我的团队';intro='你将成为这个团的领队，生成 8 位入团码。原有团队和你在其他团的身份保持不变。';body='<button class="submit secondary" type="button" data-action="import-new">粘贴出团说明，快速新建 ↗</button>'+field('旅游团名称','tripName','','text','maxlength="80" required placeholder="例如：秋日山海四日团"')+'<div class="date-pair">'+field('出发日期','startDate','2026-10-01','date','required')+field('结束日期','endDate','2026-10-04','date','required')+'</div>'+field('本团领队称呼','adminNickname',currentProfile().nickname,'text','maxlength="32" required')+capacityField('maxMembers','');submit='创建团队并生成入团码'}
+if(kind==='memberStatus'){var m=t.members[data.id];title=data.status==='removed'?'移出团员':'恢复团员资格';intro=data.status==='removed'?'移出后，对方不能继续登记或查看完整行程，相关修改申请会失效；管理员可以在名额足够时恢复其资格。':'恢复后成为正式团员，占用一个入团名额。';body='<div class="notice">'+esc(m.nickname)+'</div>';submit=data.status==='removed'?'确认移出':'确认加入'}
+if(kind==='removeAdmin'){title='取消管理员权限';intro='保留对方的团员身份及全部登记。领队不能被取消权限。';body='<div class="notice">'+esc(t.admins[data.id].nickname)+'</div>';submit='确认取消'}
+if(kind==='basic'){title='旅游团基本信息';intro='修改团名。行程导入包含新日期时可确认扩展时间。';body=field('旅游团名称','tripName',t.name,'text','maxlength="80" required')+'<p class="field-hint">'+t.startDate+' 至 '+t.endDate+'</p>'}
+if(kind==='itinerary'){title='编辑行程安排';intro='可先填写已发布的每日安排，酒店未定不影响保存。计划有变化时，再单独更新本页。';body='<button class="small-button" type="button" data-action="import-existing">粘贴行程说明导入 ↗</button>'+t.itinerary.map(function(day,i){var night=t.nights.find(function(n){return n.date===day.date});return '<div class="modal-section"><div class="modal-section-title">DAY '+(i+1)+' · '+shortDate(day.date)+'</div>'+textarea('当日行程与景点计划','plan'+i,day.plan,500)+(night?'<p class="field-hint">当晚住宿地：'+esc(night.place||'待补充')+' · '+esc(night.hotel||'酒店待定')+'<br>住宿地点与酒店在「确定住宿酒店」中填写。</p>':'')+'</div>'}).join('')}
+if(kind==='hotels'){title='确定住宿酒店';intro='可以先填写每晚住宿地点，酒店未定请留空。填写酒店即表示已确定；全部酒店填齐后才能开放住宿收集。';body='<div id="hotel-readiness" class="notice '+(hotelReadiness(t.nights).missing.length?'warn':'gray')+'">'+esc(readinessText(t.nights))+'</div>'+(t.stages.lodging==='open'?'<p class="field-hint">住宿正在收集。如需将酒店恢复待定，请先关闭住宿收集。</p>':'')+t.nights.map(function(n,i){return '<div class="modal-section"><div class="modal-section-title">第 '+(i+1)+' 晚 · '+shortDate(n.date)+'</div>'+field('住宿地点','place'+i,n.place,'text','maxlength="80" placeholder="例如：阳朔"')+field('已确定的酒店','hotel'+i,n.hotel,'text','maxlength="80" placeholder="未定请留空"')+'</div>'}).join('')}
+if(kind==='transport'){title='填写推荐交通';intro='分别填写去程与返程，可推荐多个火车车次或提供机票建议。各车次单独填写开售时间（北京时间）；本地演示不发送微信通知。';if(!modalData.transport){modalData.transport={};['outbound','inbound'].forEach(function(dir){modalData.transport[dir]={suggestion:t.transport[dir].suggestion,options:clone(transportOptions(t.transport[dir]))}})}body=transportEditor(modalData.transport)}
+if(kind==='adminJoin'){title='增加管理员';intro='从已入团成员中选择。管理员仍须填写自己的出行登记。';body=peoplePicker('admin');submit='关闭'}
+if(kind==='reminder'){title='车次开售提醒';intro='本地演示不发送微信通知。';var chosen=data.direction?transportOptions(t.transport[data.direction]).find(function(o){return o.id===data.id}):null;body=(chosen?'<div class="notice"><strong>'+esc(chosen.code||'推荐车次')+'</strong><br>开售时间：'+esc(chosen.saleAt?chosen.saleAt.replace('T',' ')+'（北京时间）':'尚未设置')+'<br>提前 '+chosen.advanceMinutes+' 分钟提醒</div>':'')+'<div class="notice gray">正式小程序需要管理员配置有效订阅消息模板与定时任务，团员主动授权后，才可登记提醒。推荐交通更新后，需要按车次重新订阅；最终送达以微信返回结果为准。</div>';submit='知道了'}
+if(kind==='stage'){title=data.status==='closed'?'关闭收集阶段':'开放收集阶段';intro=data.status==='closed'?'关闭后，团员仍可申请修改，但必须经过管理员审核后才会生效。':'开放期间，团员可直接保存修改。若重新开放，当前阶段尚未审核的旧申请会失效。';body='<div class="notice">'+sectionNames[data.section]+'</div>';submit=data.status==='closed'?'确认关闭':'确认开放'}
+if(kind==='reset'){title='创建一份新的示例团';intro='生成新的虚构示例，已有团队和修改都会保留；不会恢复已删除的团队。';submit='创建示例'}
+if(kind==='capacity'){title='修改最大入团人数';intro='名额包含其他管理员，不包含领队。不能小于当前已入团人数。';body=capacityField('maxMembers',t.maxMembers)+'<p class="field-hint">目前已入团 '+activeMembers().length+' 人</p>'}
+if(kind==='rotateCode'){title='重新生成入团码';intro='确认后生成新的 8 位入团码，旧码立即失效且不能再次使用；已入团成员不受影响。';body='<div class="notice">当前入团码：'+esc(t.joinCode)+'</div>';submit='确认换码'}
+if(kind==='profile'){title='修改默认昵称';intro='创建团队或凭码入团时会复用这个昵称，也可单独填写本团称呼；已加入的团队称呼不变。';body=field('默认昵称','profileNickname',currentProfile().nickname,'text','maxlength="32" required')}
+if(kind==='rename'){title='修改本团称呼';intro='只修改当前团队中的称呼，其他团队和默认昵称不变。';body=field('本团称呼','teamNickname',D.viewTrip(t,state.activeId).me.nickname,'text','maxlength="32" required')}
+if(kind==='deleteTrip'||kind==='deleteTripFinal'){var deleting=allTrips().find(function(x){return x.trip.id===data.id});if(!deleting||deleting.trip.ownerId!==state.activeId)throw new Error('只有创建者可以删除此团');title=kind==='deleteTrip'?'删除我创建的团队':'再次确认删除';intro=kind==='deleteTrip'?'删除后，已入团成员和待入团用户都不能再看到或加入此团。':'此操作无法撤销，将删除此团及成员登记，原入团码永久失效。其他团队不受影响。';body='<div class="notice warn">'+esc(deleting.trip.name)+'</div>';submit=kind==='deleteTrip'?'继续删除':'确认永久删除'}
+if(kind==='importExpand'){title='是否扩展团队时间？';intro='识别到原团队日期范围外的行程。确认后先预览，最终保存时才更新团队日期。';body='<div class="notice">当前：'+t.startDate+' 至 '+t.endDate+'<br>识别：'+data.parsed.startDate+' 至 '+data.parsed.endDate+'<br><strong>扩展后：'+data.startDate+' 至 '+data.endDate+'</strong></div><p class="field-hint">原有行程与登记保留，新增夜晚需补充酒店。取消将返回原文，不裁剪识别内容。</p>';submit='扩展时间并预览'}
+if(kind==='roomPairs'){title='调整本晚双床拼房';intro=shortDate(data.date)+' · 当前调整保存后仍需确认安排';body=pairEditor(data);submit='保存本晚配对'}
+if(kind==='roomPairPerson'){title='选择要交换位置的团员';intro='将 '+nameOf(data.order[data.index])+' 与所选团员交换房间位置。';body='<input id="pair-query" type="search" placeholder="搜索昵称或编号" aria-label="搜索可交换团员"><div id="pair-results" class="people-results">'+pairPeopleResults(data,'')+'</div>';submit='返回配对'}
+if(kind==='resetPairs'){title='恢复自动拼房';intro='清除本晚手动配对，按首次提交确认时间重新两两安排，并需要重新确认。';submit='恢复按首次时间拼房'}
+if(kind==='setAdmin'){title='增加管理员';intro='对方获得团务管理权限，仍须填写个人登记；不能删除此团。';body='<div class="notice">'+esc(nameOf(data.id))+'</div>';submit='确认设为管理员'}
+if(kind==='roommate'){title='选择当晚同住人';intro=shortDate(getDraft().value[data.index].date)+' · 搜索昵称或编号，每晚可选不同的人。';body=peoplePicker('roommate');submit='关闭'}
+if(kind==='copyLater'){title='复制到后续夜晚';intro='将本晚房型、入住方式和同住人复制到后续 '+(getDraft().value.length-data.index-1)+' 晚。已有后续住宿草稿会被覆盖，确认后仍需保存登记。';body='<div class="notice">'+esc(summarize('lodging',[getDraft().value[data.index]]))+'</div><p class="field-hint">自订酒店不会复制到其他夜晚；后续各晚仍可单独修改。</p>';submit='确认复制到后续夜晚'}
+document.getElementById('modal').innerHTML='<div class="modal-backdrop" data-action="backdrop"><section class="modal" role="dialog" aria-modal="true" aria-label="'+esc(title)+'"><form id="modal-form"><h2>'+esc(title)+'</h2><p class="modal-intro">'+esc(intro)+'</p>'+body+'<div class="modal-actions">'+(kind==='import'&&modalData.step==='review'?'<button class="cancel" type="button" data-action="import-back">返回原文</button>':'')+(kind==='reminder'||kind==='export'?'':'<button class="cancel" type="button" data-action="close-modal">取消</button>')+'<button class="submit" type="submit"'+'>'+submit+'</button></div></form></section></div>';setTimeout(function(){var first=document.querySelector('#modal input,#modal textarea');if(first)first.focus({preventScroll:true})},25)
+}
+function closeModal(){if(modalKind==='importExpand'){var saved=modalData.draft;saved.step='source';showModal('import',saved);return}if(modalKind==='roomPairPerson'){showModal('roomPairs',{date:modalData.date,order:modalData.order});return}modalKind='';modalData={};document.getElementById('modal').innerHTML=''}
+
+function saveModal(f){var kind=modalKind,data=modalData;try{if(kind==='import'){saveImport(f);return}if(kind==='importExpand'){completeImport(data.draft,data.parsed,true);return}if(kind==='copyLater'){copyLater(data.index);return}if(kind==='deleteTrip'){showModal('deleteTripFinal',{id:data.id});return}if(kind==='deleteTripFinal'){deleteCurrent(data.id);return}if(kind==='roomPairPerson'){showModal('roomPairs',{date:data.date,order:data.order});return}if(['reminder','history','export','adminJoin','roommate'].indexOf(kind)>=0){closeModal();return}if(kind==='profile'){var nickname=f.elements.profileNickname.value.trim();if(!nickname||nickname.length>32)throw new Error('昵称须为 1–32 个字');state.profile={id:state.activeId,nickname:nickname}}else if(kind==='guest'){joinWithCode(f.elements.joinCode.value.trim(),f.elements.newNickname.value.trim(),data.newIdentity)}else if(kind==='newTrip'){var owner=state.activeId,profile=currentProfile(),nickname=f.elements.adminNickname.value.trim(),created=D.createTrip({maxMembers:Number(f.elements.maxMembers.value),joinCode:randomCode(),name:f.elements.tripName.value.trim(),startDate:f.elements.startDate.value,endDate:f.elements.endDate.value,nickname:nickname,leaderName:nickname},owner,uid('DEMO'));archiveCurrent();state={trip:created,activeId:owner,profile:profile};drafts={};page='overview';manageTab='settings';planDate=''}else if(kind==='reset'){archiveCurrent();state=seed();state.trip.id=uid('DEMO');drafts={};page='home';section='travel';manageTab='members';memberFilter='active';planDate=''}else{var next=clone(state.trip);if(kind==='rename')D.rename(next,state.activeId,f.elements.teamNickname.value.trim());if(kind==='roomPairs'){var pairs=[];for(var i=0;i<data.order.length;i+=2){var pair=data.order.slice(i,i+2);if(pair.length===1)pair.push('@leader');pairs.push(pair)}D.setRoomPairs(next,state.activeId,data.date,pairs)}if(kind==='resetPairs')D.resetRoomPairs(next,state.activeId,planDate);if(kind==='memberStatus')D.setMemberStatus(next,state.activeId,data.id,data.status);if(kind==='removeAdmin')D.setAdmin(next,state.activeId,data.id,false);if(kind==='setAdmin')D.setAdmin(next,state.activeId,data.id,true);if(kind==='capacity')D.setMaxMembers(next,state.activeId,Number(f.elements.maxMembers.value));if(kind==='rotateCode')D.rotateJoinCode(next,state.activeId,randomCode());if(kind==='enrollment')D.setEnrollment(next,state.activeId,data.open);if(kind==='stage')D.setStage(next,state.activeId,data.section,data.status);if(kind==='basic')D.updateTrip(next,state.activeId,{name:f.elements.tripName.value.trim()});if(kind==='itinerary')D.updateTrip(next,state.activeId,{itinerary:next.itinerary.map(function(x,i){return {date:x.date,plan:f.elements['plan'+i].value}})});if(kind==='hotels')D.updateTrip(next,state.activeId,{nights:hotelFormNights(f)});if(kind==='transport'){captureTransport(f);D.updateTrip(next,state.activeId,{transport:modalData.transport})}state.trip=next}persist();closeModal();render();toast(kind==='guest'?'已直接入团，可以开始登记':kind==='rotateCode'?'已生成新码，旧码立即失效':kind==='newTrip'?'已创建团队，入团码：'+state.trip.joinCode:'已保存')}catch(e){error(e)}}
+
+document.addEventListener('submit',function(e){if(e.target.id==='home-filters'){e.preventDefault();try{applyHomeFilters(e.target)}catch(x){error(x)}return}if(e.target.id==='filters-form'){e.preventDefault();applyFilters(e.target);return}if(e.target.id==='modal-form'){e.preventDefault();saveModal(e.target)}else if(e.target.id==='section-form'){e.preventDefault();capture();try{var d=getDraft(),t=clone(state.trip),closed=t.stages[section]==='closed';if(section==='insurance'&&d.value!=='yes'&&d.value!=='no')throw new Error('请选择已参保或未参保');if(section==='lodging')d.value.forEach(function(n){if(n.mode==='designated'&&!n.partnerId)throw new Error(shortDate(n.date)+'请选择指定同住人')});D.submitSection(t,state.activeId,section,d.value,d.reason);state.trip=t;delete drafts[draftKey()];persist();render();toast(closed?'修改申请已提交，通过后更新生效':'已保存'+sectionNames[section])}catch(x){error(x)}}});
+document.addEventListener('input',function(e){if(e.target.id==='pair-query'){document.getElementById('pair-results').innerHTML=pairPeopleResults(modalData,e.target.value);return}if(e.target.id==='people-query'){document.getElementById('people-results').innerHTML=peopleResults(modalKind==='adminJoin'?'admin':'roommate',e.target.value);return}if(e.target.closest('#section-form'))capture();if(modalKind==='hotels'&&e.target.closest('#modal-form')){var box=document.getElementById('hotel-readiness'),nights=hotelFormNights(document.getElementById('modal-form'));box.textContent=readinessText(nights);box.className='notice '+(hotelReadiness(nights).missing.length?'warn':'gray')}});
+document.addEventListener('change',function(e){if(e.target.dataset.filter){applyFilters(document.getElementById('filters-form'));return}if(modalKind==='import'&&e.target.dataset.importSelect){captureImport(document.getElementById('modal-form'));modalData.selected[e.target.dataset.importSelect]=e.target.checked;showModal('import',modalData);return}if((modalKind==='transport'||modalKind==='import')&&e.target.dataset.routeType){if(modalKind==='import')captureImport(document.getElementById('modal-form'));else captureTransport(document.getElementById('modal-form'));showModal(modalKind,modalData);return}if(!e.target.closest('#section-form'))return;capture();if(e.target.name==='arrivalUnknown'||e.target.name==='departureUnknown'||/^mode\d+$/.test(e.target.name)){if(/^mode\d+$/.test(e.target.name)){var n=getDraft().value[Number(e.target.name.slice(4))];if(n.mode!=='designated')n.partnerId=''}render()}});
+document.addEventListener('click',function(e){var b=e.target.closest('[data-action]');if(!b||b.disabled)return;var a=b.dataset.action;if(a==='backdrop'){if(e.target===b)closeModal();return}capture();try{if(a==='home-role'){homeFilters.role=homeFilters.role===b.dataset.value?'':b.dataset.value;render()}else if(a==='clear-home-filter'){homeFilters={search:'',startDate:'',endDate:'',role:homeFilters.role};render()}else if(a==='edit-profile'){showModal('profile')}else if(a==='rename-team'){showModal('rename')}else if(a==='overview-anchor'){var anchor=document.getElementById('overview-'+b.dataset.value);if(anchor)anchor.scrollIntoView({behavior:'smooth',block:'start'})}else if(a==='edit-room-pairs'){var plan=D.buildPlan(state.trip,planDate);showModal('roomPairs',{date:planDate,order:roomPairOrder(plan)})}else if(a==='change-room-slot'){showModal('roomPairPerson',{date:modalData.date,order:modalData.order,index:Number(b.dataset.index)})}else if(a==='swap-room-slot'){var order=modalData.order,from=modalData.index,to=order.indexOf(b.dataset.id);if(to<0)throw new Error('团员已不可选');var tmp=order[from];order[from]=order[to];order[to]=tmp;showModal('roomPairs',{date:modalData.date,order:order})}else if(a==='reset-room-pairs'){showModal('resetPairs')}else if(a==='new-team'){showModal('newTrip')}else if(a==='join-team'){showModal('guest',{newIdentity:false})}else if(a==='change-capacity'){showModal('capacity')}else if(a==='rotate-code'){showModal('rotateCode')}else if(a==='delete-team'){showModal('deleteTrip',{id:b.dataset.id})}else if(a==='copy-code'){if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(state.trip.joinCode).then(function(){toast('入团码已复制')},function(){toast('请长按上方入团码手动复制')});else toast('请长按上方入团码手动复制')}else if(a==='pick-roommate'){showModal('roommate',{index:Number(b.dataset.index)})}else if(a==='select-person'){if(modalKind==='adminJoin')showModal('setAdmin',{id:b.dataset.id});else if(modalKind==='roommate'){var selected=activeMembers().find(function(m){return m.id===b.dataset.id&&m.id!==state.activeId});if(!selected)throw new Error('该团员已不可选');getDraft().value[modalData.index].partnerId=selected.id;closeModal();render()}}else if(a==='copy-lodging'){var copyIndex=Number(b.dataset.index),copySource=getDraft().value[copyIndex];if(!copySource.room)throw new Error('请先选择本晚房型');if(copySource.mode==='designated'&&!copySource.partnerId)throw new Error('请先选择本晚同住人');if(getDraft().value.slice(copyIndex+1).some(function(n){return !!n.room||!!n.hotel||!!n.partnerId}))showModal('copyLater',{index:copyIndex});else copyLater(copyIndex)}else if(a==='restore-demo'){restoreDemo(b.dataset.id)}else if(a==='import-existing'||a==='import-new'){startImport(a==='import-existing'?'existing':'new')}else if(a==='import-back'){captureImport(document.getElementById('modal-form'));modalData.step='source';modalData.expandDates=false;showModal('import',modalData)}else if(a==='import-as-new'){captureImport(document.getElementById('modal-form'));modalData.mode='new';modalData.mismatch=false;showModal('import',modalData)}else if(a==='page'){page=b.dataset.value;if(page==='manage')manageTab='members';render();window.scrollTo(0,0)}else if(a==='section'){section=b.dataset.value;render();window.scrollTo(0,0)}else if(a==='manage-tab'){page='manage';manageTab=b.dataset.value==='stages'?'members':b.dataset.value;render()}else if(a==='member-filter'){memberFilter=b.dataset.value;render()}else if(a==='room-choice'){var n=getDraft().value[Number(b.dataset.index)];n.room=b.dataset.value;if(n.room!=='twin'&&n.mode==='auto')n.mode='single';if(n.room==='self'){n.mode='single';n.partnerId=''}render()}else if(a==='insurance-choice'){getDraft().value=b.dataset.value;render()}else if(a==='plan-date'){planDate=b.dataset.value;render()}else if(a==='close-modal')closeModal();else if(a==='member-status')showModal('memberStatus',{id:b.dataset.id,status:b.dataset.value});else if(a==='enrollment-status')showModal('enrollment',{open:b.dataset.value==='open'});else if(a==='stage-status')showModal('stage',{section:b.dataset.section,status:b.dataset.value});else if(a==='edit-meta')showModal(b.dataset.value);else if(a==='reminder-info')showModal('reminder',{direction:b.dataset.direction,id:b.dataset.id});else if(a==='add-option'||a==='remove-option'||a==='move-option'){if(modalKind==='import')captureImport(document.getElementById('modal-form'));else captureTransport(document.getElementById('modal-form'));var r=modalData.transport[b.dataset.direction],focusRoute='';if(a==='add-option'){if(r.options.length>=12)throw new Error('每个方向最多推荐 12 项');focusRoute=uid('route');r.options.push({id:focusRoute,type:b.dataset.value,code:'',suggestion:'',saleAt:'',advanceMinutes:30})}else if(a==='move-option'){var target=modalData.transport[b.dataset.direction==='outbound'?'inbound':'outbound'];if(target.options.length>=12)throw new Error('每个方向最多推荐 12 项');var moved=r.options.find(function(o){return o.id===b.dataset.id});if(target.options.some(function(o){return o.id===moved.id}))moved.id=uid('route');target.options.push(moved);r.options=r.options.filter(function(o){return o!==moved})}else r.options=r.options.filter(function(o){return o.id!==b.dataset.id});showModal(modalKind,modalData);if(focusRoute)setTimeout(function(){var box=document.getElementById('route-'+focusRoute);if(box){box.scrollIntoView({behavior:'smooth',block:'start'});var input=box.querySelector('input');if(input)input.focus({preventScroll:true})}},35);}else if(a==='remove-admin')showModal('removeAdmin',{id:b.dataset.id});else if(a==='add-admin')showModal('adminJoin');else if(a==='review'){var note=document.getElementById('review-'+b.dataset.id).value;mutate(function(t){D.reviewRequest(t,state.activeId,b.dataset.id,b.dataset.value,note)},b.dataset.value==='approved'?'申请已通过，登记已更新':'申请已拒绝，原登记保持不变')}else if(a==='confirm-plan'){mutate(function(t){D.confirmPlan(t,state.activeId,planDate)});var p=D.buildPlan(state.trip,planDate);toast(p.pending.length?'已确认可安排房间，仍有 '+p.pending.length+' 人待处理':'本晚住宿已确认')}else if(a==='export'){showExport(b.dataset.section||'all',b.dataset.scope)}else if(a==='download-export'){downloadExport()}else if(a==='copy-export'){copyExport()}}catch(x){error(x)}});
+window.addEventListener('message',function(e){if(e.source!==parent||!e.data||typeof e.data.type!=='string')return;try{if(e.data.type==='tour-switch'){capture();var person=profiles().find(function(x){return x.id===e.data.id});if(!person)return;state.activeId=e.data.id;state.profile=person;page='home';manageTab='members';closeModal();persist();render();window.scrollTo(0,0)}else if(e.data.type==='tour-guest')showModal('guest',{newIdentity:true});else if(e.data.type==='tour-new')showModal('newTrip');else if(e.data.type==='tour-import')startImport('new');else if(e.data.type==='tour-history'){page='home';closeModal();render()}else if(e.data.type==='tour-reset')showModal('reset')}catch(x){error(x)}});
+
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeModal();if(e.key==='Tab'&&modalKind){var nodes=Array.from(document.querySelectorAll('#modal input,#modal textarea,#modal select,#modal button')).filter(function(n){return !n.disabled}),first=nodes[0],last=nodes[nodes.length-1];if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}}});
+try{if(!D||!D.submitSection)throw new Error('V2 预览尚未完成打包，请注入新版 domain.js 后重试。');state=load();var legacy=demoHistory();legacy.forEach(function(x){rememberCodes(x.trip);D.migrateTrip(x.trip,x.trip.joinCode||randomCode())});localStorage.setItem(KEY+'-history',JSON.stringify(legacy));persist();render()}catch(e){document.getElementById('app').innerHTML='<div class="main" style="padding-top:40px"><section class="card"><h1 style="font-size:20px">预览暂时无法载入</h1><p class="compact-info">'+esc(e.message)+'</p></section></div>';parent.postMessage({type:'tour-error',message:e.message},'*')}
+})();
+</script>
+<script>
+(function(){
+'use strict';var iframe=document.getElementById('phone-app'),stage=document.getElementById('phone-stage'),shell=document.getElementById('phone-shell'),model=document.getElementById('phone-model'),identity=document.getElementById('demo-identity'),width=390,height=844;
+function resize(){var values=model.value.split(',');width=Number(values[0]);height=Number(values[1]);iframe.width=width;iframe.height=height;shell.style.width=(width+16)+'px';shell.style.height=(height+16)+'px';var scale=Math.min(1,(window.innerWidth-32)/(width+16));shell.style.transform='scale('+scale+')';stage.style.width=(width+16)*scale+'px';stage.style.height=(height+16)*scale+'px';document.getElementById('dimension-note').textContent=width+' × '+height+' CSS px'}
+function send(type,data){iframe.contentWindow.postMessage(Object.assign({type:type},data||{}),'*')}
+model.addEventListener('change',resize);window.addEventListener('resize',resize);identity.addEventListener('change',function(){send('tour-switch',{id:identity.value})});document.getElementById('add-guest').addEventListener('click',function(){send('tour-guest')});document.getElementById('new-trip').addEventListener('click',function(){send('tour-new')});document.getElementById('import-trip').addEventListener('click',function(){send('tour-import')});document.getElementById('history-demo').addEventListener('click',function(){send('tour-history')});document.getElementById('reset-demo').addEventListener('click',function(){send('tour-reset')});
+window.addEventListener('message',function(e){if(e.source!==iframe.contentWindow||!e.data)return;if(e.data.type==='tour-identities'){identity.replaceChildren();e.data.identities.forEach(function(x){var o=document.createElement('option');o.value=x.id;o.textContent=x.label;identity.appendChild(o)});identity.value=e.data.activeId}else if(e.data.type==='tour-error'){identity.replaceChildren();var o=document.createElement('option');o.textContent='预览尚未完成打包';identity.appendChild(o)}});
+var domain=document.getElementById('tour-domain-source').textContent,importer=document.getElementById('tour-importer-source').textContent,css=document.getElementById('mobile-style').textContent,code=document.getElementById('mobile-code').textContent;
+function scriptSafe(text){return text.replace(/<\/script/gi,'<\\/script')}
+iframe.srcdoc='<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>旅伴登记</title><style>'+css+'</style></head><body><div id="app"></div><div id="modal"></div><div id="toast" aria-live="polite"></div><script>'+scriptSafe(domain)+'<\/script><script>'+scriptSafe(importer)+'<\/script><script>'+scriptSafe(code)+'<\/script></body></html>';resize();
+})();
+</script>
+</body>
+</html>

@@ -112,6 +112,13 @@ jobs:
           print(f'Added category dashboard: {len(archive)} bytes')
           PY
 
+      - name: Add Lvban travel demo
+        shell: bash
+        run: |
+          mkdir -p site/lvban
+          cp lvban/index.html site/lvban/index.html
+          test -s site/lvban/index.html
+
       - name: Configure Pages
         uses: actions/configure-pages@v5
         with:
