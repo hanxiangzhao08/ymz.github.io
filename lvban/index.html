@@ -544,6 +544,20 @@
   function submissionEntry(trip,member,section,value,stamp,id,request,clientRequestId,reason) {
     return {id:id,section:section,value:copy(value),names:submissionNames(trip,value,section),submittedAt:stamp,status:request?'pending':'submitted',effectiveAt:request?'':stamp,requestId:request?id:'',reason:reason||'',reviewedAt:'',reviewNote:'',reviewerId:'',clientRequestId:clientRequestId||''};
   }
+  function retainLegacySubmission(trip,member,section) {
+    if(member.sectionSubmissions&&member.sectionSubmissions[section])return;
+    var current=member.sections[section];
+    if(section==='insurance'?insuranceValue(current)===null:section==='lodging'?!Array.isArray(current)||!current.length:current==null)return;
+    var value=section==='lodging'?current.map(lodgingValue):copy(current);
+    var recorded=(member.submissionHistory&&member.submissionHistory[section]||[]).some(function(entry){
+      return ['legacy','submitted','approved'].includes(entry.status)&&JSON.stringify(entry.value)===JSON.stringify(value);
+    });
+    if(recorded)return;
+    var times=member.sectionTimes&&member.sectionTimes[section]||{};
+    // Preserve the one effective result that is actually known before a new save.
+    // Its original submission time and any earlier versions remain unknown.
+    retainSubmission(member,section,{id:'legacy_'+section,section:section,status:'legacy',legacy:true,value:value,names:submissionNames(trip,value,section),submittedAt:'',effectiveAt:times.lastModifiedAt||'',requestId:'',reason:'',reviewedAt:'',reviewNote:'',reviewerId:'',clientRequestId:''});
+  }
   function submitSection(trip,id,section,value,reason,clientRequestId) {
     var member=memberOf(trip,id,true);sectionName(section);
     if(trip.stages[section]==='pending') fail('此阶段尚未开放');
@@ -554,6 +568,7 @@
       if(duplicate){if(JSON.stringify(duplicate.value)!==JSON.stringify(proposed)||(duplicate.reason||'')!==cleanReason)fail('此提交请求已提交过不同内容，请重新发起');return trip;}
     }
     var stamp=now(),entryId=(trip.stages[section]==='open'?'s_':'r_')+(trip.revision+1)+'_'+section;
+    retainLegacySubmission(trip,member,section);
     supersede(trip,section,id);
     if(trip.stages[section]==='open') {
       commitSection(member,section,proposed);trip.revision++;invalidate(trip);
@@ -577,6 +592,7 @@
       if(member.sectionVersions[request.section]!==request.baseVersion) fail('正式登记已更新，请让团员重新提交申请');
       if(request.section==='insurance'&&insuranceValue(request.proposed)===null)fail('此历史参保意向申请为待确认，请团员重新选择参保或不参保后提交');
       var value=validateSection(trip,member.id,request.section,request.proposed);
+      retainLegacySubmission(trip,member,request.section);
       commitSection(member,request.section,value);
     }
     request.status=decision;request.reviewNote=cleanNote;request.reviewedAt=now();request.reviewerId=actorId;
@@ -1267,14 +1283,14 @@
     var metadata=member.sectionSubmissions&&member.sectionSubmissions[section];
     var effectiveRecord=metadata&&records.find(function(entry){return entry.id===metadata.id;});
     if(!metadata&&hasEffective){
-      var candidates=records.filter(function(entry){return (entry.status==='submitted'||entry.status==='approved')&&sameValue(section,entry.value,value);});
+      var candidates=records.filter(function(entry){return (entry.status==='submitted'||entry.status==='approved'||entry.status==='legacy')&&sameValue(section,entry.value,value);});
       effectiveRecord=candidates.sort(function(a,b){return (b.effectiveAt||b.submittedAt||'').localeCompare(a.effectiveAt||a.submittedAt||'');})[0]||null;
     }
-    var legacy=hasEffective&&!metadata&&!effectiveRecord;
+    var legacy=hasEffective&&!metadata&&(!effectiveRecord||effectiveRecord.legacy||effectiveRecord.status==='legacy');
     var times=member.sectionTimes&&member.sectionTimes[section]||{};
     var effective=hasEffective?{value:value,rows:summary(section,value,names),submittedAt:metadata?metadata.submittedAt||'':effectiveRecord?effectiveRecord.submittedAt||'':'',effectiveAt:metadata?metadata.effectiveAt||'':effectiveRecord?effectiveRecord.effectiveAt||'':times.lastModifiedAt||'',legacy:legacy}:null;
     if(effective){effective.submittedAtLabel=formatTimestamp(effective.submittedAt);effective.effectiveAtLabel=formatTimestamp(effective.effectiveAt);}
-    if(legacy)records.push({id:'legacy_'+section,status:'legacy',legacy:true,value:clone(value),submittedAt:'',effectiveAt:effective.effectiveAt,reason:'',reviewNote:''});
+    if(legacy&&!effectiveRecord)records.push({id:'legacy_'+section,status:'legacy',legacy:true,value:clone(value),submittedAt:'',effectiveAt:effective.effectiveAt,reason:'',reviewNote:''});
     records=records.map(function(entry,index){entry._order=index;return entry;}).sort(function(a,b){return (b.submittedAt||b.effectiveAt||'').localeCompare(a.submittedAt||a.effectiveAt||'')||b._order-a._order;}).map(function(entry){delete entry._order;return entryView(section,entry,names);});
     var pending=records.find(function(entry){return entry.status==='pending';})||null;
     var hiddenCount=Math.max(0,records.length-20);records=records.slice(0,20);
@@ -1475,6 +1491,24 @@ button.announcement-open{display:block;width:100%;min-width:0;margin:0;backgroun
 .admin-candidate .tiny{margin-top:calc(4 * var(--rpx))}
 .admin-candidate>.text-button{flex-shrink:0}
 
+/* Paired date fields share a row; standalone field margins must not offset them. */
+.date-pair>.field{min-width:0;margin:0}
+
+/* Home markup uses HTML date fields and button-based team entry rows. */
+#home-filters .date-pair{grid-template-columns:repeat(2,minmax(0,1fr));align-items:start;gap:calc(12 * var(--rpx));margin-top:calc(16 * var(--rpx))}
+#home-filters .date-pair>.field{min-width:0;margin:0}
+#home-filters .date-pair .field-label{margin:0 0 calc(12 * var(--rpx))}
+#home-filters .date-pair input{width:100%;min-width:0;min-height:calc(72 * var(--rpx));padding:calc(14 * var(--rpx));font-size:calc(22 * var(--rpx))}
+.team-card .card-header{align-items:flex-start;gap:calc(18 * var(--rpx));margin-bottom:0}
+.team-card .team-title,.team-card .team-enter{appearance:none;-webkit-appearance:none;background:transparent;border:0;border-radius:0;box-shadow:none;color:#214337;text-align:left}
+.team-card .team-title{display:block;flex:1;min-width:0;margin:0;padding:0;font-size:calc(24 * var(--rpx));font-weight:600;line-height:1.7;white-space:normal;overflow-wrap:anywhere}
+.team-card .card-header>.danger{padding-top:calc(2 * var(--rpx))}
+.team-card .team-enter{display:flex;align-items:center;justify-content:space-between;gap:calc(18 * var(--rpx));width:100%;min-width:0;margin:calc(10 * var(--rpx)) 0 0;padding:0;font-weight:400;line-height:1.85}
+.team-card .team-enter>span:first-child{display:block;flex:1;min-width:0;overflow-wrap:anywhere}
+.team-card .team-enter .tiny{display:block;font-size:calc(22 * var(--rpx));line-height:1.85}
+.team-card .team-enter .field-hint{display:block;margin-top:calc(4 * var(--rpx))}
+.team-card .team-enter>span:last-child{display:block;flex-shrink:0;font-size:calc(22 * var(--rpx));color:#54734b;white-space:nowrap}
+
 </script>
 <script id="mobile-code" type="text/plain">
 (function(){
@@ -1626,7 +1660,7 @@ function roomMoveFields(data){var draft=data.draft,source=draftAssigned(draft,da
 function moveRoomPerson(data,destination,roomType){var draft=data.draft,source=draftAssigned(draft,data.memberId),target=destination==='@new'?null:draft.rooms.find(function(r){return r.id===destination});if(!destination||destination!=='@new'&&!target)throw new Error('请选择有效房间');if(target&&(target===source||target.memberIds.length>=2))throw new Error('该房间不可接收更多住户');if(source){source.memberIds.forEach(function(id){if(id!==data.memberId)draft.detached[id]=true});draft.rooms=draft.rooms.filter(function(r){return r!==source})}if(target)target.memberIds.push(data.memberId);else draft.rooms.push({id:uid('room'),room:roomType,memberIds:[data.memberId]});delete draft.detached[data.memberId];showModal('roomPairs',draft)}
 function applyHomeFilters(f){var start=f.elements.filterStart.value,end=f.elements.filterEnd.value;if(start&&end&&start>end)throw new Error('筛选开始日期不能晚于结束日期');homeFilters.search=f.elements.search.value.trim();homeFilters.startDate=start;homeFilters.endDate=end;render()}
 
-function render(){try{var v=null,t=state.trip;if(t&&page!=='home'){var own=t.members[state.activeId];if(t.admins[state.activeId]||own&&own.status==='active')v=D.viewTrip(t,state.activeId);else page='home'}if(!v&&page!=='home')page='home';if(v&&page==='form'&&!v.canRegister)page=v.isAdmin?'manage':'overview';if(v&&!v.isAdmin&&(page==='manage'||page==='export'))page='form';if(v&&page==='rooms'&&!v.isOwner){page=v.isAdmin?'manage':'form';manageTab='rooms';section='lodging'}var content=page==='home'?homePage():page==='form'?formPage(v):page==='manage'?managePage(v):page==='rooms'?roomsPage(v):page==='announcements'?announcementListPage(v):page==='export'?exportPage(v):overview(v),title={home:'旅伴登记',overview:'行程概览',form:'我的登记',manage:'团务管理',rooms:'住宿安排',announcements:'团队公告',export:'登记导出'}[page]||'旅伴登记';document.getElementById('app').innerHTML='<div class="status-bar"><span>9:41</span><div class="status-icons"><span class="status-signal"></span><span style="font-size:11px">⌁</span><span class="status-battery"></span></div></div><header class="app-header">'+(page==='home'?'<span class="native-back-placeholder"></span>':'<button type="button" class="native-back" data-action="native-back" aria-label="返回">‹</button>')+'<span class="app-brand">'+esc(title)+'</span><span class="wechat-capsule" aria-label="小程序外观示意">•••<span class="capsule-line"></span>◉</span></header><main class="main">'+content+'</main>'+(page==='export'?'':nav(v));notifyHost()}catch(e){error(e)}}
+function render(){try{var v=null,t=state.trip;if(t&&page!=='home'){var own=t.members[state.activeId];if(t.admins[state.activeId]||own&&own.status==='active')v=D.viewTrip(t,state.activeId);else page='home'}if(!v&&page!=='home')page='home';if(v&&page==='form'&&!v.canRegister)page=v.isAdmin?'manage':'overview';if(v&&!v.isAdmin&&(page==='manage'||page==='export'))page='form';if(v&&page==='rooms'&&!v.isOwner){page=v.isAdmin?'manage':'form';manageTab='rooms';section='lodging'}var content=page==='home'?homePage():page==='form'?formPage(v):page==='manage'?managePage(v):page==='rooms'?roomsPage(v):page==='announcements'?announcementListPage(v):page==='export'?exportPage(v):overview(v),title={home:'旅伴登记',overview:'行程概览',form:'我的登记',manage:'团务管理',rooms:'住宿安排',announcements:'团队公告',export:'登记导出'}[page]||'旅伴登记';document.getElementById('app').innerHTML='<div class="status-bar"><span>9:41</span><div class="status-icons"><span class="status-signal"></span><span style="font-size:11px">⌁</span><span class="status-battery"></span></div></div><header class="app-header">'+(page==='home'?'<span class="native-back-placeholder"></span>':'<button type="button" class="native-back" data-action="native-back" aria-label="返回">‹</button>')+'<span class="app-brand">'+esc(title)+'</span><span class="wechat-capsule" aria-label="小程序外观示意">•••<span class="capsule-line"></span>◉</span></header><main class="main">'+content+'</main>'+(page==='export'?'':nav(v));notifyHost();var locationKey=page+'|'+state.activeId+'|'+(state.trip?state.trip.id:'');if(render.locationKey!==locationKey){render.locationKey=locationKey;window.scrollTo(0,0)}}catch(e){error(e)}}
 function randomCode(){if(!window.crypto||!window.crypto.getRandomValues)throw new Error('请使用支持安全随机数的现代浏览器打开体验版');var used=readStored(KEY+'-codes',[]);allTrips().forEach(function(x){if(x.trip.joinCode)used.push(x.trip.joinCode);(x.trip.usedJoinCodes||[]).forEach(function(c){used.push(c)})});for(var i=0;i<100;i++){var a=new Uint32Array(1);window.crypto.getRandomValues(a);if(a[0]>=4200000000)continue;var code=String(a[0]%100000000).padStart(8,'0');if(used.indexOf(code)<0){used.push(code);localStorage.setItem(KEY+'-codes',JSON.stringify(Array.from(new Set(used))));return code}}throw new Error('暂未生成可用入团码，请重试')}
 function uid(prefix){var bytes=new Uint8Array(12);if(!window.crypto||!window.crypto.getRandomValues)throw new Error('当前浏览器不支持安全随机数');window.crypto.getRandomValues(bytes);return prefix+'-'+Array.from(bytes).map(function(x){return x.toString(16).padStart(2,'0')}).join('')}
 function genderText(value){return {male:'男',female:'女'}[value]||'未选择'}
