@@ -1304,7 +1304,7 @@
     else if(latest&&latest.status==='superseded')message=stage==='open'?'收集已重新开放，请按需重新提交。':'此前申请已失效，请按当前登记要求重新提交。';
     else if(complete)message='下方为当前生效的登记内容。';
     else message=stage==='pending'?'此项收集尚未开放。':'请填写并提交此项登记。';
-    return {collectionLabel:collectionNames[stage],status:status,statusLabel:statusLabel,complete:complete,hasEffective:hasEffective,title:pending?'申请已提交，待审批':complete?'提交完成':hasEffective?'待补全':'待提交',progressLabel:section==='lodging'&&hasEffective?'已提交'+filledNights+'/'+nights.length+'晚':'',effective:effective,pending:pending,latest:latest,history:records,historyNote:omitted?'最多保留最近20次提交记录；较早的 '+omitted+' 条记录不再保留。':legacy?'历史版本未记录，仅展示当前生效内容。':hiddenCount?'仅展示最近20次提交记录。':'每项最多保留最近20次提交记录。',message:message};
+    return {collectionLabel:collectionNames[stage],status:status,statusLabel:statusLabel,complete:complete,hasEffective:hasEffective,title:pending?'申请已提交，待审批':complete?'提交完成':hasEffective?'待补全':'待提交',progressLabel:section==='lodging'&&hasEffective?'已提交'+filledNights+'/'+nights.length+'晚':'',effective:effective,pending:pending,latest:latest,history:records,historyNote:omitted?'最多保留最近20次提交记录；较早的 '+omitted+' 条记录不再保留。':legacy?'升级前的完整提交过程未记录；历史登记的原提交时间无法确定。':hiddenCount?'仅展示最近20次提交记录。':'每项最多保留最近20次提交记录。',message:message};
   }
   return {buildSubmissionState:buildSubmissionState,summary:summary,formatTimestamp:formatTimestamp,sameValue:sameValue};
 }));
