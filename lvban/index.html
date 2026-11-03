@@ -1397,7 +1397,7 @@
     if(point.type!=='stop')return [{label:label,value:'尚未选择'}];
     var rows=[{label:label,value:(point.name||'原站点')+(point.missing?'（已取消，请重新选择）':'')}];
     rows.push({label:direction==='outbound'?'上车时间':'预计下车时间',value:[point.date,point.unknown?(direction==='outbound'?'时间待定':'预计时间待定'):point.time].filter(Boolean).join(' ')||'时间待定'});
-    if(point.note)rows.push({label:direction==='outbound'?'上车位置备注':'下车位置备注',value:point.note});
+    if(point.note)rows.push({label:direction==='outbound'?'上车位置':'下车位置',value:point.note});
     return rows;
   }
   function validStopDate(trip,date) {
